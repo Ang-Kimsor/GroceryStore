@@ -16,11 +16,11 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
           <img src={img} alt={name} className="border-2 border-gray-500/50" />
           <div className="w-full h-full absolute flex flex-col justify-between top-0 left-0 p-2 group-hover:bg-gray-500/10 rounded">
             {discount > 0 ? (
-              <span className="size-fit rounded bg-[#4daf65] px-2.5 left-2 top-2 text-white tracking-wider text-[12px] absolute">
+              <span className="size-fit rounded bg-[#4daf65] px-2.5 right-2 top-2 text-white tracking-wider text-[12px] absolute">
                 -{discount}%
               </span>
             ) : null}
-            <div className="w-full h-fit  flex flex-col items-end gap-2 translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200">
+            <div className="w-full h-fit  flex flex-col items-start gap-2 -translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200">
               <span className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-white">
                 <FontAwesomeIcon icon={faImage} className="text-[#59c392]" />
               </span>
