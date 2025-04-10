@@ -1,7 +1,7 @@
 import { menu } from "../data/Navbar";
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from "./../assets/logo.png";
+import Logo from "./../assets/logo.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,

@@ -37,29 +37,29 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
               <span className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white">
                 <FontAwesomeIcon
                   icon={faImage}
-                  className="text-[#59c392] md:text-sm text-[11px]"
+                  className="text-[#4daf65] md:text-sm text-[11px]"
                 />
               </span>
               <span className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white">
                 <FontAwesomeIcon
                   icon={faHeart}
-                  className="text-[#59c392] md:text-sm text-[11px]"
+                  className="text-[#4daf65] md:text-sm text-[11px]"
                 />
               </span>
             </div>
-            <div
+            <button
               className={`${
                 hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
-              } w-full lg:h-[40px] h-[30px] md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+              } w-full lg:h-[40px] h-[30px] md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
-                className="text-[#59c392] text-[10px] md:text-[12px]"
+                className="text-[#4daf65] text-[10px] md:text-[12px]"
               />
-              <p className="text-[#59c392] text-[10px] md:text-sm">
+              <p className="text-[#4daf65] text-[10px] md:text-sm">
                 Add to cart
               </p>
-            </div>
+            </button>
           </div>
         </div>
         <div className="w-full h-fit py-2 bg-white">
@@ -90,15 +90,15 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
               <span>{price.toFixed(2)}</span>
             )}
           </p>
-          <div
-            className={` w-full h-[30px] md:hidden flex bg-[#6ddca6] gap-2 rounded items-center justify-center mt-5`}
+          <button
+            className={` w-full h-[30px] md:hidden flex bg-[#6ddca6] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >
             <FontAwesomeIcon
               icon={faCartShopping}
               className="text-white text-[12px]"
             />
             <p className="text-white text-sm">Add to cart</p>
-          </div>
+          </button>
         </div>
       </div>
     </>

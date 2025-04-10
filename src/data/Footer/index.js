@@ -20,9 +20,9 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Visa from "./../../assets/visa.jpg";
-import Mastercard from "./../../assets/master.png";
-import AmericanExpress from "./../../assets/americanExpress.png";
-import Paypal from "./../../assets/paypal.png";
+import Mastercard from "./../../assets/master.jpg";
+import AmericanExpress from "./../../assets/americanExpress.jpg";
+import Paypal from "./../../assets/paypal.jpg";
 
 export const footer = [
   {

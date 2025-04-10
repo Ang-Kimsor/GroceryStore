@@ -6,6 +6,7 @@ import {
   FeatureSellerBanner,
   FeatureTitle,
   FeatureCategory,
+  FeatureStory,
 } from "../component/Home";
 import {
   FeatureBigData,
@@ -14,6 +15,7 @@ import {
   FeatureSellerDataBanner,
   FeatureCategoryData,
   FeatureDiscoverData,
+  FeatureStoryData,
 } from "./../data/Home";
 const Home = () => {
   return (
@@ -107,6 +109,15 @@ const Home = () => {
               )}
             </div>
           </div>
+        </div>
+
+        <div className="w-full h-fit flex items-center justify-center py-10">
+          <FeatureStory
+            img={FeatureStoryData.img}
+            title1={FeatureStoryData.title1}
+            title2={FeatureStoryData.title2}
+            des={FeatureStoryData.des}
+          />
         </div>
       </main>
     </>

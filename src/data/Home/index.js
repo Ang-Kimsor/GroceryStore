@@ -1,10 +1,10 @@
 import FeatureB from "./../../assets/FeatureBig.jpg";
-import FeatureS1 from "./../../assets/FeatureSmall1.png";
-import FeatureS2 from "./../../assets/FeatureSmall2.png";
-import FeatureS3 from "./../../assets/FeatureSmall3.png";
-import FeatureS4 from "./../../assets/FeatureSmall4.png";
-import FeatureS5 from "./../../assets/FeatureSmall5.png";
-import FeatureS6 from "./../../assets/FeatureSmall6.png";
+import FeatureS1 from "./../../assets/FeatureSmall1.jpg";
+import FeatureS2 from "./../../assets/FeatureSmall2.jpg";
+import FeatureS3 from "./../../assets/FeatureSmall3.jpg";
+import FeatureS4 from "./../../assets/FeatureSmall4.jpg";
+import FeatureS5 from "./../../assets/FeatureSmall5.jpg";
+import FeatureS6 from "./../../assets/FeatureSmall6.jpg";
 import ITOEN from "./../../assets/itoen.jpg";
 import Matcha from "./../../assets/matcha.jpg";
 import Seller1 from "./../../assets/seller1.jpg";
@@ -21,6 +21,7 @@ import Seller11 from "./../../assets/seller11.jpg";
 import Cate1 from "./../../assets/cate1.jpg";
 import Cate2 from "./../../assets/cate2.jpg";
 import Cate3 from "./../../assets/cate3.jpg";
+import Story from "./../../assets/matchalatte.jpg";
 export const FeatureBigData = {
   name: "Matcha Green Tea Ginger",
   brands: "ITO EN",
@@ -225,3 +226,9 @@ export const FeatureDiscoverData = [
     img: Seller8,
   },
 ];
+export const FeatureStoryData = {
+  img: Story,
+  title1: "Driven by passion, Guided by purpose",
+  title2: "The Story Behind Japan's Souq",
+  des: "Emerald Star marks its presence in all GCC countries with a wide distribution network in all convenient stores, supermarkets, pharmacies and textile stores.",
+};

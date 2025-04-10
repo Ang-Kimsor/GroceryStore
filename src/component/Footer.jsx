@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "./../assets/logo.png";
-import ISO from "./../assets/iso.png";
+import Logo from "./../assets/logo.jpg";
+import ISO from "./../assets/iso.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { footer, iconPayment, iconSocial } from "../data/Footer";

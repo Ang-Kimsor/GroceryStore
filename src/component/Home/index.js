@@ -4,3 +4,4 @@ export { default as FeaturePrdCard } from "./FeaturePrdCard.jsx";
 export { default as FeatureTitle } from "./FeatureTitle.jsx";
 export { default as FeatureSellerBanner } from "./FeatureSellerBanner.jsx";
 export { default as FeatureCategory } from "./FeatureCategory.jsx";
+export { default as FeatureStory } from "./FeatureStory.jsx";
