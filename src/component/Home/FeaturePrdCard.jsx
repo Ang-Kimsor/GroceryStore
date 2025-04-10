@@ -10,7 +10,7 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
     <>
       <div
         className={`w-fit h-fit ${
-          id == 10 ? "md:hidden xl:block block" : ""
+          id == 10 ? "md:hidden lg:block block" : ""
         } group cursor-pointer`}
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
@@ -50,7 +50,7 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
             <div
               className={`${
                 hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
-              } w-full md:h-[50px] h-[22px] bg-white flex gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+              } w-full lg:h-[40px] h-[30px] md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -90,6 +90,15 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
               <span>{price.toFixed(2)}</span>
             )}
           </p>
+          <div
+            className={` w-full h-[30px] md:hidden flex bg-[#6ddca6] gap-2 rounded items-center justify-center mt-5`}
+          >
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              className="text-white text-[12px]"
+            />
+            <p className="text-white text-sm">Add to cart</p>
+          </div>
         </div>
       </div>
     </>
