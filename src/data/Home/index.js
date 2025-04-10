@@ -128,17 +128,14 @@ export const FeatureSellerDataBanner = {
 export const FeatureCategoryData = [
   {
     img: Cate1,
-    name: "Calbee Frugra & Granola",
-    des: "Frugra is a perfect blend of the five main grains, fruits and nuts. The ideal flavor and crunchy combination that will let you relish and enjoy this healthy, delicious sand wholesomeness. Frugra can be served both hot and cold, and is excellent for a healthy start to your day! Loaded with the right carbs, grains and vitamins to kick start your day with all the energy.",
+    name: "Calbee Frugra",
   },
   {
     img: Cate2,
     name: "Baby Collection",
-    des: "Let your children enjoy the comfort fit of Genki diaper pants. This one is a must-have for your baby, with Japanese technology that features ultra-absorption and double the comfort and protection. You can buy diapers online in UAE from our website.",
   },
   {
     img: Cate3,
-    name: "Japanese Green Tea",
-    des: "Made with real Japanese green tea leaves & Matcha. Instantly dissolves in hot or cold water. No added sweeteners, preservatives, or colors.",
+    name: "Green Tea",
   },
 ];

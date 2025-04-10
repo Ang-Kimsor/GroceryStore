@@ -1,14 +1,15 @@
 import React from "react";
-import img from "./../../assets/cate1.jpg";
-const FeatureCategory = () => {
+const FeatureCategory = ({ name, img }) => {
   return (
     <>
-      <div className="w-fit h-fit flex flex-col gap-3 group md:hover:translate-y-[50px] transition-all">
-        <div className="bg-blue-500">
+      <div className="w-full h-fit flex flex-col gap-3 group lg:-translate-y-[80px] -translate-y-[40px] md:hover:-translate-y-[40px] transition-all cursor-pointer">
+        <div className=" flex justify-center">
           <img src={img} alt="" />
         </div>
-        <div className="w-full h-fit flex justify-center bg-amber-500 group-hover:">
-          <h1 className="text-xl">Hell</h1>
+        <div className="w-full h-fit flex flex-col items-center ">
+          <h1 className="lg:text-xl md:text-lg text-[11px] my-3 font-[500] text-center">
+            {name}
+          </h1>
         </div>
       </div>
     </>

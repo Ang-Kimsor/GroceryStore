@@ -12,11 +12,12 @@ import {
   FeatureSmallData,
   FeatureSellerData,
   FeatureSellerDataBanner,
+  FeatureCategoryData,
 } from "./../data/Home";
 const Home = () => {
   return (
     <>
-      <main className="w-fit h-fit">
+      <main className="w-fit h-fit bg-white">
         <FeatureBig
           name={FeatureBigData.name}
           brands={FeatureBigData.brands}
@@ -64,17 +65,20 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full h-fit flex flex-col mt-20 items-center mb-12 bg-red-500 py-5">
+        <div className="w-full h-fit flex flex-col mt-20 items-center mb-12 py-5">
           <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-5">
             <FeatureTitle
               title1={"Easily find what you need"}
               title2={"Browse by category"}
             />
           </div>
-          <div className="md:w-[80%] w-[98%] h-[700px] flex gap-5 justify-center pt-20">
-            <FeatureCategory />
-            <FeatureCategory />
-            <FeatureCategory />
+          <div className="bg-[#f6f1eb] w-full flex flex-col items-center">
+            <div className="bg-white w-full lg:h-[150px] h-[80px]"></div>
+            <div className="lg:w-[70%] lg:gap-20 w-[95%] h-fit flex gap-5 justify-center pb-10">
+              {FeatureCategoryData.map(({ name, img }, index) => (
+                <FeatureCategory key={index} name={name} img={img} />
+              ))}
+            </div>
           </div>
         </div>
       </main>
