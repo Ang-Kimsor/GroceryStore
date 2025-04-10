@@ -1,4 +1,4 @@
-import FeatureB from "./../../assets/FeatureBig2.jpg";
+import FeatureB from "./../../assets/FeatureBig.jpg";
 import FeatureS1 from "./../../assets/FeatureSmall1.png";
 import FeatureS2 from "./../../assets/FeatureSmall2.png";
 import FeatureS3 from "./../../assets/FeatureSmall3.png";
