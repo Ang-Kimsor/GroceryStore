@@ -1,0 +1,74 @@
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-regular-svg-icons";
+import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
+  rate = Math.round(rate);
+  return (
+    <>
+      <div
+        className={`w-fit h-fit ${
+          id == 10 ? "md:hidden xl:block block" : ""
+        } group cursor-pointer`}
+      >
+        <div className="w-full h-fit relative">
+          <img src={img} alt={name} className="border-2 border-gray-500/50" />
+          <div className="w-full h-full absolute flex flex-col justify-between top-0 left-0 p-2 group-hover:bg-gray-500/10 rounded">
+            {discount > 0 ? (
+              <span className="size-fit rounded bg-[#4daf65] px-2.5 left-2 top-2 text-white tracking-wider text-[12px] absolute">
+                -{discount}%
+              </span>
+            ) : null}
+            <div className="w-full h-fit  flex flex-col items-end gap-2 translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200">
+              <span className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-white">
+                <FontAwesomeIcon icon={faImage} className="text-[#59c392]" />
+              </span>
+              <span className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-white">
+                <FontAwesomeIcon icon={faHeart} className="text-[#59c392]" />
+              </span>
+            </div>
+            <div className="w-full md:h-[50px] h-[35px] bg-white flex gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200">
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className="text-[#59c392] text-[12px]"
+              />
+              <p className="text-[#59c392] text-sm">Add to cart</p>
+            </div>
+          </div>
+        </div>
+        <div className="w-full h-fit py-2 bg-white">
+          <span className="w-full h-[20px]  flex items-center gap-[2px]">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <FontAwesomeIcon
+                key={index}
+                icon={faStar}
+                className={`text-[13px] ${
+                  index < rate ? " text-amber-300" : "text-gray-300"
+                }`}
+              />
+            ))}
+          </span>
+          <p className="md:text-[15.5px] text-[13px] font-[400] py-2 pr-7 capitalize">
+            {name}
+          </p>
+          <p className="text-[16px] font-medium text-[#6ddca6]">
+            $
+            {discount > 0 ? (
+              <>
+                <span>{(price * (1 - discount / 100)).toFixed(2)}</span>
+                <del className="pl-2 text-[13px] text-gray-700/40">
+                  ${price.toFixed(2)}
+                </del>
+              </>
+            ) : (
+              <span>{price.toFixed(2)}</span>
+            )}
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default FeaturePrdCard;

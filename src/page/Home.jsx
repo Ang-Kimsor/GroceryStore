@@ -2,7 +2,7 @@ import React from "react";
 import {
   FeatureBig,
   FeatureSmall,
-  FeatureSeller,
+  FeaturePrdCard,
   FeatureSellerBanner,
   FeatureTitle,
   FeatureCategory,
@@ -13,6 +13,7 @@ import {
   FeatureSellerData,
   FeatureSellerDataBanner,
   FeatureCategoryData,
+  FeatureDiscoverData,
 } from "./../data/Home";
 const Home = () => {
   return (
@@ -23,7 +24,7 @@ const Home = () => {
           brands={FeatureBigData.brands}
           img={FeatureBigData.img}
         />
-        <div className="w-full h-fit flex items-center justify-center mb-12 ">
+        <div className="w-full h-fit flex items-center justify-center mb-16 ">
           <div className="xl:grid-cols-3 lg:gap-8 md:grid-cols-2 w-[95%] grid-cols-1 gap-5 h-fit grid ">
             {FeatureSmallData.map(({ name, img }, index) => (
               <FeatureSmall key={index} name={name} img={img} />
@@ -31,7 +32,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full h-fit flex flex-col mt-20 items-center mb-12">
+        <div className="w-full h-fit flex flex-col mt-16 items-center mb-16">
           <div className="w-[95%] h-fit flex flex-col items-center  text-sm pb-5">
             <FeatureTitle
               title1={"Shop the best in demand"}
@@ -42,7 +43,7 @@ const Home = () => {
             <div className="xl:w-[70%] lg:grid-cols-4 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10 ">
               {FeatureSellerData.map(
                 ({ id, name, price, rate, discount, img }, index) => (
-                  <FeatureSeller
+                  <FeaturePrdCard
                     key={index}
                     id={id}
                     name={name}
@@ -65,7 +66,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full h-fit flex flex-col mt-20 items-center mb-12 py-5">
+        <div className="w-full h-fit flex flex-col mt-16 items-center mb-16 py-5">
           <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-5">
             <FeatureTitle
               title1={"Easily find what you need"}
@@ -78,6 +79,32 @@ const Home = () => {
               {FeatureCategoryData.map(({ name, img }, index) => (
                 <FeatureCategory key={index} name={name} img={img} />
               ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full h-fit flex flex-col mt-5 items-center mb-16">
+          <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-16">
+            <FeatureTitle
+              title1={"Uncover Fresh Arrivals and Exciting Finds"}
+              title2={"Discover What's New"}
+            />
+          </div>
+          <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
+            <div className=" lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10 ">
+              {FeatureDiscoverData.map(
+                ({ id, name, price, rate, discount, img }, index) => (
+                  <FeaturePrdCard
+                    key={index}
+                    id={id}
+                    name={name}
+                    price={price}
+                    discount={discount}
+                    rate={rate}
+                    img={img}
+                  />
+                )
+              )}
             </div>
           </div>
         </div>

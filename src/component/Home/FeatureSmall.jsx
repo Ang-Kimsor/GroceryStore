@@ -8,7 +8,7 @@ const FeatureSmall = ({ name, img }) => {
         <p className="lg:text-xl text-lg font-[550] pb-2">{name}</p>
         <p className=" flex items-center gap-2 uppercase text-[14px] font-medium text-gray-500/80 group-hover:text-[#4daf66]">
           Shop Now{" "}
-          <div className="w-[25px] h-[2px] bg-gray-500/80 group-hover:bg-[#4daf66]"></div>
+          <span className="w-[25px] h-[2px] bg-gray-500/80 group-hover:bg-[#4daf66]"></span>
         </p>
       </div>
       <div className="w-1/2 h-full">
