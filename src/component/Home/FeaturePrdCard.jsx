@@ -40,7 +40,7 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
             <div
               className={`${
                 hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
-              }w-full md:h-[50px] h-[35px] bg-white flex gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+              } w-full md:h-[50px] h-[35px] bg-white flex gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
