@@ -15,9 +15,9 @@ import Seller5 from "./../../assets/seller5.jpg";
 import Seller6 from "./../../assets/seller6.jpg";
 import Seller7 from "./../../assets/seller7.jpg";
 import Seller8 from "./../../assets/seller8.jpg";
-import Cate1 from "./../../assets/Cate1.jpg";
-import Cate2 from "./../../assets/Cate2.jpg";
-import Cate3 from "./../../assets/Cate3.jpg";
+import Cate1 from "./../../assets/cate1.jpg";
+import Cate2 from "./../../assets/cate2.jpg";
+import Cate3 from "./../../assets/cate3.jpg";
 export const FeatureBigData = {
   name: "Matcha Green Tea Ginger",
   brands: "ITO EN",
