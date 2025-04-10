@@ -40,7 +40,7 @@ const Home = () => {
             />
           </div>
           <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
-            <div className="xl:w-[70%] lg:grid-cols-4 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10 ">
+            <div className="xl:w-[70%] lg:grid-cols-4 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10 relati">
               {FeatureSellerData.map(
                 ({ id, name, price, rate, discount, img }, index) => (
                   <FeaturePrdCard
@@ -91,7 +91,7 @@ const Home = () => {
             />
           </div>
           <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
-            <div className=" lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10 ">
+            <div className=" lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10 relati">
               {FeatureDiscoverData.map(
                 ({ id, name, price, rate, discount, img }, index) => (
                   <FeaturePrdCard

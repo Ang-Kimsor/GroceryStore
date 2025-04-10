@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
   rate = Math.round(rate);
+  const [hover, setHover] = useState(false);
   return (
     <>
       <div
         className={`w-fit h-fit ${
           id == 10 ? "md:hidden xl:block block" : ""
         } group cursor-pointer`}
+        onMouseOver={() => setHover(true)}
+        onMouseOut={() => setHover(false)}
       >
         <div className="w-full h-fit relative">
           <img src={img} alt={name} className="border-2 border-gray-500/50" />
@@ -20,7 +23,13 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
                 -{discount}%
               </span>
             ) : null}
-            <div className="w-full h-fit  flex flex-col items-start gap-2 -translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200">
+            <div
+              className={`${
+                hover
+                  ? "translate-x-0 visible"
+                  : "-translate-x-[30px] invisible"
+              } w-full h-fit  flex flex-col items-start gap-2 -translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200`}
+            >
               <span className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-white">
                 <FontAwesomeIcon icon={faImage} className="text-[#59c392]" />
               </span>
@@ -28,7 +37,11 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
                 <FontAwesomeIcon icon={faHeart} className="text-[#59c392]" />
               </span>
             </div>
-            <div className="w-full md:h-[50px] h-[35px] bg-white flex gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200">
+            <div
+              className={`${
+                hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
+              }w-full md:h-[50px] h-[35px] bg-white flex gap-2 rounded items-center justify-center translate-y-[30px] invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+            >
               <FontAwesomeIcon
                 icon={faCartShopping}
                 className="text-[#59c392] text-[12px]"
