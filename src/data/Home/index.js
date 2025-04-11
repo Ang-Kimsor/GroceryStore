@@ -5,7 +5,6 @@ import FeatureS3 from "./../../assets/FeatureSmall3.jpg";
 import FeatureS4 from "./../../assets/FeatureSmall4.jpg";
 import FeatureS5 from "./../../assets/FeatureSmall5.jpg";
 import FeatureS6 from "./../../assets/FeatureSmall6.jpg";
-import ITOEN from "./../../assets/itoen.jpg";
 import Matcha from "./../../assets/matcha.jpg";
 import Seller1 from "./../../assets/seller1.jpg";
 import Seller2 from "./../../assets/seller2.jpg";
@@ -22,6 +21,15 @@ import Cate1 from "./../../assets/cate1.jpg";
 import Cate2 from "./../../assets/cate2.jpg";
 import Cate3 from "./../../assets/cate3.jpg";
 import Story from "./../../assets/matchalatte.jpg";
+import P1 from "./../../assets/p1.jpg";
+import P2 from "./../../assets/p2.jpg";
+import P3 from "./../../assets/p3.jpg";
+import ITOEN from "./../../assets/itoen.jpg";
+import KOBAYASHI from "./../../assets/kobayashi.jpg";
+import CALBEE from "./../../assets/calbee.jpg";
+import OJI from "./../../assets/oji.jpg";
+import OKAMOTO from "./../../assets/okamoto.jpg";
+import BOURBON from "./../../assets/bourbon.jpg";
 export const FeatureBigData = {
   name: "Matcha Green Tea Ginger",
   brands: "ITO EN",
@@ -232,3 +240,37 @@ export const FeatureStoryData = {
   title2: "The Story Behind Japan's Souq",
   des: "Emerald Star marks its presence in all GCC countries with a wide distribution network in all convenient stores, supermarkets, pharmacies and textile stores.",
 };
+export const FeatureCustomerData = {
+  title1: "What our clients love about us",
+  title2: "Customer Feedback",
+  des: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos ipsa odio reprehenderit facere quam molestias minima eligendi. Dignissimos recusandae cumque dolore ullam nulla quaerat obcaecati dolores maxime, aspernatur iusto.",
+  rate: 4,
+  customer: [
+    {
+      img: P1,
+      des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quae mollitia optio voluptas, voluptate magnam impedit adipisci, omnis expedita voluptates eveniet quaerat quis obcaecati dolorum?",
+      name: "Vyom Digion",
+      type: "Verified Customer",
+    },
+    {
+      img: P2,
+      des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quae mollitia optio voluptas, voluptate magnam impedit adipisci, omnis expedita voluptates eveniet quaerat quis obcaecati dolorum?",
+      name: "Jennie Kim",
+      type: "Verified Customer",
+    },
+    {
+      img: P3,
+      des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quae mollitia optio voluptas, voluptate magnam impedit adipisci, omnis expedita voluptates eveniet quaerat quis obcaecati dolorum?",
+      name: "Chalotte",
+      type: "Customer",
+    },
+  ],
+};
+export const FeatureBrandData = [
+  ITOEN,
+  KOBAYASHI,
+  CALBEE,
+  OJI,
+  OKAMOTO,
+  BOURBON,
+];

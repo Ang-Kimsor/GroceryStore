@@ -7,6 +7,8 @@ import {
   FeatureTitle,
   FeatureCategory,
   FeatureStory,
+  FeatureCustomer,
+  FeatureBrand,
 } from "../component/Home";
 import {
   FeatureBigData,
@@ -16,6 +18,8 @@ import {
   FeatureCategoryData,
   FeatureDiscoverData,
   FeatureStoryData,
+  FeatureCustomerData,
+  FeatureBrandData,
 } from "./../data/Home";
 const Home = () => {
   return (
@@ -111,13 +115,35 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full h-fit flex items-center justify-center py-10">
+        <div className="w-full h-fit flex items-center bg-[#e8f4f0] justify-center md:py-10 py-5">
           <FeatureStory
             img={FeatureStoryData.img}
             title1={FeatureStoryData.title1}
             title2={FeatureStoryData.title2}
             des={FeatureStoryData.des}
           />
+        </div>
+        <div className="w-full h-fit flex items-center bg-[#fdeedb] justify-center py-20 mb-16">
+          <FeatureCustomer
+            title1={FeatureCustomerData.title1}
+            title2={FeatureCustomerData.title2}
+            des={FeatureCustomerData.des}
+            rate={FeatureCustomerData.rate}
+            customer={FeatureCustomerData.customer}
+          />
+        </div>
+        <div className="w-full h-fit flex flex-col mt-5 items-center mb-16">
+          <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-16">
+            <FeatureTitle
+              title1={"Proud to partner with"}
+              title2={"our brands"}
+            />
+          </div>
+          <div className="w-[90%] h-fit  flex flex-wrap justify-between gap-y-5">
+            {FeatureBrandData.map((img, index) => (
+              <FeatureBrand key={index} img={img} />
+            ))}
+          </div>
         </div>
       </main>
     </>

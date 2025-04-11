@@ -8,13 +8,9 @@ const FeatureStory = ({ img, title1, title2, des }) => {
     <>
       <div className="lg:w-[80%] w-[95%] h-fit grid lg:grid-cols-2 grid-cols-1">
         <div className=" flex relative">
-          <img
-            src={img}
-            alt=""
-            className="lg:rounded-l-xl lg:rounded-t-none rounded-t-xl"
-          />
+          <img src={img} alt="" className="rounded-xl" />
         </div>
-        <div className="bg-lime-300 lg:rounded-r-xl lg:rounded-bl-none rounded-b-xl flex flex-col justify-center px-5 py-5">
+        <div className="bg-[#e8f4f0] lg:rounded-r-xl lg:rounded-bl-none rounded-b-xl flex flex-col justify-center px-5 py-5">
           <FeatureTitle title1={title1} title2={title2} />
           <p className="text-[12px] text-gray-800/50 mt-5 pr-10">{des}</p>
           <Link>

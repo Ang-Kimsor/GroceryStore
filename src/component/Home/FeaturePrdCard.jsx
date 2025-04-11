@@ -16,7 +16,11 @@ const FeaturePrdCard = ({ id, name, price, discount, rate, img }) => {
         onMouseOut={() => setHover(false)}
       >
         <div className="w-full h-fit relative">
-          <img src={img} alt={name} className="border-2 border-gray-500/50" />
+          <img
+            src={img}
+            alt={name}
+            className="border rounded border-gray-500/50"
+          />
           <div
             className={`w-full h-full absolute flex flex-col justify-between top-0 left-0 p-2 group-hover:bg-gray-500/10 ${
               hover ? "bg-gray-500/10" : ""
