@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Rootlayout from "./layout/Rootlayout";
-import { ErrorPage, Home } from "./page";
+import { ErrorPage, Home, OurStore } from "./page";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -13,19 +13,19 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/ourstore",
-        element: <h1>This is our store</h1>,
+        path: "/OurStore",
+        element: <OurStore />,
       },
       {
-        path: "/brands",
+        path: "/Brands",
         element: <h1>This is brands</h1>,
       },
       {
-        path: "/aboutus",
+        path: "/AboutUs",
         element: <h1>This is about us</h1>,
       },
       {
-        path: "/contact",
+        path: "/Contact",
         element: <h1>This is contact</h1>,
       },
     ],

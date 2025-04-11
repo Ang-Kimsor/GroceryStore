@@ -5,18 +5,18 @@ export const menu = [
   },
   {
     name: "our store",
-    path: "/ourstore",
+    path: "/OurStore",
   },
   {
     name: "brands",
-    path: "/brands",
+    path: "/Brands",
   },
   {
     name: "about us",
-    path: "/aboutus",
+    path: "/AboutUs",
   },
   {
     name: "contact",
-    path: "/contact",
+    path: "/Contact",
   },
 ];

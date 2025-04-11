@@ -30,15 +30,15 @@ const Home = () => {
           brands={FeatureBigData.brands}
           img={FeatureBigData.img}
         />
-        <div className="w-full h-fit flex items-center justify-center mb-16 ">
+        <section className="w-full h-fit flex items-center justify-center mb-16 ">
           <div className="xl:grid-cols-3 lg:gap-8 md:grid-cols-2 w-[95%] grid-cols-1 gap-5 h-fit grid ">
             {FeatureSmallData.map(({ name, img }, index) => (
               <FeatureSmall key={index} name={name} img={img} />
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="w-full h-fit flex flex-col mt-16 items-center mb-16">
+        <section className="w-full h-fit flex flex-col mt-16 items-center mb-16">
           <div className="w-[95%] h-fit flex flex-col items-center  text-sm pb-5">
             <FeatureTitle
               title1={"Shop the best in demand"}
@@ -70,9 +70,9 @@ const Home = () => {
               />
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="w-full h-fit flex flex-col mt-16 items-center mb-16 py-5">
+        <section className="w-full h-fit flex flex-col mt-16 items-center mb-16 py-5">
           <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-5">
             <FeatureTitle
               title1={"Easily find what you need"}
@@ -87,9 +87,9 @@ const Home = () => {
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="w-full h-fit flex flex-col mt-5 items-center mb-16">
+        <section className="w-full h-fit flex flex-col mt-5 items-center mb-16">
           <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-16">
             <FeatureTitle
               title1={"Uncover Fresh Arrivals and Exciting Finds"}
@@ -113,17 +113,18 @@ const Home = () => {
               )}
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="w-full h-fit flex items-center bg-[#e8f4f0] justify-center md:py-10 py-5">
+        <section className="w-full h-fit flex items-center bg-[#e8f4f0] justify-center md:py-10 py-5">
           <FeatureStory
             img={FeatureStoryData.img}
             title1={FeatureStoryData.title1}
             title2={FeatureStoryData.title2}
             des={FeatureStoryData.des}
           />
-        </div>
-        <div className="w-full h-fit flex items-center bg-[#fdeedb] justify-center py-20 mb-16">
+        </section>
+
+        <section className="w-full h-fit flex items-center bg-[#fdeedb] justify-center py-20 mb-16">
           <FeatureCustomer
             title1={FeatureCustomerData.title1}
             title2={FeatureCustomerData.title2}
@@ -131,8 +132,9 @@ const Home = () => {
             rate={FeatureCustomerData.rate}
             customer={FeatureCustomerData.customer}
           />
-        </div>
-        <div className="w-full h-fit flex flex-col mt-5 items-center mb-16">
+        </section>
+
+        <section className="w-full h-fit flex flex-col mt-5 items-center mb-16">
           <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-16">
             <FeatureTitle
               title1={"Proud to partner with"}
@@ -144,7 +146,7 @@ const Home = () => {
               <FeatureBrand key={index} img={img} />
             ))}
           </div>
-        </div>
+        </section>
       </main>
     </>
   );
