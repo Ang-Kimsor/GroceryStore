@@ -14,7 +14,7 @@ const FeatureStory = ({ img, title1, title2, des }) => {
           <FeatureTitle title1={title1} title2={title2} />
           <p className="text-[12px] text-gray-800/50 mt-5 pr-10">{des}</p>
           <Link>
-            <button className="uppercase w-[150px] py-2 text-white hover:bg-gray-800/50 transition-all duration-75 linear bg-[#222222] mt-5 cursor-pointer text-sm tracking-wider">
+            <button className="uppercase w-[150px] py-2 text-white bg-[#222222] mt-5 cursor-pointer text-sm tracking-wider">
               Learn More
               <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
             </button>

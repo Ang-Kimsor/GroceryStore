@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
-import Error from "./../component/Error";
+import Error from "./../components/Error";
 const ErrorPage = () => {
   return (
     <>

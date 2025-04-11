@@ -9,7 +9,7 @@ import {
   FeatureStory,
   FeatureCustomer,
   FeatureBrand,
-} from "../component/Home";
+} from "../components/Home";
 import {
   FeatureBigData,
   FeatureSmallData,
