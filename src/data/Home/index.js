@@ -71,6 +71,7 @@ export const FeatureSellerData = [
     rate: 3.7,
     discount: 10,
     img: Seller1,
+    category: "Matcha Green Tea",
   },
   {
     id: 4,
@@ -79,6 +80,7 @@ export const FeatureSellerData = [
     rate: 4,
     discount: 0,
     img: Seller2,
+    category: "Matcha Green Tea",
   },
   {
     id: 5,
@@ -87,6 +89,7 @@ export const FeatureSellerData = [
     rate: 5,
     discount: 0,
     img: Seller3,
+    category: "Matcha Green Tea",
   },
   {
     id: 7,
@@ -95,6 +98,7 @@ export const FeatureSellerData = [
     rate: 4,
     discount: 50,
     img: Seller4,
+    category: "Matcha Green Tea",
   },
   {
     id: 1,
@@ -103,6 +107,7 @@ export const FeatureSellerData = [
     rate: 4.3,
     discount: 0,
     img: Seller5,
+    category: "Calbee Frugra",
   },
   {
     id: 8,
@@ -111,6 +116,7 @@ export const FeatureSellerData = [
     rate: 3,
     discount: 20,
     img: Seller6,
+    category: "Matcha Green Tea",
   },
   {
     id: 26,
@@ -119,6 +125,7 @@ export const FeatureSellerData = [
     rate: 2,
     discount: 0,
     img: Seller7,
+    category: "Snacks & Confectionaries",
   },
   {
     id: 27,
@@ -127,6 +134,7 @@ export const FeatureSellerData = [
     rate: 4,
     discount: 53,
     img: Seller8,
+    category: "Snacks & Confectionaries",
   },
 ];
 
@@ -160,6 +168,7 @@ export const FeatureDiscoverData = [
     rate: 3.7,
     discount: 10,
     img: Seller1,
+    category: "Matcha Green Tea",
   },
   {
     id: 8,
@@ -168,14 +177,16 @@ export const FeatureDiscoverData = [
     rate: 3,
     discount: 20,
     img: Seller6,
+    category: "Matcha Green Tea",
   },
   {
-    id: 9,
-    name: "Jagabee - Potato Fries Snack (Original Flavor)",
+    id: 2,
+    name: "Potato Fries Snack (Original Flavor)",
     price: 15.75,
     rate: 5,
     discount: 78,
     img: Seller9,
+    category: "Calbee Frugra",
   },
   {
     id: 5,
@@ -184,6 +195,7 @@ export const FeatureDiscoverData = [
     rate: 5,
     discount: 0,
     img: Seller3,
+    category: "Matcha Green Tea",
   },
   {
     id: 9,
@@ -192,6 +204,7 @@ export const FeatureDiscoverData = [
     rate: 5,
     discount: 0,
     img: Seller10,
+    category: "Matcha Green Tea",
   },
   {
     id: 4,
@@ -200,6 +213,7 @@ export const FeatureDiscoverData = [
     rate: 4,
     discount: 0,
     img: Seller2,
+    category: "Matcha Green Tea",
   },
   {
     id: 26,
@@ -208,6 +222,7 @@ export const FeatureDiscoverData = [
     rate: 2,
     discount: 0,
     img: Seller7,
+    category: "Snacks & Confectionaries",
   },
   {
     id: 1,
@@ -216,6 +231,7 @@ export const FeatureDiscoverData = [
     rate: 4.3,
     discount: 0,
     img: Seller5,
+    category: "Calbee Frugra",
   },
   {
     id: 7,
@@ -224,6 +240,7 @@ export const FeatureDiscoverData = [
     rate: 4,
     discount: 50,
     img: Seller4,
+    category: "Matcha Green Tea",
   },
   {
     id: 27,
@@ -232,6 +249,7 @@ export const FeatureDiscoverData = [
     rate: 4,
     discount: 53,
     img: Seller8,
+    category: "Snacks & Confectionaries",
   },
 ];
 export const FeatureStoryData = {

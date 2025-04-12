@@ -127,7 +127,7 @@ export const Products = [
   },
   {
     id: 9,
-    name: "Oi Ocha Green Tea Bags",
+    name: "Oi Ocha Matcha Genmaicha",
     price: 23.95,
     rate: 5,
     discount: 0,

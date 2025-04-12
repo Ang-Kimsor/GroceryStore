@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faImage } from "@fortawesome/free-regular-svg-icons";
+import { faImage, faStar } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
@@ -10,6 +9,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
   return (
     <>
       <Link
+        key={id}
         to={`/OurStore/${category.replaceAll(" ", "_")}/${name.replaceAll(
           " ",
           "_"
@@ -60,7 +60,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
               onClick={(e) => e.preventDefault()}
               className={`${
                 hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
-              } w-full lg:h-[40px] h-[30px] md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+              } w-full lg:h-[40px] h-[30px] cursor-pointer md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -102,7 +102,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
           </p>
           <button
             onClick={(e) => e.preventDefault()}
-            className={` w-full h-[30px] md:hidden flex bg-[#6ddca6] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
+            className={` w-full h-[30px] md:hidden flex bg-[#4daf65] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >
             <FontAwesomeIcon
               icon={faCartShopping}
