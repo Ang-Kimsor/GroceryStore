@@ -36,7 +36,13 @@ const OurStore = () => {
           <h1 className="text-2xl font-medium mb-3 ">Product Category</h1>
           <ul className="flex flex-col gap-3">
             {category.map(({ name }, i) => (
-              <li key={i} className="cursor-pointer">
+              <li key={i} className="cursor-pointer flex gap-2">
+                <input
+                  type="checkbox"
+                  checked={index == i}
+                  onChange={() => setIndex(i)}
+                  className="accent-green-600 rounded"
+                />
                 <span
                   onClick={() => setIndex(i)}
                   className={`text-md ${
