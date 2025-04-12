@@ -60,7 +60,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
       )}
       {/* Cart_Wishlist */}
       <div
-        className={`md:w-[320px] md:h-[160px] w-[250px] bg-white shadow-xs shadow-gray-500/20 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[98] ${
+        className={`md:w-[320px] h-[160px] w-[280px] bg-white shadow-sm shadow-gray-500/20 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[98] ${
           cart || wish ? "opacity-100 visible " : "opacity-0 invisible "
         }`}
       >
