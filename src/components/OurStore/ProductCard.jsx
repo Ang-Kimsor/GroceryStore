@@ -11,6 +11,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
   rate = Math.round(rate);
   const [hover, setHover] = useState(false);
   const [cart, setCart] = useState(false);
+  const [wish, setWish] = useState(false);
   const [OpenImg, setOpenImg] = useState(false);
   const Image = (e) => {
     e.preventDefault();
@@ -21,6 +22,13 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
     setCart(true);
     setTimeout(() => {
       setCart(false);
+    }, 2500);
+  };
+  const Wish = (e) => {
+    e.preventDefault();
+    setWish(true);
+    setTimeout(() => {
+      setWish(false);
     }, 2500);
   };
   useEffect(() => {
@@ -35,24 +43,25 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
   }, [OpenImg]);
   return (
     <>
-      {/* Image */}
-      <div
-        className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[10] 
-            ${OpenImg ? "opacity-100 visible" : "opacity-0 invisible"} `}
-      >
-        <FontAwesomeIcon
-          icon={faX}
-          className="absolute md:right-10 right-2 top-2 md:top-10 text-lg text-white cursor-pointer"
-          onClick={() => setOpenImg(false)}
-        />
-        <div className="w-full h-full flex items-center justify-center">
-          <img src={img} alt="" />
+      {/* Image preview */}
+      {OpenImg && (
+        <div
+          className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[10] `}
+        >
+          <FontAwesomeIcon
+            icon={faX}
+            className="absolute md:right-10 right-2 top-2 md:top-10 text-lg text-white cursor-pointer"
+            onClick={() => setOpenImg(false)}
+          />
+          <div className="w-full h-full flex items-center justify-center">
+            <img src={img} alt="" />
+          </div>
         </div>
-      </div>
-      {/* Cart */}
+      )}
+      {/* Cart_Wishlist */}
       <div
         className={`md:w-[320px] md:h-[160px] w-[250px] bg-white shadow-xs shadow-gray-500/20 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[98] ${
-          cart ? "opacity-100 visible " : "opacity-0 invisible "
+          cart || wish ? "opacity-100 visible " : "opacity-0 invisible "
         }`}
       >
         <div className="w-full h-[100px] p-2  flex">
@@ -66,7 +75,8 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
           <div className="w-[185px] h-[90px] ">
             <p className="text-[12px] pl-2 font-medium pt-2">{name}</p>
             <p className="text-[10px] pl-2 pt-2 text-gray-800/50">
-              has been added to your cart.
+              has been added to your {wish && "Wishlist"}
+              {cart && "Cart"}.
             </p>
           </div>
           <FontAwesomeIcon
@@ -76,15 +86,18 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
           />
         </div>
         <div className="w-full h-[60px] grid grid-cols-2 gap-4 place-items-center px-3">
-          <Link className="uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
-            View Cart
+          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
+            View {wish && "Wishlist"}
+            {cart && "Cart"}
           </Link>
-          <Link className="uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
-            Checkout
+          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
+            {wish && "Wishlist"}
+            {cart && "Checkout"}
           </Link>
         </div>
       </div>
 
+      {/* Main */}
       <Link
         key={id}
         to={`/OurStore/${category.replaceAll(" ", "_")}/${name.replaceAll(
@@ -127,7 +140,10 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
                   className="text-[#4daf65] md:text-sm text-[11px]"
                 />
               </span>
-              <span className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white">
+              <span
+                onClick={(e) => Wish(e)}
+                className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
+              >
                 <FontAwesomeIcon
                   icon={faHeart}
                   onClick={(e) => e.preventDefault()}

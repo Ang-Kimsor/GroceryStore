@@ -57,18 +57,29 @@ const OurStore = () => {
         </div>
       </aside>
       <aside className="h-fit p-2 md:w-[75%] w-full">
-        <div>
-          <h1 className="text-2xl font-medium">{category[index]["name"]}</h1>
-          <select
-            className="outline-none mt-3"
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="id">Sort by ID (Default)</option>
-            <option value="low">Sort by price (Low-High)</option>
-            <option value="high">Sort by price (High-Low)</option>
-            <option value="nameA">Sort by name (A-Z)</option>
-            <option value="nameZ">Sort by name (Z-A)</option>
-          </select>
+        <h1 className="lg:text-3xl text-2xl font-medium">
+          {category[index]["name"]}
+        </h1>
+        <div className="w-full bg-[#e8e8e8] flex md:flex-row gap-5 flex-col md:items-center mt-5 py-2 px-2">
+          <div className="flex flex-row md:justify-center items-center gap-2 ">
+            <p className="text-gray-800/80 text-sm">Sort: </p>
+            <select
+              className="outline-none text-sm text-gray-800/80"
+              onChange={(e) => setSort(e.target.value)}
+            >
+              <option value="id">Sort by ID (Default)</option>
+              <option value="low">Sort by price (Low-High)</option>
+              <option value="high">Sort by price (High-Low)</option>
+              <option value="nameA">Sort by name (A-Z)</option>
+              <option value="nameZ">Sort by name (Z-A)</option>
+            </select>
+          </div>
+          <span className="border-r-2 border-gray-800/80 md:block hidden">
+            &nbsp;
+          </span>
+          <p className="text-gray-800/80 text-sm">
+            Showing all {Filter.length} products
+          </p>
         </div>
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-5 gap-x-3  py-5">
           {Filter.map(

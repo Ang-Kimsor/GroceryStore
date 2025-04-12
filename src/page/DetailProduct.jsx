@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Products } from "../data/OurStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faLink, faShare } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FeatureTitle } from "../components/Home";
 import { ProductCard } from "../components/OurStore";
 const DetailProduct = () => {
-  var { category, name } = useParams();
-  category = category.replaceAll("_", " ");
-  name = name.replaceAll("_", " ");
-  const Product = Products.filter((p) => p.name == name);
-  const ProductRelated = Products.filter(
-    (p) => p.category == category && p.id != Product[0]["id"]
-  ).slice(0, 5);
+  let Review = useRef(Math.round(Math.random(100) * 100));
   const [qty, setQty] = useState(1);
   const Increase = (e) => {
     e.preventDefault();
@@ -23,19 +18,102 @@ const DetailProduct = () => {
     e.preventDefault();
     qty == 1 ? setQty(1) : setQty(qty - 1);
   };
-  const copyLink = () => {
-    const currentURL = window.location.href;
-    navigator.clipboard
-      .writeText(currentURL)
-      .then(() => {
-        alert("Link copied to clipboard!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
+  const [cart, setCart] = useState(false);
+  const [wish, setWish] = useState(false);
+  const [copy, setCopy] = useState(false);
+  const Cart = () => {
+    setCart(true);
+    setTimeout(() => {
+      setCart(false);
+    }, 2500);
   };
+  const Wish = () => {
+    setWish(true);
+    setTimeout(() => {
+      setWish(false);
+    }, 2500);
+  };
+  const Copy = () => {
+    setCopy(true);
+    setTimeout(() => {
+      setCopy(false);
+    }, 2500);
+  };
+  const CopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+  };
+  var { category, name } = useParams();
+  category = category.replaceAll("_", " ");
+  name = name.replaceAll("_", " ");
+  const Product = Products.filter((p) => p.name == name);
+  const ProductRelated = Products.filter(
+    (p) => p.category == category && p.id != Product[0]["id"]
+  ).slice(0, 5);
+
   return (
     <>
+      {/* Cart_Wishlist */}
+      <div
+        className={`md:w-[320px] md:h-[160px] w-[250px] bg-white shadow-xs shadow-gray-500/20 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[98] ${
+          cart || wish ? "opacity-100 visible " : "opacity-0 invisible "
+        }`}
+      >
+        <div className="w-full h-[100px] p-2  flex">
+          <div className="w-[90px] h-[90px] flex justify-center items-center ">
+            <img
+              src={Product[0]["img"]}
+              alt=""
+              className="size-full object-contain object-center"
+            />
+          </div>
+          <div className="w-[185px] h-[90px] ">
+            <p className="text-[12px] pl-2 font-medium pt-2">{name}</p>
+            <p className="text-[10px] pl-2 pt-2 text-gray-800/50">
+              has been added to your {wish && "Wishlist"}
+              {cart && "Cart"}.
+            </p>
+            {cart && (
+              <>
+                <p className="text-[10px] pl-2 pt-1 text-gray-800/50">
+                  Quatity: {qty}
+                </p>
+                <p className="text-[10px] pl-2 pt-1 text-gray-800/50">
+                  Total: {"$"}
+                  {(
+                    Product[0]["price"] *
+                    (1 - Product[0]["discount"] / 100) *
+                    qty
+                  ).toFixed(2)}
+                </p>
+              </>
+            )}
+          </div>
+          <FontAwesomeIcon
+            icon={faX}
+            className="cursor-pointer text-sm ml-2 mt-1"
+            onClick={() => setCart(false)}
+          />
+        </div>
+        <div className="w-full h-[60px] grid grid-cols-2 gap-4 place-items-center px-3">
+          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
+            View {wish && "Wishlist"}
+            {cart && "Cart"}
+          </Link>
+          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
+            {wish && "Buy Now"}
+            {cart && "Checkout"}
+          </Link>
+        </div>
+      </div>
+      {/* Copy Link */}
+      <div
+        className={`w-[100px] h-fit py-2 px-2 bg-[#4daf65] rounded fixed lg:top-20 top-2 flex  gap-2 items-center left-1/2 translate-x-[-50%] transition-all duration-300 z-[98] ${
+          copy ? "opacity-100 visible " : "opacity-0 invisible "
+        }`}
+      >
+        <FontAwesomeIcon icon={faLink} className="text-white font-medium" />
+        <p className="text-white font-medium">Copied</p>
+      </div>
       <main className="w-full h-fit  flex items-center flex-col pt-10">
         <h1 className="w-[95%] flex gap-3 text-gray-800/50 md:text-[14px] text-[10px]">
           <Link to={"/OurStore"} className="text-[#4daf65] text-center">
@@ -44,9 +122,11 @@ const DetailProduct = () => {
           /<span className="text-center">{Product[0]["name"]}</span>
         </h1>
         <article className="lg:w-[95%] w-full h-fit grid lg:grid-cols-2 grid-cols-1 gap-10 py-5">
+          {/* img */}
           <div className="bg-white flex justify-center ">
             <img src={Product[0]["img"]} alt="" />
           </div>
+          {/* des */}
           <div className="lg:p-0 p-5 cursor-default flex flex-col justify-center">
             <p className="text-gray-800/50 mb-4">{category}</p>
             {Product[0]["discount"] > 0 ? (
@@ -54,7 +134,7 @@ const DetailProduct = () => {
                 -{Product[0]["discount"]}%
               </span>
             ) : null}
-            <p className="lg:text-3xl text-xl mt-6 md:w-[90%] font-medium mb-5">
+            <p className="xl:text-3xl  text-2xl mt-6 md:w-[90%] font-medium mb-5">
               {name}
             </p>
             <div className="flex gap-5 items-center mb-5">
@@ -73,7 +153,7 @@ const DetailProduct = () => {
                 ))}
               </div>
               <p className="text-md text-gray-800/50">
-                ({Math.round(Math.random(100) * 100)} Reviews)
+                ({Review.current} Reviews)
               </p>
             </div>
             <p className="xl:text-[13px] text-[10px] text-gray-800/50">
@@ -126,9 +206,12 @@ const DetailProduct = () => {
               >
                 -
               </button>
-              <div className="w-[70px] h-[40px] flex items-center justify-center bg-white text-gray-800/90 border-gray-800/50 border-y text-xl cursor-not-allowed">
-                {qty}
-              </div>
+              <input
+                type="number"
+                value={qty}
+                onChange={(e) => setQty(parseInt(e.target.value))}
+                className="[&::-webkit-inner-spin-button]:appearance-none w-[70px] h-[40px] text-center outline-none bg-white text-gray-800/90 border-gray-800/50 border-y text-xl"
+              />
               <button
                 onClick={(e) => Increase(e)}
                 className="size-[40px] border border-gray-800/50  flex items-center justify-center bg-white text-gray-800/50  hover:text-white hover:bg-[#4daf65] text-2xl cursor-pointer"
@@ -137,12 +220,21 @@ const DetailProduct = () => {
               </button>
             </div>
             <div className="size-fit  mt-5 flex flex-wrap gap-3">
-              <button className="hover:bg-[#fe6150] cursor-pointer capitalize px-12 py-3 bg-[#4daf65] text-white font-bold text-lg ">
+              <button
+                onClick={Cart}
+                className="hover:bg-[#fe6150] cursor-pointer capitalize px-12 py-3 bg-[#4daf65] text-white font-bold text-lg "
+              >
                 Add to cart
               </button>
-
               <button
-                onClick={copyLink}
+                onClick={Wish}
+                className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#4daf65] text-[#4daf65] font-bold text-lg "
+              >
+                <FontAwesomeIcon icon={faHeart} className="pr-2" />
+                Add to wishlist
+              </button>
+              <button
+                onClick={Copy}
                 className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#4daf65] text-[#4daf65] font-bold text-lg "
               >
                 <FontAwesomeIcon icon={faShare} className="pr-2" />
