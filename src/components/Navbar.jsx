@@ -51,7 +51,7 @@ const Navbar = () => {
       <div
         className={`lg:hidden 
           ${openMenu ? "translate-x-0 " : "-translate-x-full"}
-          w-full h-screen bg-white absolute transition-all duration-500`}
+          w-full h-screen bg-white absolute transition-all duration-500 z-[100]`}
       >
         <div className="w-full h-fit flex items-center justify-center p-5 relative">
           <div className="w-[190px] h-[30px]">

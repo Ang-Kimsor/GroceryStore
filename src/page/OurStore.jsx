@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { ProductCard } from "../components/OurStore";
 import { category, Products } from "../data/OurStore";
 const OurStore = () => {
@@ -57,7 +57,7 @@ const OurStore = () => {
             className="outline-none mt-3"
             onChange={(e) => setSort(e.target.value)}
           >
-            <option value="id">Sort by ID</option>
+            <option value="id">Sort by ID (Default)</option>
             <option value="low">Sort by price (Low-High)</option>
             <option value="high">Sort by price (High-Low)</option>
             <option value="nameA">Sort by name (A-Z)</option>

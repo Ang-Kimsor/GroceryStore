@@ -1,13 +1,90 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faStar } from "@fortawesome/free-regular-svg-icons";
-import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faX,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
   rate = Math.round(rate);
   const [hover, setHover] = useState(false);
+  const [cart, setCart] = useState(false);
+  const [OpenImg, setOpenImg] = useState(false);
+  const Image = (e) => {
+    e.preventDefault();
+    setOpenImg(true);
+  };
+  const Cart = (e) => {
+    e.preventDefault();
+    setCart(true);
+    setTimeout(() => {
+      setCart(false);
+    }, 2500);
+  };
+  useEffect(() => {
+    if (OpenImg) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [OpenImg]);
   return (
     <>
+      {/* Image */}
+      <div
+        className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[10] 
+            ${OpenImg ? "opacity-100 visible" : "opacity-0 invisible"} `}
+      >
+        <FontAwesomeIcon
+          icon={faX}
+          className="absolute md:right-10 right-2 top-2 md:top-10 text-lg text-white cursor-pointer"
+          onClick={() => setOpenImg(false)}
+        />
+        <div className="w-full h-full flex items-center justify-center">
+          <img src={img} alt="" />
+        </div>
+      </div>
+      {/* Cart */}
+      <div
+        className={`md:w-[320px] md:h-[160px] w-[250px] bg-white shadow-xs shadow-gray-500/20 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[98] ${
+          cart ? "opacity-100 visible " : "opacity-0 invisible "
+        }`}
+      >
+        <div className="w-full h-[100px] p-2  flex">
+          <div className="w-[90px] h-[90px] flex justify-center items-center ">
+            <img
+              src={img}
+              alt=""
+              className="size-full object-contain object-center"
+            />
+          </div>
+          <div className="w-[185px] h-[90px] ">
+            <p className="text-[12px] pl-2 font-medium pt-2">{name}</p>
+            <p className="text-[10px] pl-2 pt-2 text-gray-800/50">
+              has been added to your cart.
+            </p>
+          </div>
+          <FontAwesomeIcon
+            icon={faX}
+            className="cursor-pointer text-sm ml-2 mt-1"
+            onClick={() => setCart(false)}
+          />
+        </div>
+        <div className="w-full h-[60px] grid grid-cols-2 gap-4 place-items-center px-3">
+          <Link className="uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
+            View Cart
+          </Link>
+          <Link className="uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
+            Checkout
+          </Link>
+        </div>
+      </div>
+
       <Link
         key={id}
         to={`/OurStore/${category.replaceAll(" ", "_")}/${name.replaceAll(
@@ -41,10 +118,12 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
                   : "-translate-x-[30px] invisible"
               } w-full h-fit  flex flex-col items-start gap-2 -translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200`}
             >
-              <span className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white">
+              <span
+                onClick={(e) => Image(e)}
+                className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
+              >
                 <FontAwesomeIcon
                   icon={faImage}
-                  onClick={(e) => e.preventDefault()}
                   className="text-[#4daf65] md:text-sm text-[11px]"
                 />
               </span>
@@ -57,7 +136,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
               </span>
             </div>
             <button
-              onClick={(e) => e.preventDefault()}
+              onClick={(e) => Cart(e)}
               className={`${
                 hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
               } w-full lg:h-[40px] h-[30px] cursor-pointer md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
@@ -101,7 +180,7 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
             )}
           </p>
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => Cart(e)}
             className={` w-full h-[30px] md:hidden flex bg-[#4daf65] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >
             <FontAwesomeIcon

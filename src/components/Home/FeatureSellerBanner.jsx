@@ -16,7 +16,10 @@ const FeatureSellerBanner = ({ logo, name, flavour, img }) => {
         <p className="text-2xl font-medium uppercase text-[#3cba80]">
           {flavour}
         </p>
-        <Link className="w-fit text-stone-600 hover:text-black uppercase font-medium hover:underline pb-1">
+        <Link
+          to={"/OurStore"}
+          className="w-fit text-stone-600 hover:text-black uppercase font-medium hover:underline pb-1"
+        >
           Shop Now
         </Link>
       </div>
