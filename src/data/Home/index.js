@@ -65,7 +65,7 @@ export const FeatureSmallData = [
 
 export const FeatureSellerData = [
   {
-    id: 1,
+    id: 6,
     name: "ITO EN Matcha Green Tea - Organic Powder",
     price: 28,
     rate: 3.7,
@@ -73,7 +73,7 @@ export const FeatureSellerData = [
     img: Seller1,
   },
   {
-    id: 2,
+    id: 4,
     name: "Oi Ocha Hojicha Tea Bags",
     price: 23.95,
     rate: 4,
@@ -81,7 +81,7 @@ export const FeatureSellerData = [
     img: Seller2,
   },
   {
-    id: 3,
+    id: 5,
     name: "Oi Ocha Green Tea Bags",
     price: 23.95,
     rate: 5,
@@ -89,7 +89,7 @@ export const FeatureSellerData = [
     img: Seller3,
   },
   {
-    id: 4,
+    id: 7,
     name: "ITO EN HOJICHA",
     price: 8,
     rate: 4,
@@ -97,7 +97,7 @@ export const FeatureSellerData = [
     img: Seller4,
   },
   {
-    id: 5,
+    id: 1,
     name: "Calbee Frugra Fruit & Granula",
     price: 15,
     rate: 4.3,
@@ -105,7 +105,7 @@ export const FeatureSellerData = [
     img: Seller5,
   },
   {
-    id: 6,
+    id: 8,
     name: "Sweet Matcha Sticks",
     price: 34.8,
     rate: 3,
@@ -113,7 +113,7 @@ export const FeatureSellerData = [
     img: Seller6,
   },
   {
-    id: 7,
+    id: 26,
     name: "Bourbon Chocoliere",
     price: 4.5,
     rate: 2,
@@ -121,7 +121,7 @@ export const FeatureSellerData = [
     img: Seller7,
   },
   {
-    id: 8,
+    id: 27,
     name: "Bourbon Roanne Vanilla",
     price: 6.4,
     rate: 4,
@@ -154,15 +154,15 @@ export const FeatureCategoryData = [
 
 export const FeatureDiscoverData = [
   {
-    id: 1,
-    name: "ITO EN Matcha Green Tea - Jasmine",
+    id: 6,
+    name: "ITO EN Matcha Green Tea - Organic Powder",
     price: 28,
     rate: 3.7,
     discount: 10,
     img: Seller1,
   },
   {
-    id: 6,
+    id: 8,
     name: "Sweet Matcha Sticks",
     price: 34.8,
     rate: 3,
@@ -171,14 +171,14 @@ export const FeatureDiscoverData = [
   },
   {
     id: 9,
-    name: "Jagabee – Potato Fries Snack (Original Flavor)",
+    name: "Jagabee - Potato Fries Snack (Original Flavor)",
     price: 15.75,
     rate: 5,
     discount: 78,
     img: Seller9,
   },
   {
-    id: 3,
+    id: 5,
     name: "Oi Ocha Green Tea Bags",
     price: 23.95,
     rate: 5,
@@ -186,7 +186,7 @@ export const FeatureDiscoverData = [
     img: Seller3,
   },
   {
-    id: 10,
+    id: 9,
     name: "Oi Ocha Green Tea Bags",
     price: 23.95,
     rate: 5,
@@ -194,7 +194,7 @@ export const FeatureDiscoverData = [
     img: Seller10,
   },
   {
-    id: 2,
+    id: 4,
     name: "Oi Ocha Hojicha Tea Bags",
     price: 23.95,
     rate: 4,
@@ -202,15 +202,15 @@ export const FeatureDiscoverData = [
     img: Seller2,
   },
   {
-    id: 11,
-    name: "ITO EN Sara Sara Green Tea Powder",
-    price: 35.0,
-    rate: 4,
-    discount: 67,
-    img: Seller11,
+    id: 26,
+    name: "Bourbon Chocoliere",
+    price: 4.5,
+    rate: 2,
+    discount: 0,
+    img: Seller7,
   },
   {
-    id: 5,
+    id: 1,
     name: "Calbee Frugra Fruit & Granula",
     price: 15,
     rate: 4.3,
@@ -218,7 +218,7 @@ export const FeatureDiscoverData = [
     img: Seller5,
   },
   {
-    id: 4,
+    id: 7,
     name: "ITO EN HOJICHA",
     price: 8,
     rate: 4,
@@ -226,7 +226,7 @@ export const FeatureDiscoverData = [
     img: Seller4,
   },
   {
-    id: 8,
+    id: 27,
     name: "Bourbon Roanne Vanilla",
     price: 6.4,
     rate: 4,
