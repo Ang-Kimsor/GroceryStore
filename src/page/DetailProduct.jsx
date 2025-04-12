@@ -34,13 +34,11 @@ const DetailProduct = () => {
     }, 2500);
   };
   const Copy = () => {
+    navigator.clipboard.writeText(window.location.href);
     setCopy(true);
     setTimeout(() => {
       setCopy(false);
     }, 2500);
-  };
-  const CopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
   };
   var { category, name } = useParams();
   category = category.replaceAll("_", " ");
