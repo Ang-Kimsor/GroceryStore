@@ -207,7 +207,19 @@ const DetailProduct = () => {
               <input
                 type="number"
                 value={qty}
-                onChange={(e) => setQty(parseInt(e.target.value))}
+                onChange={(e) => {
+                  const value =
+                    parseInt(e.target.value) <= 0
+                      ? 1
+                      : parseInt(e.target.value);
+                  setQty(value);
+                }}
+                onBlur={() => {
+                  if (qty === "" || isNaN(qty)) {
+                    setQty(1);
+                  }
+                }}
+                min={1}
                 className="[&::-webkit-inner-spin-button]:appearance-none w-[70px] h-[40px] text-center outline-none bg-white text-gray-800/90 border-gray-800/50 border-y text-xl"
               />
               <button
