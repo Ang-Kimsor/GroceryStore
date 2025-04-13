@@ -8,8 +8,8 @@ export const menu = [
     path: "/OurStore",
   },
   {
-    name: "brands",
-    path: "/Brands",
+    name: "career",
+    path: "/Career",
   },
   {
     name: "about us",
