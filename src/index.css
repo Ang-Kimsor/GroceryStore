@@ -5,7 +5,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  color: #25b09b;
+  color: #59c491;
   box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
     calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
     calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,

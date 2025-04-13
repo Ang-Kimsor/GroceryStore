@@ -68,7 +68,7 @@ const Navbar = () => {
             <Link
               key={index}
               onClick={() => setOpenMenu(false)}
-              className="uppercase font-medium py-2.5 px-5 text-2xl hover:text-[#4daf66]"
+              className="uppercase font-medium py-2.5 px-5 text-2xl hover:text-[#59C491]"
               to={path}
             >
               {name}
@@ -97,7 +97,7 @@ const Navbar = () => {
                   className=" px-2 flex items-center justify-center text-[15px] font-medium text-black"
                 >
                   <Link
-                    className="hover:text-[#4daf66] uppercase"
+                    className="hover:text-[#59C491] uppercase"
                     to={path}
                     onClick={() => setOpenMenu(false)}
                   >

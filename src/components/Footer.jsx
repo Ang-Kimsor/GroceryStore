@@ -38,7 +38,7 @@ const Footer = () => {
                   <li key={i} className="w-full h-[30px] cursor-pointer group">
                     <Link className="w-fit h-[30px] flex justify-center items-center">
                       <FontAwesomeIcon
-                        className="w-[30px] py-1.5 text-white bg-[#4daf66] rounded-sm mr-2"
+                        className="w-[30px] py-1.5 text-white bg-[#59C491] rounded-sm mr-2"
                         icon={icon}
                       />
                       <p className="text-gray-500/80 group-hover:underline group-hover:text-gray-800">
@@ -78,7 +78,7 @@ const Footer = () => {
                 {iconSocial.map((icon, index) => (
                   <Link
                     key={index}
-                    className="size-[40px] bg-[#4daf66] cursor-pointer flex items-center justify-center rounded-md"
+                    className="size-[40px] bg-[#59C491] cursor-pointer flex items-center justify-center rounded-md"
                   >
                     <FontAwesomeIcon
                       icon={icon}

@@ -2,44 +2,16 @@ import React, { useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Products } from "../data/OurStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faLink, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { CartWish, Copy, ProductCard } from "../components/OurStore";
 import { FeatureTitle } from "../components/Home";
-import { ProductCard } from "../components/OurStore";
 const DetailProduct = () => {
   let Review = useRef(Math.round(Math.random(100) * 100));
   const [qty, setQty] = useState(1);
-  const Increase = (e) => {
-    e.preventDefault();
-    setQty((q) => q + 1);
-  };
-  const Decrease = (e) => {
-    e.preventDefault();
-    qty == 1 ? setQty(1) : setQty(qty - 1);
-  };
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
   const [copy, setCopy] = useState(false);
-  const Cart = () => {
-    setCart(true);
-    setTimeout(() => {
-      setCart(false);
-    }, 2500);
-  };
-  const Wish = () => {
-    setWish(true);
-    setTimeout(() => {
-      setWish(false);
-    }, 2500);
-  };
-  const Copy = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopy(true);
-    setTimeout(() => {
-      setCopy(false);
-    }, 2500);
-  };
   var { category, name } = useParams();
   category = category.replaceAll("_", " ");
   name = name.replaceAll("_", " ");
@@ -51,70 +23,24 @@ const DetailProduct = () => {
   return (
     <>
       {/* Cart_Wishlist */}
-      <div
-        className={`md:w-[320px] md:h-[160px] h-[220px] w-[280px] bg-white shadow-xs shadow-gray-500/20 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[98] ${
-          cart || wish ? "opacity-100 visible " : "opacity-0 invisible "
-        }`}
-      >
-        <div className="w-full h-[100px] p-2  flex">
-          <div className="w-[90px] h-[90px] flex justify-center items-center ">
-            <img
-              src={Product[0]["img"]}
-              alt=""
-              className="size-full object-contain object-center"
-            />
-          </div>
-          <div className="w-[185px] h-[90px] ">
-            <p className="text-[12px] pl-2 font-medium pt-2">{name}</p>
-            <p className="text-[10px] pl-2 pt-2 text-gray-800/50">
-              has been added to your {wish && "Wishlist"}
-              {cart && "Cart"}.
-            </p>
-            {cart && (
-              <>
-                <p className="text-[10px] pl-2 pt-1 text-gray-800/50">
-                  Quatity: {qty}
-                </p>
-                <p className="text-[10px] pl-2 pt-1 text-gray-800/50">
-                  Total: {"$"}
-                  {(
-                    Product[0]["price"] *
-                    (1 - Product[0]["discount"] / 100) *
-                    qty
-                  ).toFixed(2)}
-                </p>
-              </>
-            )}
-          </div>
-          <FontAwesomeIcon
-            icon={faX}
-            className="cursor-pointer text-sm ml-2 mt-1"
-            onClick={() => setCart(false)}
-          />
-        </div>
-        <div className="w-full h-[60px] grid grid-cols-2 gap-4 place-items-center px-3">
-          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
-            View {wish && "Wishlist"}
-            {cart && "Cart"}
-          </Link>
-          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
-            {wish && "Buy Now"}
-            {cart && "Checkout"}
-          </Link>
-        </div>
-      </div>
+      <CartWish
+        img={Product[0]["img"]}
+        name={Product[0]["name"]}
+        qty={qty}
+        cart={cart}
+        wish={wish}
+        price={Product[0]["price"]}
+        discount={Product[0]["discount"]}
+        hide={() => {
+          setCart(false);
+          setWish(false);
+        }}
+      />
       {/* Copy Link */}
-      <div
-        className={`w-[100px] h-fit py-2 px-2 bg-[#4daf65] rounded fixed lg:top-20 top-2 flex  gap-2 items-center left-1/2 translate-x-[-50%] transition-all duration-300 z-[98] ${
-          copy ? "opacity-100 visible " : "opacity-0 invisible "
-        }`}
-      >
-        <FontAwesomeIcon icon={faLink} className="text-white font-medium" />
-        <p className="text-white font-medium">Copied</p>
-      </div>
+      <Copy copy={copy} />
       <main className="w-full h-fit  flex items-center flex-col pt-10">
-        <h1 className="w-[95%] flex gap-3 text-gray-800/50 md:text-[14px] text-[10px]">
-          <Link to={"/OurStore"} className="text-[#4daf65] text-center">
+        <h1 className="w-[95%] flex gap-3 text-gray-800/50 md:text-lg text-[13px]">
+          <Link to={"/OurStore"} className="text-[#59C491] text-center">
             {category}
           </Link>
           /<span className="text-center">{Product[0]["name"]}</span>
@@ -128,7 +54,7 @@ const DetailProduct = () => {
           <div className="lg:p-0 p-5 cursor-default flex flex-col justify-center">
             <p className="text-gray-800/50 mb-4">{category}</p>
             {Product[0]["discount"] > 0 ? (
-              <span className="size-fit rounded bg-[#4daf65] px-2.5 py-1 text-white tracking-wider lg:text-md text-sm">
+              <span className="size-fit rounded bg-[#FF6150] px-2.5 py-1 text-white tracking-wider lg:text-md text-sm">
                 -{Product[0]["discount"]}%
               </span>
             ) : null}
@@ -168,13 +94,13 @@ const DetailProduct = () => {
             </p>
             <hr className="my-5 border-gray-800/50 "></hr>
             <div className="w-fit h-fit  flex gap-2 items-center">
-              <div className="size-[15px] bg-[#4daf65] rounded"></div>
-              <p className="text-[#4daf65] text-sm">Available In Stock</p>
+              <div className="size-[15px] bg-[#59C491] rounded"></div>
+              <p className="text-[#59C491] text-sm">Available In Stock</p>
             </div>
             <p className="mt-2 text-[12px] font-medium text-gray-800/50">
               Delivery in 2-3 working days
             </p>
-            <div className="flex gap-3 items-center text-3xl mt-3 text-[#4daf65] ">
+            <div className="flex gap-3 items-center text-3xl mt-3 text-[#59C491] ">
               {Product[0]["discount"] > 0 ? (
                 <>
                   <span className="font-medium">
@@ -199,8 +125,11 @@ const DetailProduct = () => {
             </div>
             <div className="size-fit  mt-5 flex">
               <button
-                onClick={(e) => Decrease(e)}
-                className="size-[40px] border border-gray-800/50 flex items-center justify-center bg-white  text-gray-800/50 hover:text-white hover:bg-[#4daf65] text-2xl cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  qty == 1 ? setQty(1) : setQty(qty - 1);
+                }}
+                className="size-[40px] border border-gray-800/50 flex items-center justify-center bg-white  text-gray-800/50 hover:text-white hover:bg-[#59C491] text-2xl cursor-pointer"
               >
                 -
               </button>
@@ -223,29 +152,48 @@ const DetailProduct = () => {
                 className="[&::-webkit-inner-spin-button]:appearance-none w-[70px] h-[40px] text-center outline-none bg-white text-gray-800/90 border-gray-800/50 border-y text-xl"
               />
               <button
-                onClick={(e) => Increase(e)}
-                className="size-[40px] border border-gray-800/50  flex items-center justify-center bg-white text-gray-800/50  hover:text-white hover:bg-[#4daf65] text-2xl cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setQty((q) => q + 1);
+                }}
+                className="size-[40px] border border-gray-800/50  flex items-center justify-center bg-white text-gray-800/50  hover:text-white hover:bg-[#59C491] text-2xl cursor-pointer"
               >
                 +
               </button>
             </div>
             <div className="size-fit  mt-5 flex flex-wrap gap-3">
               <button
-                onClick={Cart}
-                className="hover:bg-[#fe6150] cursor-pointer capitalize px-12 py-3 bg-[#4daf65] text-white font-bold text-lg "
+                onClick={() => {
+                  setCart(true);
+                  setTimeout(() => {
+                    setCart(false);
+                  }, 2500);
+                }}
+                className="hover:bg-[#fe6150] cursor-pointer capitalize px-12 py-3 bg-[#59C491] text-white font-bold text-lg "
               >
                 Add to cart
               </button>
               <button
-                onClick={Wish}
-                className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#4daf65] text-[#4daf65] font-bold text-lg "
+                onClick={() => {
+                  setWish(true);
+                  setTimeout(() => {
+                    setWish(false);
+                  }, 2500);
+                }}
+                className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#59C491] text-[#59C491] font-bold text-lg "
               >
                 <FontAwesomeIcon icon={faHeart} className="pr-2" />
                 Add to wishlist
               </button>
               <button
-                onClick={Copy}
-                className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#4daf65] text-[#4daf65] font-bold text-lg "
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  setCopy(true);
+                  setTimeout(() => {
+                    setCopy(false);
+                  }, 2500);
+                }}
+                className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#59C491] text-[#59C491] font-bold text-lg "
               >
                 <FontAwesomeIcon icon={faShare} className="pr-2" />
                 Share

@@ -46,7 +46,7 @@ const OurStore = () => {
                 <span
                   onClick={() => setIndex(i)}
                   className={`text-md ${
-                    index == i ? "text-[#4daf65]" : "text-gray-800/70"
+                    index == i ? "text-[#59C491]" : "text-gray-800/70"
                   } `}
                 >
                   {name}
