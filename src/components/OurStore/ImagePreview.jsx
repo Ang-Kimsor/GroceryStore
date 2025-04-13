@@ -14,7 +14,7 @@ const ImagePreview = ({ hide, img, OpenImg }) => {
   }, [OpenImg]);
   return (
     <div
-      className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[10] ${
+      className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[200] ${
         OpenImg ? "visible" : "invisible"
       }`}
     >
