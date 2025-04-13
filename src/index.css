@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 .loader {
-  --d: 100px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  color: #59c491;
-  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
-    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
-    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
-    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
-    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
-    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
-    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
-  animation: l27 1s infinite steps(8);
+  width: 300px;
+  aspect-ratio: 1;
+  display: grid;
+  animation: l14 4s infinite;
 }
-@keyframes l27 {
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  border: 20px solid;
+  border-radius: 50%;
+  border-color: #59c491 #59c491 white white;
+  mix-blend-mode: darken;
+  animation: l14 1s infinite linear;
+}
+.loader::after {
+  border-color: white white yellow yellow;
+  animation-direction: reverse;
+}
+@keyframes l14 {
   100% {
     transform: rotate(1turn);
   }
