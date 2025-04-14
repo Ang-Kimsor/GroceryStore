@@ -35,6 +35,7 @@ const Login = () => {
           <input
             type={eye ? "text" : "password"}
             required
+            value={pass}
             onChange={(e) => setPass(e.target.value)}
             className="bg-[#e8e8e8] h-[50px] px-2 outline-none rounded "
             placeholder="Password"
