@@ -134,7 +134,7 @@ const ProductCard = ({
                   hover
                     ? "translate-y-0 visible"
                     : "translate-y-[30px] invisible"
-                } w-full lg:h-[40px] h-[30px] cursor-pointer md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+                } w-full lg:h-[40px] h-[30px] cursor-pointer lg:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
               >
                 <FontAwesomeIcon
                   icon={faCartShopping}
