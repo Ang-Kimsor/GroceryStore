@@ -4,7 +4,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 const Cart_Wish = ({ img, name, qty, wish, cart, price, discount, hide }) => {
   return (
     <div
-      className={`md:w-[320px] md:h-[160px] h-[220px] w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
+      className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
         cart || wish ? "opacity-100 visible " : "opacity-0 invisible "
       }`}
     >
