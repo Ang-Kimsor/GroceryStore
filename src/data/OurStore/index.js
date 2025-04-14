@@ -61,6 +61,7 @@ export const Products = [
     discount: 0,
     img: p1,
     category: "Calbee Frugra",
+    stock: 5,
   },
   {
     id: 2,
@@ -70,6 +71,7 @@ export const Products = [
     rate: 4.3,
     img: p2,
     category: "Calbee Frugra",
+    stock: 55,
   },
   {
     id: 3,
@@ -79,6 +81,7 @@ export const Products = [
     rate: 4.3,
     img: p3,
     category: "Calbee Frugra",
+    stock: 35,
   },
   {
     id: 4,
@@ -88,6 +91,7 @@ export const Products = [
     discount: 0,
     img: p4,
     category: "Matcha Green Tea",
+    stock: 64,
   },
   {
     id: 5,
@@ -97,6 +101,7 @@ export const Products = [
     discount: 0,
     img: p5,
     category: "Matcha Green Tea",
+    stock: 73,
   },
   {
     id: 6,
@@ -106,6 +111,7 @@ export const Products = [
     discount: 10,
     img: p6,
     category: "Matcha Green Tea",
+    stock: 0,
   },
   {
     id: 7,
@@ -115,6 +121,7 @@ export const Products = [
     discount: 50,
     img: p7,
     category: "Matcha Green Tea",
+    stock: 27,
   },
   {
     id: 8,
@@ -124,6 +131,7 @@ export const Products = [
     discount: 20,
     img: p8,
     category: "Matcha Green Tea",
+    stock: 38,
   },
   {
     id: 9,
@@ -133,6 +141,7 @@ export const Products = [
     discount: 0,
     img: p9,
     category: "Matcha Green Tea",
+    stock: 79,
   },
   {
     id: 10,
@@ -142,6 +151,7 @@ export const Products = [
     rate: 4.0,
     img: p10,
     category: "Matcha Green Tea",
+    stock: 0,
   },
   {
     id: 11,
@@ -151,6 +161,7 @@ export const Products = [
     rate: 4.4,
     img: p11,
     category: "Baby Collection",
+    stock: 59,
   },
   {
     id: 12,
@@ -160,6 +171,7 @@ export const Products = [
     rate: 4.9,
     img: p12,
     category: "Baby Collection",
+    stock: 60,
   },
   {
     id: 13,
@@ -169,6 +181,7 @@ export const Products = [
     rate: 3.8,
     img: p13,
     category: "Baby Collection",
+    stock: 51,
   },
   {
     id: 14,
@@ -178,6 +191,7 @@ export const Products = [
     rate: 4.0,
     img: p14,
     category: "Baby Collection",
+    stock: 18,
   },
   {
     id: 15,
@@ -187,6 +201,7 @@ export const Products = [
     rate: 4.2,
     img: p15,
     category: "Baby Collection",
+    stock: 100,
   },
   {
     id: 16,
@@ -196,6 +211,7 @@ export const Products = [
     rate: 4.5,
     img: p16,
     category: "Healthcare Products",
+    stock: 48,
   },
   {
     id: 17,
@@ -205,6 +221,7 @@ export const Products = [
     rate: 4.1,
     img: p17,
     category: "Healthcare Products",
+    stock: 88,
   },
   {
     id: 18,
@@ -214,6 +231,7 @@ export const Products = [
     rate: 4.6,
     img: p18,
     category: "Healthcare Products",
+    stock: 20,
   },
   {
     id: 19,
@@ -223,6 +241,7 @@ export const Products = [
     rate: 2.3,
     img: p19,
     category: "Healthcare Products",
+    stock: 35,
   },
   {
     id: 20,
@@ -232,6 +251,7 @@ export const Products = [
     rate: 3.9,
     img: p20,
     category: "Healthcare Products",
+    stock: 0,
   },
   {
     id: 21,
@@ -241,6 +261,7 @@ export const Products = [
     rate: 4.7,
     img: p21,
     category: "Okamoto Condom & Lubrican",
+    stock: 22,
   },
   {
     id: 22,
@@ -250,6 +271,7 @@ export const Products = [
     rate: 4.2,
     img: p22,
     category: "Okamoto Condom & Lubrican",
+    stock: 90,
   },
   {
     id: 23,
@@ -259,6 +281,7 @@ export const Products = [
     rate: 4.0,
     img: p23,
     category: "Okamoto Condom & Lubrican",
+    stock: 66,
   },
   {
     id: 24,
@@ -268,6 +291,7 @@ export const Products = [
     rate: 4.8,
     img: p24,
     category: "Okamoto Condom & Lubrican",
+    stock: 24,
   },
   {
     id: 25,
@@ -277,6 +301,7 @@ export const Products = [
     rate: 4.6,
     img: p25,
     category: "Okamoto Condom & Lubrican",
+    stock: 71,
   },
   {
     id: 26,
@@ -286,6 +311,7 @@ export const Products = [
     discount: 0,
     img: p26,
     category: "Snacks & Confectionaries",
+    stock: 49,
   },
   {
     id: 27,
@@ -295,6 +321,7 @@ export const Products = [
     discount: 53,
     img: p27,
     category: "Snacks & Confectionaries",
+    stock: 0,
   },
   {
     id: 28,
@@ -304,6 +331,7 @@ export const Products = [
     rate: 4.4,
     img: p28,
     category: "Snacks & Confectionaries",
+    stock: 29,
   },
   {
     id: 29,
@@ -313,6 +341,7 @@ export const Products = [
     rate: 4.5,
     img: p29,
     category: "Snacks & Confectionaries",
+    stock: 46,
   },
   {
     id: 30,
@@ -322,5 +351,6 @@ export const Products = [
     rate: 4.7,
     img: p30,
     category: "Snacks & Confectionaries",
+    stock: 14,
   },
 ];

@@ -5,7 +5,16 @@ import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import ImagePreview from "./ImagePreview.jsx";
 import Cart_Wish from "./Cart_Wish.jsx";
-const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
+const ProductCard = ({
+  id,
+  name,
+  price,
+  discount,
+  rate,
+  img,
+  category,
+  stock,
+}) => {
   rate = Math.round(rate);
   const [hover, setHover] = useState(false);
   const [cart, setCart] = useState(false);
@@ -42,7 +51,12 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
           " ",
           "_"
         )}`}
-        className={`w-fit h-fit  group cursor-pointer`}
+        className={`w-fit h-fit  group cursor-pointer  ${
+          stock == 0 ? "opacity-50" : null
+        }`}
+        onClick={(e) => {
+          stock == 0 ? e.preventDefault() : null;
+        }}
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
       >
@@ -52,72 +66,86 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
             alt={name}
             className="border rounded border-gray-500/50"
           />
-          <div
-            className={`w-full h-full absolute flex flex-col justify-between top-0 left-0 p-2 group-hover:bg-gray-500/10 ${
-              hover ? "bg-gray-500/10" : ""
-            } rounded`}
-          >
-            {discount > 0 ? (
-              <span className="size-fit rounded bg-[#FF6150] px-2.5 right-2 top-2 text-white tracking-wider md:text-[12px] text-[10px] absolute">
-                -{discount}%
-              </span>
-            ) : null}
+          {stock == 0 ? (
             <div
-              className={`${
-                hover
-                  ? "translate-x-0 visible"
-                  : "-translate-x-[30px] invisible"
-              } w-full h-fit  flex flex-col items-start gap-2 -translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200`}
+              className={`w-full h-full absolute flex flex-col justify-between top-0 left-0 p-2 group-hover:bg-gray-500/10 ${
+                hover ? "bg-gray-500/10" : ""
+              } rounded`}
             >
-              <span
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpenImg(true);
-                }}
-                className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
-              >
-                <FontAwesomeIcon
-                  icon={faImage}
-                  className="text-[#59C491] md:text-sm text-[11px]"
-                />
-              </span>
-              <span
-                onClick={(e) => {
-                  e.preventDefault();
-                  setWish(true);
-                  setTimeout(() => {
-                    setWish(false);
-                  }, 2500);
-                }}
-                className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
-              >
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  className="text-[#59C491] md:text-sm text-[11px]"
-                />
+              <span className="size-fit rounded bg-[#FF6150] px-2.5 right-2 top-2 text-white tracking-wider md:text-[12px] text-[10px] absolute">
+                Out of Stock
               </span>
             </div>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setCart(true);
-                setTimeout(() => {
-                  setCart(false);
-                }, 2500);
-              }}
-              className={`${
-                hover ? "translate-y-0 visible" : "translate-y-[30px] invisible"
-              } w-full lg:h-[40px] h-[30px] cursor-pointer md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+          ) : (
+            <div
+              className={`w-full h-full absolute flex flex-col justify-between top-0 left-0 p-2 group-hover:bg-gray-500/10 ${
+                hover ? "bg-gray-500/10" : ""
+              } rounded`}
             >
-              <FontAwesomeIcon
-                icon={faCartShopping}
-                className="text-[#59C491] text-[10px] md:text-[12px]"
-              />
-              <p className="text-[#59C491] text-[10px] md:text-sm">
-                Add to cart
-              </p>
-            </button>
-          </div>
+              {discount > 0 ? (
+                <span className="size-fit rounded bg-[#FF6150] px-2.5 right-2 top-2 text-white tracking-wider md:text-[12px] text-[10px] absolute">
+                  -{discount}%
+                </span>
+              ) : null}
+              <div
+                className={`${
+                  hover
+                    ? "translate-x-0 visible"
+                    : "-translate-x-[30px] invisible"
+                } w-full h-fit  flex flex-col items-start gap-2 -translate-x-[30px] invisible group-hover:translate-x-0 group-hover:visible transition-all duration-200`}
+              >
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenImg(true);
+                  }}
+                  className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
+                >
+                  <FontAwesomeIcon
+                    icon={faImage}
+                    className="text-[#59C491] md:text-sm text-[11px]"
+                  />
+                </span>
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setWish(true);
+                    setTimeout(() => {
+                      setWish(false);
+                    }, 2500);
+                  }}
+                  className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
+                >
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    className="text-[#59C491] md:text-sm text-[11px]"
+                  />
+                </span>
+              </div>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCart(true);
+                  setTimeout(() => {
+                    setCart(false);
+                  }, 2500);
+                }}
+                className={`${
+                  hover
+                    ? "translate-y-0 visible"
+                    : "translate-y-[30px] invisible"
+                } w-full lg:h-[40px] h-[30px] cursor-pointer md:flex hidden bg-white gap-2 rounded items-center justify-center translate-y-[30px]  invisible group-hover:translate-y-0 group-hover:visible transition-all duration-200`}
+              >
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="text-[#59C491] text-[10px] md:text-[12px]"
+                />
+                <p className="text-[#59C491] text-[10px] md:text-sm">
+                  Add to cart
+                </p>
+              </button>
+            </div>
+          )}
         </div>
         <div className="w-full h-fit py-2 bg-white">
           <span className="w-full h-[20px]  flex items-center gap-[2px]">
@@ -150,10 +178,12 @@ const ProductCard = ({ id, name, price, discount, rate, img, category }) => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              setCart(true);
-              setTimeout(() => {
-                setCart(false);
-              }, 2500);
+              {
+                stock == 0 ? alert("Product out of stock") : setCart(true);
+                setTimeout(() => {
+                  setCart(false);
+                }, 2500);
+              }
             }}
             className={` w-full h-[30px] md:hidden flex bg-[#59C491] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >

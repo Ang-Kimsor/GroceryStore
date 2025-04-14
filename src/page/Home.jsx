@@ -22,6 +22,8 @@ import {
 } from "./../data/Home";
 import { ProductCard } from "./../components/OurStore";
 const Home = () => {
+  const StockSort1 = FeatureSellerData.sort((a, b) => b.stock - a.stock);
+  const StockSort2 = FeatureDiscoverData.sort((a, b) => b.stock - a.stock);
   return (
     <>
       <main className="w-fit h-fit bg-white">
@@ -47,8 +49,11 @@ const Home = () => {
           </div>
           <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
             <div className="xl:w-[70%] lg:grid-cols-4 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10">
-              {FeatureSellerData.map(
-                ({ id, name, price, rate, discount, img, category }, index) => (
+              {StockSort1.map(
+                (
+                  { id, name, price, rate, discount, img, category, stock },
+                  index
+                ) => (
                   <ProductCard
                     key={index}
                     id={id}
@@ -58,6 +63,7 @@ const Home = () => {
                     rate={rate}
                     img={img}
                     category={category}
+                    stock={stock}
                   />
                 )
               )}
@@ -99,8 +105,11 @@ const Home = () => {
           </div>
           <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
             <div className=" lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10">
-              {FeatureDiscoverData.map(
-                ({ id, name, price, rate, discount, img, category }, index) => (
+              {StockSort2.map(
+                (
+                  { id, name, price, rate, discount, img, category, stock },
+                  index
+                ) => (
                   <ProductCard
                     key={index}
                     id={id}
@@ -110,6 +119,7 @@ const Home = () => {
                     rate={rate}
                     img={img}
                     category={category}
+                    stock={stock}
                   />
                 )
               )}

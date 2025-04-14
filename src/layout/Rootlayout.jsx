@@ -25,14 +25,13 @@ const Rootlayout = () => {
       ) : (
         <>
           <Outlet />
-          <div className="size-[50px] bg-[#59C491] z-[100] fixed bottom-5 right-10 flex items-center justify-center rounded-full">
-            <FontAwesomeIcon
-              icon={faArrowUp}
-              className="text-white text-xl"
-              onClick={() =>
-                window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
-              }
-            />
+          <div
+            onClick={() =>
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+            }
+            className="size-[50px] bg-[#59C491] z-[100] fixed bottom-5 right-5 cursor-pointer flex items-center justify-center rounded-full"
+          >
+            <FontAwesomeIcon icon={faArrowUp} className="text-white text-xl" />
           </div>
         </>
       )}

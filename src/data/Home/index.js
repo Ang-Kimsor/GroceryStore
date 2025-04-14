@@ -16,7 +16,6 @@ import Seller7 from "./../../assets/seller7.jpg";
 import Seller8 from "./../../assets/seller8.jpg";
 import Seller9 from "./../../assets/seller9.jpg";
 import Seller10 from "./../../assets/seller10.jpg";
-import Seller11 from "./../../assets/seller11.jpg";
 import Cate1 from "./../../assets/cate1.jpg";
 import Cate2 from "./../../assets/cate2.jpg";
 import Cate3 from "./../../assets/cate3.jpg";
@@ -72,6 +71,7 @@ export const FeatureSellerData = [
     discount: 10,
     img: Seller1,
     category: "Matcha Green Tea",
+    stock: 0,
   },
   {
     id: 4,
@@ -81,6 +81,7 @@ export const FeatureSellerData = [
     discount: 0,
     img: Seller2,
     category: "Matcha Green Tea",
+    stock: 64,
   },
   {
     id: 5,
@@ -90,6 +91,7 @@ export const FeatureSellerData = [
     discount: 0,
     img: Seller3,
     category: "Matcha Green Tea",
+    stock: 73,
   },
   {
     id: 7,
@@ -99,6 +101,7 @@ export const FeatureSellerData = [
     discount: 50,
     img: Seller4,
     category: "Matcha Green Tea",
+    stock: 27,
   },
   {
     id: 1,
@@ -108,6 +111,7 @@ export const FeatureSellerData = [
     discount: 0,
     img: Seller5,
     category: "Calbee Frugra",
+    stock: 83,
   },
   {
     id: 8,
@@ -117,6 +121,7 @@ export const FeatureSellerData = [
     discount: 20,
     img: Seller6,
     category: "Matcha Green Tea",
+    stock: 38,
   },
   {
     id: 26,
@@ -126,6 +131,7 @@ export const FeatureSellerData = [
     discount: 0,
     img: Seller7,
     category: "Snacks & Confectionaries",
+    stock: 49,
   },
   {
     id: 27,
@@ -135,6 +141,7 @@ export const FeatureSellerData = [
     discount: 53,
     img: Seller8,
     category: "Snacks & Confectionaries",
+    stock: 0,
   },
 ];
 
@@ -169,6 +176,7 @@ export const FeatureDiscoverData = [
     discount: 10,
     img: Seller1,
     category: "Matcha Green Tea",
+    stock: 0,
   },
   {
     id: 8,
@@ -178,6 +186,7 @@ export const FeatureDiscoverData = [
     discount: 20,
     img: Seller6,
     category: "Matcha Green Tea",
+    stock: 38,
   },
   {
     id: 2,
@@ -187,6 +196,7 @@ export const FeatureDiscoverData = [
     discount: 78,
     img: Seller9,
     category: "Calbee Frugra",
+    stock: 55,
   },
   {
     id: 5,
@@ -196,6 +206,7 @@ export const FeatureDiscoverData = [
     discount: 0,
     img: Seller3,
     category: "Matcha Green Tea",
+    stock: 73,
   },
   {
     id: 9,
@@ -205,6 +216,7 @@ export const FeatureDiscoverData = [
     discount: 0,
     img: Seller10,
     category: "Matcha Green Tea",
+    stock: 79,
   },
   {
     id: 4,
@@ -214,6 +226,7 @@ export const FeatureDiscoverData = [
     discount: 0,
     img: Seller2,
     category: "Matcha Green Tea",
+    stock: 64,
   },
   {
     id: 26,
@@ -223,6 +236,7 @@ export const FeatureDiscoverData = [
     discount: 0,
     img: Seller7,
     category: "Snacks & Confectionaries",
+    stock: 49,
   },
   {
     id: 1,
@@ -232,6 +246,7 @@ export const FeatureDiscoverData = [
     discount: 0,
     img: Seller5,
     category: "Calbee Frugra",
+    stock: 83,
   },
   {
     id: 7,
@@ -241,6 +256,7 @@ export const FeatureDiscoverData = [
     discount: 50,
     img: Seller4,
     category: "Matcha Green Tea",
+    stock: 27,
   },
   {
     id: 27,
@@ -250,8 +266,10 @@ export const FeatureDiscoverData = [
     discount: 53,
     img: Seller8,
     category: "Snacks & Confectionaries",
+    stock: 0,
   },
 ];
+
 export const FeatureStoryData = {
   img: Story,
   title1: "Driven by passion, Guided by purpose",

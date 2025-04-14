@@ -95,7 +95,9 @@ const DetailProduct = () => {
             <hr className="my-5 border-gray-800/50 "></hr>
             <div className="w-fit h-fit  flex gap-2 items-center">
               <div className="size-[15px] bg-[#59C491] rounded"></div>
-              <p className="text-[#59C491] text-sm">Available In Stock</p>
+              <p className="text-[#59C491] text-sm">
+                Available In Stock: {Product[0]["stock"]}
+              </p>
             </div>
             <p className="mt-2 text-[12px] font-medium text-gray-800/50">
               Delivery in 2-3 working days
@@ -137,9 +139,11 @@ const DetailProduct = () => {
                 type="number"
                 value={qty}
                 onChange={(e) => {
-                  const value =
+                  let value =
                     parseInt(e.target.value) <= 0
                       ? 1
+                      : parseInt(e.target.value) >= Product[0]["stock"]
+                      ? Product[0]["stock"]
                       : parseInt(e.target.value);
                   setQty(value);
                 }}
@@ -149,12 +153,15 @@ const DetailProduct = () => {
                   }
                 }}
                 min={1}
+                max={Product[0]["stock"]}
                 className="[&::-webkit-inner-spin-button]:appearance-none w-[70px] h-[40px] text-center outline-none bg-white text-gray-800/90 border-gray-800/50 border-y text-xl"
               />
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setQty((q) => q + 1);
+                  setQty(
+                    qty >= Product[0]["stock"] ? Product[0]["stock"] : qty + 1
+                  );
                 }}
                 className="size-[40px] border border-gray-800/50  flex items-center justify-center bg-white text-gray-800/50  hover:text-white hover:bg-[#59C491] text-2xl cursor-pointer"
               >
@@ -211,7 +218,10 @@ const DetailProduct = () => {
           <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
             <div className=" lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10">
               {ProductRelated.map(
-                ({ id, name, price, rate, discount, img, category }, index) => (
+                (
+                  { id, name, price, rate, discount, img, category, stock },
+                  index
+                ) => (
                   <ProductCard
                     key={index}
                     id={id}
@@ -221,6 +231,7 @@ const DetailProduct = () => {
                     rate={rate}
                     img={img}
                     category={category}
+                    stock={stock}
                   />
                 )
               )}

@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import { ProductCard } from "../components/OurStore";
 import { category, Products } from "../data/OurStore";
 const OurStore = () => {
-  const [index, setIndex] = useState(0);
+  const [indexCate, setIndexCate] = useState(0);
+  const [indexStock, setIndexStock] = useState(0);
   const [sort, setSort] = useState("id");
+  const Stock = ["Both", "In Stock", "Out of Stock"];
   let Filter = Products;
-  if (index != 0) {
-    Filter = Products.filter(
-      (product) => product.category == category[index]["name"]
+  if (indexCate != 0) {
+    Filter = Filter.filter(
+      (product) => product.category == category[indexCate]["name"]
     );
+  }
+  if (indexStock == 1) {
+    Filter = Filter.filter((product) => product.stock > 0);
+  } else if (indexStock == 2) {
+    Filter = Filter.filter((product) => product.stock == 0);
   }
   Filter =
     sort === "id"
@@ -33,23 +40,44 @@ const OurStore = () => {
     <main className="w-full h-fit  flex md:flex-row flex-col justify-center md:mt-20 mt-10 relative">
       <aside className="md:w-[300px] w-full h-fit md:sticky md:top-0">
         <div className="w-full h-fit p-2">
-          <h1 className="text-2xl font-medium mb-3 ">Product Category</h1>
+          <h1 className="text-xl font-medium mb-3 ">Product Category</h1>
           <ul className="flex flex-col gap-3">
             {category.map(({ name }, i) => (
               <li key={i} className="cursor-pointer flex gap-2">
                 <input
                   type="checkbox"
-                  checked={index == i}
-                  onChange={() => setIndex(i)}
+                  checked={indexCate == i}
+                  onChange={() => setIndexCate(i)}
                   className="accent-green-600 rounded"
                 />
                 <span
-                  onClick={() => setIndex(i)}
-                  className={`text-md ${
-                    index == i ? "text-[#59C491]" : "text-gray-800/70"
+                  onClick={() => setIndexCate(i)}
+                  className={`text-sm ${
+                    indexCate == i ? "text-[#59C491]" : "text-gray-800/70"
                   } `}
                 >
                   {name}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <h1 className="text-xl font-medium mt-5 mb-3 ">Product Status</h1>
+          <ul className="flex flex-col gap-3">
+            {Stock.map((s, j) => (
+              <li key={j} className="cursor-pointer flex gap-2">
+                <input
+                  type="checkbox"
+                  checked={indexStock == j}
+                  onChange={() => setIndexStock(j)}
+                  className="accent-green-600 rounded"
+                />
+                <span
+                  onClick={() => setIndexStock(j)}
+                  className={`text-sm ${
+                    indexStock == j ? "text-[#59C491]" : "text-gray-800/70"
+                  } `}
+                >
+                  {s}
                 </span>
               </li>
             ))}
@@ -58,7 +86,7 @@ const OurStore = () => {
       </aside>
       <aside className="h-fit p-2 md:w-[75%] w-full">
         <h1 className="lg:text-3xl text-2xl font-medium">
-          {category[index]["name"]}
+          {category[indexCate]["name"]}
         </h1>
         <div className="w-full bg-[#e8e8e8] flex md:flex-row gap-5 flex-col md:items-center mt-5 py-2 px-2">
           <div className="flex flex-row md:justify-center items-center gap-2 ">
@@ -81,9 +109,17 @@ const OurStore = () => {
             Showing all {Filter.length} products
           </p>
         </div>
+        {Filter == "" && (
+          <div className="w-full h-[400px] text-xl flex items-center justify-center text-gray-800/50">
+            No product found in this filter
+          </div>
+        )}
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-5 gap-x-3  py-5">
           {Filter.map(
-            ({ id, name, price, rate, discount, img, category }, index) => (
+            (
+              { id, name, price, rate, discount, img, category, stock },
+              index
+            ) => (
               <ProductCard
                 key={index}
                 id={id}
@@ -93,6 +129,7 @@ const OurStore = () => {
                 rate={rate}
                 img={img}
                 category={category}
+                stock={stock}
               />
             )
           )}
