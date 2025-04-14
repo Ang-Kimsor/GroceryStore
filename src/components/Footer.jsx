@@ -7,7 +7,7 @@ import { footer, iconPayment, iconSocial } from "../data/Footer";
 const Footer = () => {
   return (
     <>
-      <footer className="w-full h-fit bg-[#f3f3f3] flex flex-col items-center justify-center pt-5">
+      <footer className="w-full h-fit bg-[#f3f3f3] flex flex-col items-center justify-center pt-10">
         <div className="2xl:grid-cols-6 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-[95%] h-fit grid gap-5">
           <div className="2xl:h-[310px]">
             <div className="w-[100%] pt-5 h-fit flex pl-5 flex-col">
