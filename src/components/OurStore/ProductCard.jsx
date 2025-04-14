@@ -185,7 +185,7 @@ const ProductCard = ({
                 }, 2500);
               }
             }}
-            className={` w-full h-[30px] md:hidden flex bg-[#59C491] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
+            className={` w-full h-[30px] lg:hidden flex bg-[#59C491] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >
             <FontAwesomeIcon
               icon={faCartShopping}
