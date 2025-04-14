@@ -10,6 +10,7 @@ import {
   faUser,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
+import Search from "./Search";
 const Navbar = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
@@ -26,28 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div
-        className={`${
-          openSearch ? "h-[60px] visible" : "h-0 invisible"
-        } w-full bg-white flex justify-center items-center transition-all duration-300 box-border`}
-      >
-        <div className="w-fit h-full flex items-center relative">
-          <input
-            className="mr-5 outline-none border-2 border-gray-800/50 pl-4 pr-8 rounded-full h-[70%] lg:w-[700px] md:w-[500px] w-[300px]"
-            type="text"
-            placeholder="Search"
-          />
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            className="absolute right-8 cursor-pointer text-gray-800/70"
-          />
-        </div>
-        <FontAwesomeIcon
-          icon={faX}
-          className="absolute right-8 cursor-pointer text-gray-800/70"
-          onClick={() => setOpenSearch(!openSearch)}
-        />
-      </div>
+      <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
       <div
         className={`lg:hidden 
           ${openMenu ? "translate-x-0 " : "-translate-x-full"}
@@ -114,9 +94,12 @@ const Navbar = () => {
                   onClick={() => setOpenSearch(true)}
                 />
               </span>
-              <span className="w-[30px] h-[30px]  flex justify-center items-center">
+              <Link
+                to={"/Login"}
+                className="w-[30px] h-[30px]  flex justify-center items-center"
+              >
                 <FontAwesomeIcon className="cursor-pointer" icon={faUser} />
-              </span>
+              </Link>
               <span className="w-[30px] h-[30px]  flex justify-center items-center">
                 <FontAwesomeIcon
                   className="cursor-pointer"
