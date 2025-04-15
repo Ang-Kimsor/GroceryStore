@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .loader {
-  width: 300px;
+  width: 180px;
   aspect-ratio: 1;
   display: grid;
   animation: l14 4s infinite;
@@ -10,7 +10,7 @@
 .loader::after {
   content: "";
   grid-area: 1/1;
-  border: 20px solid;
+  border: 15px solid;
   border-radius: 50%;
   border-color: #59c491 #59c491 white white;
   mix-blend-mode: darken;

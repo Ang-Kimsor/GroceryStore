@@ -39,18 +39,20 @@ const ProductCard = ({
         wish={wish}
         price={price}
         discount={discount}
-        hide={() => {
-          setCart(false);
-          setWish(false);
-        }}
+        hidecart={() => setCart(false)}
+        hidewish={() => setWish(false)}
       />
       {/* Main */}
       <Link
         key={id}
-        to={`/OurStore/${category.replaceAll(" ", "_")}/${name.replaceAll(
-          " ",
-          "_"
-        )}`}
+        to={
+          stock == 0
+            ? "#"
+            : `/OurStore/${category.replaceAll(" ", "_")}/${name.replaceAll(
+                " ",
+                "_"
+              )}`
+        }
         className={`w-fit h-fit  group cursor-pointer  ${
           stock == 0 ? "opacity-50" : null
         }`}

@@ -31,10 +31,8 @@ const DetailProduct = () => {
         wish={wish}
         price={Product[0]["price"]}
         discount={Product[0]["discount"]}
-        hide={() => {
-          setCart(false);
-          setWish(false);
-        }}
+        hidecart={() => setCart(false)}
+        hidewish={() => setWish(false)}
       />
       {/* Copy Link */}
       <Copy copy={copy} />

@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <>
       <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
-      <div
+      <aside
         className={`lg:hidden 
           ${openMenu ? "translate-x-0 " : "-translate-x-full"}
           w-full h-screen bg-white absolute transition-all duration-500 z-[100]`}
@@ -56,14 +56,22 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="w-full h-[50px] px-5 flex flex-row gap-5 items-center">
-          <Link className="w-fit h-[30px] bg-green-500 px-8 hover:bg-green-600 flex justify-center items-center text-white font-medium rounded-sm text-lg">
+          <Link
+            to={"/Login"}
+            onClick={() => setOpenMenu(false)}
+            className="w-fit h-[30px] bg-green-500 px-8 hover:bg-green-600 flex justify-center items-center text-white font-medium rounded-sm text-lg"
+          >
             Login
           </Link>
-          <Link className="w-fit h-[30px] bg-orange-500 px-8 hover:bg-orange-600 flex justify-center items-center text-white font-medium rounded-sm text-lg">
+          <Link
+            to={"/Register"}
+            onClick={() => setOpenMenu(false)}
+            className="w-fit h-[30px] bg-orange-500 px-8 hover:bg-orange-600 flex justify-center items-center text-white font-medium rounded-sm text-lg"
+          >
             Register
           </Link>
         </div>
-      </div>
+      </aside>
       <nav className="w-full h-[90px] bg-white flex justify-center">
         <div className="w-[95%] h-full flex justify-between items-center">
           <div className="md:w-[280px] md:h-[60%] w-[150px] h-[30%]">
