@@ -8,6 +8,9 @@ import {
   DetailProduct,
   Login,
   Register,
+  Career,
+  About,
+  Contact,
 } from "./page";
 const Router = createBrowserRouter([
   {
@@ -37,15 +40,15 @@ const Router = createBrowserRouter([
       },
       {
         path: "/Career",
-        element: <h1>This is Career</h1>,
+        element: <Career />,
       },
       {
         path: "/AboutUs",
-        element: <h1>This is about us</h1>,
+        element: <About />,
       },
       {
         path: "/Contact",
-        element: <h1>This is contact</h1>,
+        element: <Contact />,
       },
     ],
   },
