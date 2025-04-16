@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faStar } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +20,7 @@ const ProductCard = ({
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
   const [OpenImg, setOpenImg] = useState(false);
-
+  const [qty, setQty] = useState(0);
   return (
     <>
       {/* Image preview */}
@@ -34,7 +34,7 @@ const ProductCard = ({
       <Cart_Wish
         img={img}
         name={name}
-        qty={1}
+        qty={qty}
         cart={cart}
         wish={wish}
         price={price}
@@ -131,6 +131,7 @@ const ProductCard = ({
                   setTimeout(() => {
                     setCart(false);
                   }, 2500);
+                  setQty(qty + 1);
                 }}
                 className={`${
                   hover
@@ -181,7 +182,7 @@ const ProductCard = ({
             onClick={(e) => {
               e.preventDefault();
               {
-                stock == 0 ? alert("Product out of stock") : setCart(true);
+                stock == 0 ? null : setCart(true);
                 setTimeout(() => {
                   setCart(false);
                 }, 2500);
