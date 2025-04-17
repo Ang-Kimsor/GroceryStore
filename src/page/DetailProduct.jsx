@@ -19,7 +19,6 @@ const DetailProduct = () => {
   const ProductRelated = Products.filter(
     (p) => p.category == category && p.id != Product[0]["id"]
   ).slice(0, 5);
-
   return (
     <>
       {/* Cart_Wishlist */}

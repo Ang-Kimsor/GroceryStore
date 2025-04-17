@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ProductCard } from "../components/OurStore";
 import { category, Products } from "../data/OurStore";
 const OurStore = () => {

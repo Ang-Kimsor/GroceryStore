@@ -15,12 +15,14 @@ const ProductCard = ({
   category,
   stock,
 }) => {
-  rate = Math.round(rate);
   const [hover, setHover] = useState(false);
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
   const [OpenImg, setOpenImg] = useState(false);
   const [qty, setQty] = useState(0);
+  useEffect(() => {
+    rate = Math.round(rate);
+  }, []);
   return (
     <>
       {/* Image preview */}
