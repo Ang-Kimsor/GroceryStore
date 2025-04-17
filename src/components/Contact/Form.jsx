@@ -79,7 +79,7 @@ const Form = () => {
         <div className="flex flex-col w-full">
           <label className="mb-2 font-medium">Message</label>
           <textarea
-            className="outline-none h-[100px] p-1 bg-[#e8e8e8]"
+            className="outline-none h-[100px] p-1 bg-[#e8e8e8] resize-none"
             placeholder="Note about your order, e.g. special note for delivery"
           />
         </div>
