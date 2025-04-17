@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Address = () => {
   return (
-    <div className="bg-[#e8e8e8] p-5">
+    <div className="bg-[#f8f8f8] p-5">
       <div className="w-full h-fit  grid md:grid-cols-2 md:gap-y-16 gap-y-5">
         <div>
           <h1 className="uppercase font-medium text-lg pb-3">Company Name</h1>
