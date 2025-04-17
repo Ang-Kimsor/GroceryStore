@@ -3,7 +3,7 @@ import { country } from "./../../data/Contact";
 import { Link } from "react-router-dom";
 const Form = () => {
   return (
-    <div className="bg-purple-500 pt-7 px-5">
+    <div className="pt-7 px-5">
       <FeatureTitle
         title1={"Contact us for all your questions and opinions"}
         title2={"We're ready to assist!"}
@@ -55,10 +55,11 @@ const Form = () => {
           <label className="mb-2 font-medium">
             Country / Region <span className="text-red-500">*</span>
           </label>
-          <select required className="outline-none h-[45px] pl-1 bg-[#e8e8e8]">
-            <option disabled selected>
-              Select your country
-            </option>
+          <select
+            required
+            className="outline-none h-[45px] pl-1 bg-[#e8e8e8]"
+            defaultValue="Cambodia"
+          >
             {country.map(({ name, region }, index) => (
               <option key={index} value={name}>
                 {name} ({region})
