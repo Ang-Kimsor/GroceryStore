@@ -129,6 +129,7 @@ const Home = () => {
 
         <section className="w-full h-fit flex items-center bg-[#e8f4f0] justify-center md:py-10 py-5">
           <FeatureStory
+            notHome={false}
             img={FeatureStoryData.img}
             title1={FeatureStoryData.title1}
             title2={FeatureStoryData.title2}
