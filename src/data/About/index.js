@@ -1,9 +1,17 @@
+import { faEye, faGem } from "@fortawesome/free-regular-svg-icons";
 import Banner from "./../../assets/about.jpg";
 import Story from "./../../assets/berry.jpg";
 import P1 from "./../../assets/p1.jpg";
 import P2 from "./../../assets/p2.jpg";
 import P3 from "./../../assets/p3.jpg";
 import Sub from "./../../assets/subscribe.jpg";
+import {
+  faBullseye,
+  faCreditCard,
+  faMoneyBill,
+  faTruck,
+} from "@fortawesome/free-solid-svg-icons";
+import { faHackerrank } from "@fortawesome/free-brands-svg-icons";
 export const FeatureBigData = {
   img: Banner,
   title: "About us",
@@ -40,6 +48,45 @@ export const FeatureCustomerData = {
     },
   ],
 };
+export const FeatureVisionData = [
+  {
+    icon: faEye,
+    title: "Our Vision",
+    des: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, obcaecati iure eos repellendus perferendis laboriosam accusamus dolorum. Quasi dolor quidem dolorem unde voluptatibus, incidunt laudantium ab, fugiat similique reprehenderit aperiam.`,
+  },
+  {
+    icon: faGem,
+    title: "Our Values",
+    des: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, obcaecati iure eos repellendus perferendis laboriosam accusamus dolorum. Quasi dolor quidem dolorem unde voluptatibus, incidunt laudantium ab, fugiat similique reprehenderit aperiam.`,
+  },
+  {
+    icon: faBullseye,
+    title: "Our Mission",
+    des: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, obcaecati iure eos repellendus perferendis laboriosam accusamus dolorum. Quasi dolor quidem dolorem unde voluptatibus, incidunt laudantium ab, fugiat similique reprehenderit aperiam.`,
+  },
+];
+export const FeaturePayData = [
+  {
+    icon: faTruck,
+    title: "free shipping & return",
+    des: `Free shipping on all orders over AED 85. *Free shipment within UAE. *Outside UAE courier charges are applicable.`,
+  },
+  {
+    icon: faMoneyBill,
+    title: "money back guarantee",
+    des: `100% money back guarantee offered if you are not happy with our products.`,
+  },
+  {
+    icon: faCreditCard,
+    title: "secure payment",
+    des: `Secure online payment processing with state of the art security in place.`,
+  },
+  {
+    icon: faHackerrank,
+    title: "haccp certified",
+    des: `International standard defining the requirements for effective control of food safety.`,
+  },
+];
 export const FeatureSubData = {
   title: "Stay Home and enjoy japan's finest daily essentials from our store.",
   des: "start your daily shopping with",

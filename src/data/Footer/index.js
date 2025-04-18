@@ -69,18 +69,17 @@ export const footer = [
       {
         icon: faHomeUser,
         text: "About Company",
+        path: "/AboutUs",
       },
       {
         icon: faLuggageCart,
         text: "Careers",
-      },
-      {
-        icon: faTag,
-        text: "Our Brands",
+        path: "/Career",
       },
       {
         icon: faAt,
         text: "Contact Us",
+        path: "/Contact",
       },
     ],
   },

@@ -34,9 +34,12 @@ const Footer = () => {
                 <h1 className="tracking-widest font-medium uppercase mb-5">
                   {title}
                 </h1>
-                {element.map(({ icon, text }, i) => (
+                {element.map(({ icon, text, path }, i) => (
                   <li key={i} className="w-full h-[30px] cursor-pointer group">
-                    <Link className="w-fit h-[30px] flex justify-center items-center">
+                    <Link
+                      to={path}
+                      className="w-fit h-[30px] flex justify-center items-center"
+                    >
                       <FontAwesomeIcon
                         className="w-[30px] py-1.5 text-white bg-[#59C491] rounded-sm mr-2"
                         icon={icon}
