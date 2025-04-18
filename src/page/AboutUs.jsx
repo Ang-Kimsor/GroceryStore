@@ -5,21 +5,22 @@ import {
   FeatureCustomer,
   FeatureSubscribe,
 } from "./../components/About";
-import Banner from "./../assets/about.jpg";
-import Story from "./../assets/berry.jpg";
-import { FeatureCustomerData } from "./../data/Home";
+import {
+  FeatureBigData,
+  FeatureStoryData,
+  FeatureCustomerData,
+  FeatureSubData,
+} from "./../data/About";
 const AboutUs = () => {
   return (
     <main className="bg-white w-full h-fit">
-      <FeatureBig img={Banner} title={"About Us"} />
+      <FeatureBig img={FeatureBigData.img} title={FeatureBigData.title} />
       <section className="w-full h-fit flex items-center justify-center md:py-10 py-5 mb-20">
         <FeatureStory
-          img={Story}
-          title1={"Who are we"}
-          title2={"The House of ethnical japanese products"}
-          des={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa blanditiis ea dicta illo consequuntur necessitatibus beatae doloribus quaerat voluptatibus quod?"
-          }
+          img={FeatureStoryData.img}
+          title1={FeatureStoryData.title1}
+          title2={FeatureStoryData.title2}
+          des={FeatureStoryData.des}
         />
       </section>
       <section className="w-full h-fit flex items-center bg-[#fdeedb] justify-center py-10 mb-16">
@@ -32,7 +33,13 @@ const AboutUs = () => {
         />
       </section>
       <section className="w-full h-fit flex items-center  justify-center pt-10">
-        <FeatureSubscribe />
+        <FeatureSubscribe
+          title={FeatureSubData.title}
+          des={FeatureSubData.des}
+          link={FeatureSubData.link}
+          path={FeatureSubData.path}
+          img={FeatureSubData.img}
+        />
       </section>
     </main>
   );

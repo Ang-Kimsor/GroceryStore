@@ -5,12 +5,11 @@ import {
   FeatureJobCard,
 } from "../components/Career";
 import { Link } from "react-router-dom";
-import Banner from "./../assets/career.jpg";
-import { FeatureJobCardData } from "../data/Career";
+import { FeatureBigData, FeatureJobCardData } from "../data/Career";
 const Career = () => {
   return (
     <main className="bg-white w-full h-fit">
-      <FeatureBig img={Banner} title={"Join Us"} />
+      <FeatureBig img={FeatureBigData.img} title={FeatureBigData.title} />
       <section className="mb-10">
         <FeatureSearch data={FeatureJobCardData} />
       </section>

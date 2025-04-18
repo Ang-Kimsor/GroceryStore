@@ -1,3 +1,5 @@
+import Banner from "./../../assets/career.jpg";
+export const FeatureBigData = { img: Banner, title: "Join us" };
 export const FeatureJobCardData = [
   {
     title: "hr admin",
