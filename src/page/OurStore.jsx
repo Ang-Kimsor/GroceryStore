@@ -38,7 +38,7 @@ const OurStore = () => {
 
   return (
     <main className="w-full h-fit  flex md:flex-row flex-col justify-center md:mt-20 mt-10 relative">
-      <aside className="md:w-[300px] w-full h-fit md:sticky md:top-0">
+      <aside className="md:w-[300px] w-full pb-10 pt-2 md:pl-3 h-fit md:sticky md:top-0">
         <div className="w-full h-fit p-2">
           <h1 className="text-xl font-medium mb-3 ">Product Category</h1>
           <ul className="flex flex-col gap-3">

@@ -111,7 +111,7 @@ export const FeatureSellerData = [
     discount: 0,
     img: Seller5,
     category: "Calbee Frugra",
-    stock: 83,
+    stock: 5,
   },
   {
     id: 8,
@@ -246,7 +246,7 @@ export const FeatureDiscoverData = [
     discount: 0,
     img: Seller5,
     category: "Calbee Frugra",
-    stock: 83,
+    stock: 5,
   },
   {
     id: 7,

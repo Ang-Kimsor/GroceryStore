@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Products } from "../data/OurStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { CartWish, Copy, ProductCard } from "../components/OurStore";
 import { FeatureTitle } from "../components/Home";
 const DetailProduct = () => {

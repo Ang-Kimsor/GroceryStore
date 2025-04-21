@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faStar } from "@fortawesome/free-regular-svg-icons";
-import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-regular-svg-icons";
+import {
+  faCartShopping,
+  faHeart,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import ImagePreview from "./ImagePreview.jsx";
 import Cart_Wish from "./Cart_Wish.jsx";
@@ -15,6 +19,7 @@ const ProductCard = ({
   category,
   stock,
 }) => {
+  const [fullStock, setfullStock] = useState(false);
   const [hover, setHover] = useState(false);
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
@@ -25,6 +30,15 @@ const ProductCard = ({
   }, []);
   return (
     <>
+      {/* stock full */}
+      <div
+        className={`${
+          fullStock ? "visible opacity-100" : "invisible opacity-0"
+        } fixed bottom-10 z-[50] -translate-x-1/2 left-1/2 bg-red-500 py-2 rounded text-white font-medium text-md px-5`}
+      >
+        Adding quantity greater than stock
+      </div>
+
       {/* Image preview */}
 
       <ImagePreview
@@ -43,6 +57,7 @@ const ProductCard = ({
         discount={discount}
         hidecart={() => setCart(false)}
         hidewish={() => setWish(false)}
+        stock={stock}
       />
       {/* Main */}
       <Link
@@ -129,11 +144,14 @@ const ProductCard = ({
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setCart(true);
-                  setTimeout(() => {
-                    setCart(false);
-                  }, 2500);
-                  setQty(qty + 1);
+                  if (qty < stock) {
+                    setQty((prev) => prev + 1);
+                    setCart(true);
+                    setTimeout(() => setCart(false), 2000);
+                  } else {
+                    setfullStock(true);
+                    setTimeout(() => setfullStock(false), 2000);
+                  }
                 }}
                 className={`${
                   hover

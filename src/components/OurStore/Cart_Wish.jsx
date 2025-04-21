@@ -11,6 +11,7 @@ const Cart_Wish = ({
   discount,
   hidecart,
   hidewish,
+  stock,
 }) => {
   return (
     <>
