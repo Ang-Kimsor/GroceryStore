@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import ImagePreview from "./ImagePreview.jsx";
 import Cart_Wish from "./Cart_Wish.jsx";
+import { useWishlist } from "../../Context/WishlistContext.jsx";
 const ProductCard = ({
   id,
   name,
@@ -20,27 +21,24 @@ const ProductCard = ({
   stock,
 }) => {
   const [fullStock, setfullStock] = useState(false);
+  const [alreadywish, setalreadywish] = useState(false);
   const [hover, setHover] = useState(false);
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
   const [OpenImg, setOpenImg] = useState(false);
   const [qty, setQty] = useState(0);
+  const { wishlist, dispatchWishlist } = useWishlist();
+  const isAlreadyInWishlist = wishlist.some((item) => item.id === id);
   useEffect(() => {
     rate = Math.round(rate);
   }, []);
+  useEffect(() => {
+    console.log(wishlist);
+    console.log(isAlreadyInWishlist);
+  }, [wish, alreadywish]);
   return (
     <>
-      {/* stock full */}
-      <div
-        className={`${
-          fullStock ? "visible opacity-100" : "invisible opacity-0"
-        } fixed bottom-10 z-[50] -translate-x-1/2 left-1/2 bg-red-500 py-2 rounded text-white font-medium text-md px-5`}
-      >
-        Adding quantity greater than stock
-      </div>
-
       {/* Image preview */}
-
       <ImagePreview
         img={img}
         OpenImg={OpenImg}
@@ -55,6 +53,8 @@ const ProductCard = ({
         wish={wish}
         price={price}
         discount={discount}
+        fullStock={fullStock}
+        alreadywish={alreadywish}
         hidecart={() => setCart(false)}
         hidewish={() => setWish(false)}
       />
@@ -127,10 +127,28 @@ const ProductCard = ({
                 <span
                   onClick={(e) => {
                     e.preventDefault();
-                    setWish(true);
-                    setTimeout(() => {
+                    if (isAlreadyInWishlist) {
+                      setalreadywish(true);
                       setWish(false);
-                    }, 2500);
+                      setTimeout(() => setalreadywish(false), 2500);
+                    } else {
+                      dispatchWishlist({
+                        type: "ADD_TO_WISHLIST",
+                        payload: {
+                          id: id,
+                          name: name,
+                          price: price,
+                          discount: discount,
+                          rate: rate,
+                          img: img,
+                          category: category,
+                          stock: stock,
+                        },
+                      });
+                      setWish(true);
+                      setalreadywish(false);
+                      setTimeout(() => setWish(false), 2500);
+                    }
                   }}
                   className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
                 >

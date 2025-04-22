@@ -1,12 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Products } from "../data/OurStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { CartWish, Copy, ProductCard } from "../components/OurStore";
 import { FeatureTitle } from "../components/Home";
+import { useWishlist } from "../Context/WishlistContext.jsx";
 const DetailProduct = () => {
   let Review = useRef(Math.round(Math.random(100) * 100));
+  const [fullStock, setfullStock] = useState(false);
+  const [alreadywish, setalreadywish] = useState(false);
   const [qty, setQty] = useState(1);
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
@@ -18,6 +21,14 @@ const DetailProduct = () => {
   const ProductRelated = Products.filter(
     (p) => p.category == category && p.id != Product[0]["id"]
   ).slice(0, 5);
+  const { wishlist, dispatchWishlist } = useWishlist();
+  const isAlreadyInWishlist = wishlist.some(
+    (item) => item.id === Product[0]["id"]
+  );
+  useEffect(() => {
+    console.log(wishlist);
+    console.log(isAlreadyInWishlist);
+  }, [wish, alreadywish]);
   return (
     <>
       {/* Cart_Wishlist */}
@@ -29,6 +40,8 @@ const DetailProduct = () => {
         wish={wish}
         price={Product[0]["price"]}
         discount={Product[0]["discount"]}
+        fullStock={fullStock}
+        alreadywish={alreadywish}
         hidecart={() => setCart(false)}
         hidewish={() => setWish(false)}
       />
@@ -177,11 +190,30 @@ const DetailProduct = () => {
                 Add to cart
               </button>
               <button
-                onClick={() => {
-                  setWish(true);
-                  setTimeout(() => {
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (isAlreadyInWishlist) {
+                    setalreadywish(true);
                     setWish(false);
-                  }, 2500);
+                    setTimeout(() => setalreadywish(false), 2500);
+                  } else {
+                    dispatchWishlist({
+                      type: "ADD_TO_WISHLIST",
+                      payload: {
+                        id: Product[0]["id"],
+                        name: Product[0]["name"],
+                        price: Product[0]["price"],
+                        discount: Product[0]["discount"],
+                        rate: Product[0]["rate"],
+                        img: Product[0]["img"],
+                        category: Product[0]["category"],
+                        stock: Product[0]["stock"],
+                      },
+                    });
+                    setWish(true);
+                    setalreadywish(false);
+                    setTimeout(() => setWish(false), 2500);
+                  }
                 }}
                 className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#59C491] text-[#59C491] font-bold text-lg "
               >

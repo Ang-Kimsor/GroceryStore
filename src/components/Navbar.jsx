@@ -27,6 +27,15 @@ const Navbar = () => {
 
   return (
     <>
+      <button
+        onClick={() => {
+          localStorage.clear();
+          window.location.reload();
+        }}
+        className="bg-red-500 px-4 py-2 top-20 z-[100] text-white rounded fixed left-1/2 -translate-x-1/2 cursor-pointer"
+      >
+        Reset local storage
+      </button>
       <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
       <aside
         className={`lg:hidden 

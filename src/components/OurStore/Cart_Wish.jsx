@@ -11,9 +11,18 @@ const Cart_Wish = ({
   discount,
   hidecart,
   hidewish,
+  fullStock,
+  alreadywish,
 }) => {
   return (
     <>
+      <div
+        className={`${
+          fullStock ? "visible opacity-100" : "invisible opacity-0"
+        } transition-all duration-500 fixed bottom-10 z-[50] -translate-x-1/2 left-1/2 bg-red-500 py-2 rounded text-white font-medium text-md px-5`}
+      >
+        Adding quantity greater than stock
+      </div>
       <div
         className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
           cart ? "opacity-100 visible " : "opacity-0 invisible "
@@ -58,6 +67,13 @@ const Cart_Wish = ({
             Checkout
           </Link>
         </div>
+      </div>
+      <div
+        className={`${
+          alreadywish ? "visible opacity-100" : "invisible opacity-0"
+        } transition-all duration-500 fixed bottom-10 z-[50] -translate-x-1/2 left-1/2 bg-red-500 py-2 rounded text-white font-medium text-md px-5`}
+      >
+        Product already in wishlist
       </div>
       <div
         className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
