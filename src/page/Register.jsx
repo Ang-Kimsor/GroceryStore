@@ -18,9 +18,21 @@ const Register = () => {
           passM && name != "" && email != "" && pass != "" && passC != ""
             ? "opacity-100 visible"
             : "opacity-0 invisible"
-        } fixed top-24 left-1/2 -translate-x-1/2 bg-red-500 transition-all duration-500 text-white px-5  z-100 p-3 rounded `}
+        } fixed flex items-center top-24 left-1/2 -translate-x-1/2 bg-red-500 transition-all duration-500 text-white px-5  z-100 p-3 rounded `}
+        role="alert"
       >
-        Password not match
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <div>
+          <span class="font-medium">Password not match</span>
+        </div>
       </div>
       <main className="w-full md:h-[900px] h-[750px] relative">
         <div className="size-full">

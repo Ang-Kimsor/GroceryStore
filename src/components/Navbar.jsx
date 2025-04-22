@@ -32,9 +32,9 @@ const Navbar = () => {
           localStorage.clear();
           window.location.reload();
         }}
-        className="bg-red-500 px-4 py-2 top-20 z-[100] text-white rounded fixed left-1/2 -translate-x-1/2 cursor-pointer"
+        className="bg-red-500 px-4 ml-2 py-2 top-20 z-[100] text-white rounded fixed cursor-pointer"
       >
-        Reset local storage
+        Reset
       </button>
       <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
       <aside

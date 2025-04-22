@@ -29,6 +29,31 @@ const DetailProduct = () => {
     console.log(wishlist);
     console.log(isAlreadyInWishlist);
   }, [wish, alreadywish]);
+  const handleWishlist = (e) => {
+    e.preventDefault();
+    if (isAlreadyInWishlist) {
+      setalreadywish(true);
+      setWish(false);
+      setTimeout(() => setalreadywish(false), 2500);
+    } else {
+      dispatchWishlist({
+        type: "ADD",
+        payload: {
+          id: Product[0]["id"],
+          name: Product[0]["name"],
+          price: Product[0]["price"],
+          discount: Product[0]["discount"],
+          rate: Product[0]["rate"],
+          img: Product[0]["img"],
+          category: Product[0]["category"],
+          stock: Product[0]["stock"],
+        },
+      });
+      setWish(true);
+      setalreadywish(false);
+      setTimeout(() => setWish(false), 2500);
+    }
+  };
   return (
     <>
       {/* Cart_Wishlist */}
@@ -47,6 +72,7 @@ const DetailProduct = () => {
       />
       {/* Copy Link */}
       <Copy copy={copy} />
+      {/* main component */}
       <main className="w-full h-fit  flex items-center flex-col pt-10">
         <h1 className="w-[95%] flex gap-3 text-gray-800/50 md:text-lg text-[13px]">
           <Link to={"/OurStore"} className="text-[#59C491] text-center">
@@ -190,31 +216,7 @@ const DetailProduct = () => {
                 Add to cart
               </button>
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (isAlreadyInWishlist) {
-                    setalreadywish(true);
-                    setWish(false);
-                    setTimeout(() => setalreadywish(false), 2500);
-                  } else {
-                    dispatchWishlist({
-                      type: "ADD_TO_WISHLIST",
-                      payload: {
-                        id: Product[0]["id"],
-                        name: Product[0]["name"],
-                        price: Product[0]["price"],
-                        discount: Product[0]["discount"],
-                        rate: Product[0]["rate"],
-                        img: Product[0]["img"],
-                        category: Product[0]["category"],
-                        stock: Product[0]["stock"],
-                      },
-                    });
-                    setWish(true);
-                    setalreadywish(false);
-                    setTimeout(() => setWish(false), 2500);
-                  }
-                }}
+                onClick={(e) => handleWishlist(e)}
                 className="hover:bg-slate-500 hover:text-white hover:border-slate-500 cursor-pointer capitalize px-10 py-3 border border-[#59C491] text-[#59C491] font-bold text-lg "
               >
                 <FontAwesomeIcon icon={faHeart} className="pr-2" />

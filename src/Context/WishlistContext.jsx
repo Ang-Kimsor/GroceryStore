@@ -4,13 +4,13 @@ const WishlistContext = createContext();
 
 const wishlistReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_WISHLIST":
+    case "ADD":
       if (state.find((item) => item.id === action.payload.id)) {
         return state;
       }
       return [...state, action.payload];
 
-    case "REMOVE_FROM_WISHLIST":
+    case "REMOVE":
       return state.filter((item) => item.id !== action.payload);
 
     default:
@@ -43,8 +43,7 @@ export const WishlistProvider = ({ children }) => {
 
 export const useWishlist = () => {
   const context = useContext(WishlistContext);
-  if (!context) {
+  if (!context)
     throw new Error("useWishlist must be used inside a WishlistProvider");
-  }
   return context;
 };

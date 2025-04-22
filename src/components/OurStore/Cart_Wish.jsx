@@ -17,11 +17,23 @@ const Cart_Wish = ({
   return (
     <>
       <div
-        className={`${
+        class={`${
           fullStock ? "visible opacity-100" : "invisible opacity-0"
-        } transition-all duration-500 fixed bottom-10 z-[50] -translate-x-1/2 left-1/2 bg-red-500 py-2 rounded text-white font-medium text-md px-5`}
+        } flex items-center fixed transition-all duration-500 top-20 z-[50] -translate-x-1/2 left-1/2 p-4 mb-4 text-sm text-white rounded-lg bg-red-500`}
+        role="alert"
       >
-        Adding quantity greater than stock
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <div>
+          <span class="font-medium">Adding quantity greater than stock</span>
+        </div>
       </div>
       <div
         className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
@@ -69,11 +81,23 @@ const Cart_Wish = ({
         </div>
       </div>
       <div
-        className={`${
+        class={`${
           alreadywish ? "visible opacity-100" : "invisible opacity-0"
-        } transition-all duration-500 fixed bottom-10 z-[50] -translate-x-1/2 left-1/2 bg-red-500 py-2 rounded text-white font-medium text-md px-5`}
+        } flex items-center fixed transition-all duration-500 top-20 z-[50] -translate-x-1/2 left-1/2 p-4 mb-4 text-sm text-white rounded-lg bg-red-500`}
+        role="alert"
       >
-        Product already in wishlist
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <div>
+          <span class="font-medium">Product already in wishlist</span>
+        </div>
       </div>
       <div
         className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${

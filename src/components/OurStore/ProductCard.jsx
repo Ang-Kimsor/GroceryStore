@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import ImagePreview from "./ImagePreview.jsx";
 import Cart_Wish from "./Cart_Wish.jsx";
 import { useWishlist } from "../../Context/WishlistContext.jsx";
+import { useCart } from "../../Context/CartContext.jsx";
 const ProductCard = ({
   id,
   name,
@@ -28,14 +29,65 @@ const ProductCard = ({
   const [OpenImg, setOpenImg] = useState(false);
   const [qty, setQty] = useState(0);
   const { wishlist, dispatchWishlist } = useWishlist();
+  const { Cart, dispatchCart } = useCart();
   const isAlreadyInWishlist = wishlist.some((item) => item.id === id);
   useEffect(() => {
     rate = Math.round(rate);
   }, []);
+  // useEffect(() => {
+  //   console.log(wishlist);
+  //   console.log(isAlreadyInWishlist);
+  // }, [wish, alreadywish]);
   useEffect(() => {
-    console.log(wishlist);
-    console.log(isAlreadyInWishlist);
-  }, [wish, alreadywish]);
+    console.log(Cart);
+  }, [cart, fullStock, qty]);
+  const handleWishlist = (e) => {
+    e.preventDefault();
+    if (isAlreadyInWishlist) {
+      setalreadywish(true);
+      setWish(false);
+      setTimeout(() => setalreadywish(false), 2500);
+    } else {
+      dispatchWishlist({
+        type: "ADD",
+        payload: {
+          id: id,
+          name: name,
+          price: price,
+          discount: discount,
+          rate: rate,
+          img: img,
+          category: category,
+          stock: stock,
+        },
+      });
+      setWish(true);
+      setalreadywish(false);
+      setTimeout(() => setWish(false), 2500);
+    }
+  };
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const inCart = Cart.find((item) => item.id === id);
+    if (inCart && inCart.quantity >= stock) {
+      setfullStock(true);
+      setTimeout(() => setfullStock(false), 2000);
+    } else {
+      dispatchCart({
+        type: "ADD",
+        payload: {
+          id: id,
+          name: name,
+          price: price,
+          discount: discount,
+          rate: rate,
+          img: img,
+          category: category,
+          stock: stock,
+        },
+      });
+    }
+  };
   return (
     <>
       {/* Image preview */}
@@ -125,31 +177,7 @@ const ProductCard = ({
                   />
                 </span>
                 <span
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (isAlreadyInWishlist) {
-                      setalreadywish(true);
-                      setWish(false);
-                      setTimeout(() => setalreadywish(false), 2500);
-                    } else {
-                      dispatchWishlist({
-                        type: "ADD_TO_WISHLIST",
-                        payload: {
-                          id: id,
-                          name: name,
-                          price: price,
-                          discount: discount,
-                          rate: rate,
-                          img: img,
-                          category: category,
-                          stock: stock,
-                        },
-                      });
-                      setWish(true);
-                      setalreadywish(false);
-                      setTimeout(() => setWish(false), 2500);
-                    }
-                  }}
+                  onClick={(e) => handleWishlist(e)}
                   className="md:w-[40px] md:h-[40px] size-[25px] rounded-full flex items-center justify-center bg-white"
                 >
                   <FontAwesomeIcon
@@ -169,6 +197,7 @@ const ProductCard = ({
                     setfullStock(true);
                     setTimeout(() => setfullStock(false), 2000);
                   }
+                  handleAddToCart(e);
                 }}
                 className={`${
                   hover
