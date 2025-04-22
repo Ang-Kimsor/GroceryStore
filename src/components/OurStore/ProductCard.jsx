@@ -57,7 +57,6 @@ const ProductCard = ({
         discount={discount}
         hidecart={() => setCart(false)}
         hidewish={() => setWish(false)}
-        stock={stock}
       />
       {/* Main */}
       <Link
