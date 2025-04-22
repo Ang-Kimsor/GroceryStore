@@ -5,7 +5,7 @@ const FeatureSmall = ({ name, img }) => {
   return (
     <Link
       to={"OurStore"}
-      className="bg-[#f3f3f3] rounded w-full md:h-[230px] flex px-5 group"
+      className="bg-[#f3f3f3] rounded w-full md:h-[230px] md:py-0 py-1 flex px-5 group"
     >
       <div className="w-1/2  h-full flex flex-col justify-center">
         <p className="lg:text-xl text-lg font-[550] pb-2">{name}</p>
