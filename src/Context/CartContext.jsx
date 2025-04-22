@@ -6,21 +6,35 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       const existing = state.find((item) => item.id === action.payload.id);
+      const addQty = Math.min(action.payload.qty || 1, action.payload.stock);
+
       if (existing) {
-        const totalQty = existing.quantity + 1;
+        const totalQty = existing.qty + addQty;
         if (totalQty > existing.stock) {
           return state;
         }
         return state.map((item) =>
-          item.id === action.payload.id ? { ...item, quantity: totalQty } : item
+          item.id === action.payload.id ? { ...item, qty: totalQty } : item
         );
       } else {
-        return [...state, { ...action.payload, quantity: 1 }];
+        const initialQty =
+          addQty > action.payload.stock ? action.payload.stock : addQty;
+        return [...state, { ...action.payload, qty: initialQty }];
       }
+
     case "REMOVE":
       return state.filter((item) => item.id !== action.payload);
+
     case "SET":
       return action.payload;
+
+    case "UPDATE":
+      return state.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, qty: action.payload.qty }
+          : item
+      );
+
     default:
       return state;
   }

@@ -34,10 +34,6 @@ const ProductCard = ({
   useEffect(() => {
     rate = Math.round(rate);
   }, []);
-  // useEffect(() => {
-  //   console.log(wishlist);
-  //   console.log(isAlreadyInWishlist);
-  // }, [wish, alreadywish]);
   useEffect(() => {
     console.log(Cart);
   }, [cart, fullStock, qty]);
@@ -69,10 +65,13 @@ const ProductCard = ({
   const handleAddToCart = (e) => {
     e.preventDefault();
     const inCart = Cart.find((item) => item.id === id);
-    if (inCart && inCart.quantity >= stock) {
+    if (inCart && inCart.qty >= stock) {
       setfullStock(true);
       setTimeout(() => setfullStock(false), 2000);
     } else {
+      setQty(qty + 1);
+      setCart(true);
+      setTimeout(() => setCart(false), 2000);
       dispatchCart({
         type: "ADD",
         payload: {
@@ -84,6 +83,7 @@ const ProductCard = ({
           img: img,
           category: category,
           stock: stock,
+          qty: 1,
         },
       });
     }
@@ -121,7 +121,7 @@ const ProductCard = ({
                 "_"
               )}`
         }
-        className={`w-fit h-fit  group cursor-pointer  ${
+        className={`w-fit h-fit  group cursor-pointer ${
           stock == 0 ? "opacity-50" : null
         }`}
         onClick={(e) => {
@@ -187,18 +187,7 @@ const ProductCard = ({
                 </span>
               </div>
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (qty < stock) {
-                    setQty((prev) => prev + 1);
-                    setCart(true);
-                    setTimeout(() => setCart(false), 2000);
-                  } else {
-                    setfullStock(true);
-                    setTimeout(() => setfullStock(false), 2000);
-                  }
-                  handleAddToCart(e);
-                }}
+                onClick={(e) => handleAddToCart(e)}
                 className={`${
                   hover
                     ? "translate-y-0 visible"
@@ -245,18 +234,7 @@ const ProductCard = ({
             )}
           </p>
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              if (qty < stock) {
-                setQty((prev) => prev + 1);
-                setCart(true);
-                setTimeout(() => setCart(false), 2000);
-              } else {
-                setfullStock(true);
-                setTimeout(() => setfullStock(false), 2000);
-              }
-              handleAddToCart(e);
-            }}
+            onClick={(e) => handleAddToCart(e)}
             className={` w-full h-[30px] lg:hidden flex bg-[#59C491] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >
             <FontAwesomeIcon

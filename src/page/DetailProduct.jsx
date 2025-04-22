@@ -6,6 +6,7 @@ import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
 import { CartWish, Copy, ProductCard } from "../components/OurStore";
 import { FeatureTitle } from "../components/Home";
 import { useWishlist } from "../Context/WishlistContext.jsx";
+import { useCart } from "../Context/CartContext.jsx";
 const DetailProduct = () => {
   let Review = useRef(Math.round(Math.random(100) * 100));
   const [fullStock, setfullStock] = useState(false);
@@ -25,10 +26,7 @@ const DetailProduct = () => {
   const isAlreadyInWishlist = wishlist.some(
     (item) => item.id === Product[0]["id"]
   );
-  useEffect(() => {
-    console.log(wishlist);
-    console.log(isAlreadyInWishlist);
-  }, [wish, alreadywish]);
+  const { Cart, dispatchCart } = useCart();
   const handleWishlist = (e) => {
     e.preventDefault();
     if (isAlreadyInWishlist) {
@@ -54,6 +52,36 @@ const DetailProduct = () => {
       setTimeout(() => setWish(false), 2500);
     }
   };
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const inCart = Cart.find((item) => item.id === Product[0]["id"]);
+    const newQty = inCart ? inCart.qty + qty : qty;
+    if (newQty > Product[0]["stock"]) {
+      setfullStock(true);
+      setTimeout(() => setfullStock(false), 2000);
+    } else {
+      setCart(true);
+      setTimeout(() => setCart(false), 2000);
+      dispatchCart({
+        type: inCart ? "UPDATE" : "ADD",
+        payload: {
+          id: Product[0]["id"],
+          name: Product[0]["name"],
+          price: Product[0]["price"],
+          discount: Product[0]["discount"],
+          rate: Product[0]["rate"],
+          img: Product[0]["img"],
+          category: Product[0]["category"],
+          stock: Product[0]["stock"],
+          qty: newQty,
+        },
+      });
+    }
+  };
+  useEffect(() => {
+    console.log(Cart);
+    console.log(qty);
+  }, [cart, fullStock, qty]);
   return (
     <>
       {/* Cart_Wishlist */}
@@ -205,12 +233,7 @@ const DetailProduct = () => {
             </div>
             <div className="size-fit  mt-5 flex flex-wrap gap-3">
               <button
-                onClick={() => {
-                  setCart(true);
-                  setTimeout(() => {
-                    setCart(false);
-                  }, 2500);
-                }}
+                onClick={(e) => handleAddToCart(e)}
                 className="hover:bg-[#fe6150] cursor-pointer capitalize px-12 py-3 bg-[#59C491] text-white font-bold text-lg "
               >
                 Add to cart
