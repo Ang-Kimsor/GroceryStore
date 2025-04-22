@@ -247,12 +247,15 @@ const ProductCard = ({
           <button
             onClick={(e) => {
               e.preventDefault();
-              {
-                stock == 0 ? null : setCart(true);
-                setTimeout(() => {
-                  setCart(false);
-                }, 2500);
+              if (qty < stock) {
+                setQty((prev) => prev + 1);
+                setCart(true);
+                setTimeout(() => setCart(false), 2000);
+              } else {
+                setfullStock(true);
+                setTimeout(() => setfullStock(false), 2000);
               }
+              handleAddToCart(e);
             }}
             className={` w-full h-[30px] lg:hidden flex bg-[#59C491] gap-2 rounded items-center justify-center mt-5 cursor-pointer`}
           >

@@ -17,13 +17,13 @@ const Cart_Wish = ({
   return (
     <>
       <div
-        class={`${
+        className={`${
           fullStock ? "visible opacity-100" : "invisible opacity-0"
         } flex items-center fixed transition-all duration-500 top-20 z-[50] -translate-x-1/2 left-1/2 p-4 mb-4 text-sm text-white rounded-lg bg-red-500`}
         role="alert"
       >
         <svg
-          class="shrink-0 inline w-4 h-4 me-3"
+          className="shrink-0 inline w-4 h-4 me-3"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -32,7 +32,7 @@ const Cart_Wish = ({
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
         <div>
-          <span class="font-medium">Adding quantity greater than stock</span>
+          <span className="font-medium">Adding quantity greater than stock</span>
         </div>
       </div>
       <div
@@ -81,13 +81,13 @@ const Cart_Wish = ({
         </div>
       </div>
       <div
-        class={`${
+        className={`${
           alreadywish ? "visible opacity-100" : "invisible opacity-0"
         } flex items-center fixed transition-all duration-500 top-20 z-[50] -translate-x-1/2 left-1/2 p-4 mb-4 text-sm text-white rounded-lg bg-red-500`}
         role="alert"
       >
         <svg
-          class="shrink-0 inline w-4 h-4 me-3"
+          className="shrink-0 inline w-4 h-4 me-3"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -96,7 +96,7 @@ const Cart_Wish = ({
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
         <div>
-          <span class="font-medium">Product already in wishlist</span>
+          <span className="font-medium">Product already in wishlist</span>
         </div>
       </div>
       <div
