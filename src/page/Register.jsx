@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Bg from "./../assets/bg-login.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useUser } from "../Context/UserContext";
 const Register = () => {
+  const navigate = useNavigate();
+  const { User, dispatchUser } = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -11,6 +14,29 @@ const Register = () => {
   const [eye, setEye] = useState(false);
   const [eyeC, setEyeC] = useState(false);
   const [passM, setPassM] = useState(false);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    if (pass !== passC) {
+      setPassM(true);
+      setTimeout(() => setPassM(false), 2500);
+      return;
+    }
+
+    dispatchUser({
+      type: "REGISTER",
+      payload: {
+        name: name,
+        email: email,
+        password: pass,
+      },
+    });
+    alert("Registration successful!");
+    navigate("/Login");
+  };
+
+  useEffect(() => {
+    console.log(User);
+  }, [User]);
   return (
     <>
       <div
@@ -22,7 +48,7 @@ const Register = () => {
         role="alert"
       >
         <svg
-          class="shrink-0 inline w-4 h-4 me-3"
+          className="shrink-0 inline w-4 h-4 me-3"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -31,7 +57,7 @@ const Register = () => {
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
         <div>
-          <span class="font-medium">Password not match</span>
+          <span className="font-medium">Password not match</span>
         </div>
       </div>
       <main className="w-full md:h-[900px] h-[750px] relative">
@@ -39,9 +65,8 @@ const Register = () => {
           <img src={Bg} className="size-full object-cover" alt="" />
         </div>
         <form
-          onSubmit={(e) => {
-            pass != passC ? e.preventDefault() : null;
-          }}
+          action={"/Login"}
+          onSubmit={(e) => handleRegister(e)}
           className="md:w-[600px] flex flex-col md:gap-3 gap-2 w-[90%] h-fit bg-white absolute inset-1/2 -translate-1/2 p-5 md:px-10 md:py-16"
         >
           <p className="uppercase text-[#59C491] text-[13px] tracking-widest">

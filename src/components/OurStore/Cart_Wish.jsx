@@ -19,7 +19,7 @@ const Cart_Wish = ({
       <div
         className={`${
           fullStock ? "visible opacity-100" : "invisible opacity-0"
-        } w-[300px] flex items-center justify-center fixed transition-all duration-500 top-5 md:top-20 z-[50] -translate-x-1/2 left-1/2 p-4 mb-4 text-[13px] text-white rounded-lg bg-red-500`}
+        } w-[300px] flex items-center justify-center fixed transition-all duration-500 bottom-1 z-[150] -translate-x-1/2 left-1/2 p-4 mb-4 text-[13px] text-white rounded-lg bg-red-500`}
         role="alert"
       >
         <svg
@@ -85,7 +85,7 @@ const Cart_Wish = ({
       <div
         className={`${
           alreadywish ? "visible opacity-100" : "invisible opacity-0"
-        } w-[240px] flex items-center justify-center fixed transition-all duration-500 top-5 md:top-20 z-[50] -translate-x-1/2 left-1/2 p-4 mb-4 text-[13px] text-white rounded-lg bg-red-500`}
+        } w-[240px] flex items-center justify-center fixed transition-all duration-500 bottom-1 z-[150] -translate-x-1/2 left-1/2 p-4 mb-4 text-[13px] text-white rounded-lg bg-red-500`}
         role="alert"
       >
         <svg
