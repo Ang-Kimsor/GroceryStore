@@ -78,10 +78,6 @@ const DetailProduct = () => {
       });
     }
   };
-  useEffect(() => {
-    console.log(Cart);
-    console.log(qty);
-  }, [cart, fullStock, qty]);
   return (
     <>
       {/* Cart_Wishlist */}

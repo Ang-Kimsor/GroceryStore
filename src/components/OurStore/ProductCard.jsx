@@ -34,9 +34,6 @@ const ProductCard = ({
   useEffect(() => {
     rate = Math.round(rate);
   }, []);
-  useEffect(() => {
-    console.log(Cart);
-  }, [cart, fullStock, qty]);
   const handleWishlist = (e) => {
     e.preventDefault();
     if (isAlreadyInWishlist) {
