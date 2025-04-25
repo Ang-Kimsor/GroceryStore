@@ -58,7 +58,7 @@ const Register = () => {
           passM && name != "" && email != "" && pass != "" && passC != ""
             ? "opacity-100 visible"
             : "opacity-0 invisible"
-        } fixed flex items-center top-24 left-1/2 -translate-x-1/2 bg-red-500 transition-all duration-500 text-white px-5  z-100 p-3 rounded `}
+        } w-[290px] fixed flex items-center justify-center bottom-2 left-1/2 -translate-x-1/2 bg-red-500 transition-all duration-500 text-white px-5  z-100 p-3 rounded `}
         role="alert"
       >
         <svg
@@ -71,7 +71,9 @@ const Register = () => {
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
         <div>
-          <span className="font-medium">{pass !== passC ? msg1 : msg2}</span>
+          <span className="text-sm font-medium">
+            {pass !== passC ? msg1 : msg2}
+          </span>
         </div>
       </div>
       <main className="w-full md:h-[1100px] h-[950px] relative">

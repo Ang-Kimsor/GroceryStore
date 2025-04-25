@@ -40,6 +40,18 @@ const OurStore = () => {
     <main className="w-full h-fit  flex md:flex-row flex-col justify-center md:mt-20 mt-10 relative">
       <aside className="md:w-[300px] w-full pb-10 pt-2 md:pl-3 h-fit md:sticky md:top-0">
         <div className="w-full h-fit p-2">
+          <h1 className="text-xl font-medium mb-3 ">Filter By Price</h1>
+          <div className="w-full h-[4px] bg-gray-500/50 mb-5 relative px-1">
+            <span className="absolute size-[10px] bg-black rounded-full left-0 top-[-3px]"></span>
+            <div className="w-full h-full bg-black"></div>
+            <span className="absolute size-[10px] bg-black rounded-full right-0 top-[-3px]"></span>
+          </div>
+          <div className="flex justify-between my-5  items-center">
+            <p className="text-sm">Price: 10$ - 100$</p>
+            <button className="bg-gray-500/20 px-5 py-1 text-[14px] tracking-wide cursor-pointer font-medium hover:bg-black hover:text-white">
+              Filter
+            </button>
+          </div>
           <h1 className="text-xl font-medium mb-3 ">Product Category</h1>
           <ul className="flex flex-col gap-3">
             {category.map(({ name }, i) => (
