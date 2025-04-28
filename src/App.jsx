@@ -11,6 +11,7 @@ import {
   Career,
   About,
   Contact,
+  Cart,
 } from "./page";
 const Router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const Router = createBrowserRouter([
       {
         path: "/Contact",
         element: <Contact />,
+      },
+      {
+        path: "/Cart",
+        element: <Cart />,
       },
     ],
   },

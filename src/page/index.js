@@ -7,3 +7,4 @@ export { default as Register } from "./Register";
 export { default as Career } from "./Career";
 export { default as About } from "./AboutUs";
 export { default as Contact } from "./Contact";
+export { default as Cart } from "./Cart";

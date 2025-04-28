@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <button
+      {/* <button
         onClick={() => {
           localStorage.clear();
           window.location.reload();
@@ -35,7 +35,7 @@ const Navbar = () => {
         className="bg-red-500 px-4 ml-2 py-2 top-20 z-[100] text-white rounded fixed cursor-pointer"
       >
         Reset
-      </button>
+      </button> */}
       <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
       <aside
         className={`lg:hidden 
@@ -117,12 +117,15 @@ const Navbar = () => {
               >
                 <FontAwesomeIcon className="cursor-pointer" icon={faUser} />
               </Link>
-              <span className="w-[30px] h-[30px]  flex justify-center items-center">
+              <Link
+                to={"/Cart"}
+                className="w-[30px] h-[30px]  flex justify-center items-center"
+              >
                 <FontAwesomeIcon
                   className="cursor-pointer"
                   icon={faShoppingCart}
                 />
-              </span>
+              </Link>
               <span className="lg:hidden flex w-[30px] h-[30px]  justify-center items-center">
                 <FontAwesomeIcon
                   className="cursor-pointer"
