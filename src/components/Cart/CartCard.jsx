@@ -1,28 +1,61 @@
-import React from "react";
-import img from "./../../assets/Product/p10.jpg";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../../Context/CartContext";
 
-const CartCard = () => {
+const CartCard = ({ id, name, img, price, qty, discount, stock, lastitem }) => {
+  const { Cart, dispatchCart } = useCart();
+  const [QTY, setQTY] = useState(qty);
+  const handleIncrease = () => {
+    const newQty = Math.min(QTY + 1, stock);
+    dispatchCart({ type: "UPDATE", payload: { id, qty: newQty } });
+    setQTY(newQty);
+  };
+
+  const handleDecrease = () => {
+    const newQty = QTY - 1;
+    if (newQty <= 0) dispatchCart({ type: "REMOVE", payload: id });
+    else dispatchCart({ type: "UPDATE", payload: { id, qty: newQty } });
+    setQTY(newQty);
+  };
+
+  const handleRemove = () => {
+    dispatchCart({ type: "REMOVE", payload: id });
+  };
+
+  const discountedPrice = price * (1 - discount / 100);
   return (
-    <div className="w-full pb-4 border-b border-gray-500/30 flex flex-row relative">
+    <div
+      className={`w-full flex flex-row relative ${
+        !lastitem ? "border-b border-gray-800/50" : null
+      }`}
+    >
       <div className="size-[160px]">
-        <img src={img} alt="" />
+        <img src={img} alt={id + name} />
       </div>
       <FontAwesomeIcon
+        onClick={handleRemove}
         className="absolute right-3 top-2 text-[12px] cursor-pointer text-red-500"
         icon={faX}
       />
-      <p className="absolute bottom-[70px] right-3 text-lg">$12.34</p>
+      <p className="absolute bottom-[70px] right-3 text-lg">
+        ${(QTY * discountedPrice).toFixed(2)}
+      </p>
       <div className="ml-2 pt-1 flex flex-col gap-1">
-        <p>Title</p>
-        <p className="text-[13px] py-2">$12.34</p>
+        <p>{name}</p>
+        <p className="text-[13px] py-2">${discountedPrice.toFixed(2)}</p>
         <div className="flex gap-3 items-center">
-          <span className="text-lg font-medium text-gray-500/80 cursor-pointer">
+          <span
+            onClick={handleDecrease}
+            className="text-lg font-medium text-gray-500/80 cursor-pointer"
+          >
             -
           </span>
-          <span>1</span>
-          <span className="text-lg font-medium text-gray-500/80 cursor-pointer">
+          <span>{QTY}</span>
+          <span
+            onClick={handleIncrease}
+            className="text-lg font-medium text-gray-500/80 cursor-pointer"
+          >
             +
           </span>
         </div>

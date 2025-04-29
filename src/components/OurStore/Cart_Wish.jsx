@@ -74,10 +74,16 @@ const Cart_Wish = ({
           />
         </div>
         <div className="w-full h-[60px] grid grid-cols-2 gap-4 place-items-center px-3">
-          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
+          <Link
+            to={"/Cart"}
+            className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] "
+          >
             View Cart
           </Link>
-          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
+          <Link
+            to={"/Cart"}
+            className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white "
+          >
             Checkout
           </Link>
         </div>

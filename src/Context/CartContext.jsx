@@ -7,7 +7,6 @@ const cartReducer = (state, action) => {
     case "ADD":
       const existing = state.find((item) => item.id === action.payload.id);
       const addQty = Math.min(action.payload.qty || 1, action.payload.stock);
-
       if (existing) {
         const totalQty = existing.qty + addQty;
         if (totalQty > existing.stock) {
@@ -21,13 +20,8 @@ const cartReducer = (state, action) => {
           addQty > action.payload.stock ? action.payload.stock : addQty;
         return [...state, { ...action.payload, qty: initialQty }];
       }
-
     case "REMOVE":
       return state.filter((item) => item.id !== action.payload);
-
-    case "SET":
-      return action.payload;
-
     case "UPDATE":
       return state.map((item) =>
         item.id === action.payload.id
