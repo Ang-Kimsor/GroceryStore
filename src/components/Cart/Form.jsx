@@ -7,7 +7,21 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { country } from "../../data/Contact";
+import { useState } from "react";
 const Form = () => {
+  const [pass, setPass] = useState("");
+  const [passC, setPassC] = useState("");
+  const [passCEye, setPassCEye] = useState(false);
+  const [passEye, setPassEye] = useState(false);
+  const conditions = {
+    length: pass.length >= 8 && passC.length >= 8,
+    upper: /[A-Z]/.test(pass) && /[A-Z]/.test(passC),
+    lower: /[a-z]/.test(pass) && /[a-z]/.test(passC),
+    digit: /[0-9]/.test(pass) && /[0-9]/.test(passC),
+    special:
+      /[!@#$%^&*()_+-=,/?'";:]/.test(pass) &&
+      /[!@#$%^&*()_+-=,/?'";:]/.test(passC),
+  };
   return (
     <form className="lg:px-10 px-2">
       <div className="border-b border-gray-500/80 pb-3 flex items-center justify-between">
@@ -24,7 +38,7 @@ const Form = () => {
       <input
         type="email"
         placeholder="Email Address"
-        className="mt-6 w-full h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+        className="mt-6 w-full h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
       />
 
       <div className="flex items-center pt-5">
@@ -42,27 +56,27 @@ const Form = () => {
         <input
           type="text"
           placeholder="First Name"
-          className="w-1/2  h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-1/2  h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
         />
         <input
           type="text"
           placeholder="Last Name"
-          className="w-1/2  h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-1/2  h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
         />
       </div>
       <input
         type="tel"
         placeholder="Phone"
-        className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+        className="w-full mt-4 h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
       />
       <input
         type="text"
         placeholder="Company (Optional)"
-        className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+        className="w-full mt-4 h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
       />
       <select
         defaultValue="Cambodia"
-        className="w-full mt-4 h-[40px] outline-none pl-2 text-[#807D7E] text-[12px] bg-[#F6F6F8]"
+        className="w-full mt-4 h-[40px] outline-none pl-2 text-[12px] bg-[#F6F6F8]"
       >
         {country.map(({ name, region }, index) => (
           <option
@@ -78,7 +92,7 @@ const Form = () => {
         <input
           type="text"
           placeholder="Address"
-          className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-full mt-4  text-[12px] h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
         />
         <FontAwesomeIcon
           icon={faLocationDot}
@@ -88,18 +102,18 @@ const Form = () => {
       <input
         type="text"
         placeholder="Apartment, Suite, Etc. (Optional)"
-        className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+        className="w-full mt-4 text-[12px]  h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
       />
       <div className="flex gap-3 mt-4">
         <input
           type="text"
           placeholder="Town/City"
-          className="w-1/2  h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-1/2  h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
         />
         <input
           type="text"
           placeholder="State"
-          className="w-1/2  h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-1/2  h-[40px] text-[12px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
         />
       </div>
       <div className="flex items-center pt-5">
@@ -110,50 +124,64 @@ const Form = () => {
       </div>
       <div className="relative">
         <input
-          type="password"
+          type={passEye ? "text" : "password"}
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
           placeholder="Password"
-          className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] text-[12px] bg-[#F6F6F8]"
         />
         <FontAwesomeIcon
-          icon={faEyeSlash}
-          className="absolute right-1 top-[50%] mt-2 cursor-pointer -translate-y-1/2 text-[#807D7E]"
+          icon={!passEye ? faEyeSlash : faEye}
+          onClick={() => setPassEye(!passEye)}
+          className="absolute  text-[12px] right-1 top-[50%] mt-2 cursor-pointer -translate-y-1/2 text-[#807D7E]"
         />
       </div>
       <div className="relative">
         <input
-          type="password"
+          type={passCEye ? "text" : "password"}
+          value={passC}
+          onChange={(e) => setPassC(e.target.value)}
           placeholder="Confirm Password"
-          className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] bg-[#F6F6F8]"
+          className="w-full mt-4 h-[40px] outline-none pl-2 placeholder:text-[#807D7E] placeholder:text-[12px] text-[12px] bg-[#F6F6F8]"
         />
         <FontAwesomeIcon
-          icon={faEye}
-          className="absolute right-1 top-[50%] mt-2 cursor-pointer -translate-y-1/2 text-[#807D7E]"
+          icon={!passCEye ? faEyeSlash : faEye}
+          onClick={() => setPassCEye(!passCEye)}
+          className="absolute  text-[12px] right-1 top-[50%] mt-2 cursor-pointer -translate-y-1/2 text-[#807D7E]"
         />
       </div>
-      <div className="mt-4">
-        <p className="text-[10px] text-[#807D7E]">
-          Your password must have at least:
-        </p>
+      <div className="mt-5">
+        <p className="text-sm">Your password must have at least:</p>
         <span
-          className={`text-[10px] text-[#807D7E] mt-2 flex gap-2 items-center`}
+          className={`text-[12px] ${
+            conditions.length ? "text-green-500" : "text-gray-500/80"
+          } mt-2 flex gap-2 items-center`}
         >
           <FontAwesomeIcon icon={faCheck} />
           <p>8 Characters</p>
         </span>
         <span
-          className={`text-[10px] text-[#807D7E] mt-2 flex gap-2 items-center`}
+          className={`text-[12px] ${
+            conditions.special ? "text-green-500" : "text-gray-500/80"
+          } mt-2 flex gap-2 items-center`}
         >
           <FontAwesomeIcon icon={faCheck} />
           <p>1 Special Character (Example: # $ @ & ?)</p>
         </span>
         <span
-          className={`text-[10px] text-[#807D7E]  mt-2 flex gap-2 items-center`}
+          className={`text-[12px] ${
+            conditions.upper && conditions.lower
+              ? "text-green-500"
+              : "text-gray-500/80"
+          } mt-2 flex gap-2 items-center`}
         >
           <FontAwesomeIcon icon={faCheck} />
           <p>1 Uppercase and 1 Lowercase</p>
         </span>
         <span
-          className={`text-[10px] text-[#807D7E]  mt-2 flex gap-2 items-center`}
+          className={`text-[12px] ${
+            conditions.digit ? "text-green-500" : "text-gray-500/80"
+          } mt-2 flex gap-2 items-center`}
         >
           <FontAwesomeIcon icon={faCheck} />
           <p>1 Numberical Digit</p>

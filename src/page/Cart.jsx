@@ -100,7 +100,7 @@ const Cart = () => {
                     {totalPrice >= 50 ? "0.00" : (0.01 * totalPrice).toFixed(2)}
                   </p>
                 </div>
-                <div className="w-full text-md font-medium mt-7 flex justify-between text-[12px]">
+                <div className="w-full font-medium mt-7 flex justify-between text-xl">
                   <p>Total Amount: </p>
                   <p>${(totalPrice * 1.06).toFixed(2)}</p>
                 </div>
