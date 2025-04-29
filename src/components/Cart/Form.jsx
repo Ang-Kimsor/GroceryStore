@@ -222,13 +222,13 @@ const Form = () => {
       </div>
       <div className="w-full mt-7  flex justify-between">
         <Link
-          to={"/"}
+          to={"/OurStore"}
           className="border border-[#59C491] text-[#59C491] py-3 px-5 text-sm flex items-center justify-center cursor-pointer "
         >
           &lt; Back to Shop
         </Link>
         <Link
-          to={"/"}
+          to={"/Payment"}
           className="bg-[#59C491] text-white py-3 px-5 text-sm flex items-center justify-center cursor-pointer "
         >
           Proceed to Payment &gt;
