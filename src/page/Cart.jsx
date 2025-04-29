@@ -85,22 +85,22 @@ const Cart = () => {
                     )
                   )}
                 </div>
-                <div className="w-full text-md mt-7 flex justify-between">
+                <div className="w-full text-md mt-7 flex justify-between text-[12px]">
                   <p>Subtotal ({Cart.length})</p>
                   <p>${totalPrice.toFixed(2)}</p>
                 </div>
-                <div className="w-full text-md mt-7 flex justify-between">
+                <div className="w-full text-md mt-7 flex justify-between text-[12px]">
                   <p>Tax (5% VAT)</p>
                   <p>${(0.05 * totalPrice).toFixed(2)}</p>
                 </div>
-                <div className="w-full text-md mt-7 flex justify-between">
+                <div className="w-full text-md mt-7 flex justify-between text-[12px]">
                   <p>Shipping (Flexible Shipping)</p>
                   <p>
                     $
                     {totalPrice >= 50 ? "0.00" : (0.01 * totalPrice).toFixed(2)}
                   </p>
                 </div>
-                <div className="w-full text-md font-medium mt-7 flex justify-between">
+                <div className="w-full text-md font-medium mt-7 flex justify-between text-[12px]">
                   <p>Total Amount: </p>
                   <p>${(totalPrice * 1.06).toFixed(2)}</p>
                 </div>

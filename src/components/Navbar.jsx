@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./../assets/logo.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCart } from "../Context/CartContext";
 import {
   faBars,
   faMagnifyingGlass,
@@ -24,7 +25,7 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     };
   }, [openMenu]);
-
+  const {Cart} = useCart();
   return (
     <>
       {/* <button
@@ -119,12 +120,13 @@ const Navbar = () => {
               </Link>
               <Link
                 to={"/Cart"}
-                className="w-[30px] h-[30px]  flex justify-center items-center"
+                className="w-[30px] h-[30px] relative flex justify-center items-center"
               >
                 <FontAwesomeIcon
                   className="cursor-pointer"
                   icon={faShoppingCart}
                 />
+                <span className="text-[10px] text-white font-medium absolute top-[-5px] right-[-5px] size-4 bg-[#59C491] rounded-full flex justify-center items-center z-[10]">{Cart.length}</span>
               </Link>
               <span className="lg:hidden flex w-[30px] h-[30px]  justify-center items-center">
                 <FontAwesomeIcon
