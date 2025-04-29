@@ -11,7 +11,9 @@ const Cart = () => {
   return (
     <div className="w-full flex justify-center pb-10">
       <main className="lg:w-[95%] w-[99%] h-fit ">
-        <h1 className="py-12 text-[#59C491] lg:pl-0 pl-5">Cart & Checkout</h1>
+        <h1 className="lg:py-12 py-5 text-[#59C491] lg:pl-0 pl-2">
+          Cart & Checkout
+        </h1>
         <div className="grid lg:grid-cols-2 lg:gap-20 gap-5">
           <aside>
             <div className="bg-[#f8f8f8] md:p-5 p-2">
@@ -102,7 +104,12 @@ const Cart = () => {
                 </div>
                 <div className="w-full font-medium mt-7 flex justify-between text-xl">
                   <p>Total Amount: </p>
-                  <p>${(totalPrice * 1.06).toFixed(2)}</p>
+                  <p>
+                    $
+                    {totalPrice >= 50
+                      ? (totalPrice * 1.05).toFixed(2)
+                      : (totalPrice * 1.06).toFixed(2)}
+                  </p>
                 </div>
                 <p className="text-[12px] mt-7 text-gray-500/80 font-medium">
                   The total amount you pay includes all applicable customs
