@@ -14,7 +14,7 @@ const Form = () => {
   const [passC, setPassC] = useState("");
   const [passCEye, setPassCEye] = useState(false);
   const [passEye, setPassEye] = useState(false);
-  const {Cart} = useCart();
+  const { Cart } = useCart();
   const conditions = {
     length: pass.length >= 8 && passC.length >= 8,
     upper: /[A-Z]/.test(pass) && /[A-Z]/.test(passC),
@@ -228,8 +228,10 @@ const Form = () => {
           &lt; Back to Shop
         </Link>
         <Link
-          to={"/Payment"}
-          className={`${Cart.length == 0 && "hidden"} bg-[#59C491] text-white py-3 px-5 text-sm flex items-center justify-center cursor-pointer`}
+          to={"/Cart/Payment"}
+          className={`${
+            Cart.length == 0 && "hidden"
+          } bg-[#59C491] text-white py-3 px-5 text-sm flex items-center justify-center cursor-pointer`}
         >
           Proceed to Payment &gt;
         </Link>

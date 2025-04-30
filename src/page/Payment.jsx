@@ -18,11 +18,31 @@ import { useState } from "react";
 const Payment = () => {
   const { Cart } = useCart();
   const [cardNum, setCardNum] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [cvv, setCvv] = useState("");
   const handleChangeCardNum = (e) => {
     let input = e.target.value;
     input = input.replace(/\D/g, "");
     const formatted = input.replace(/(.{4})/g, "$1 ").trim();
     setCardNum(formatted);
+  };
+  const handleChangeMonth = (e) => {
+    let input = e.target.value;
+    input = input.replace(/\D/g, "");
+    if (parseInt(input) > 12) input = "12";
+    else if (parseInt(input) < 1) input = "1";
+    setMonth(input);
+  };
+  const handleChangeYear = (e) => {
+    let input = e.target.value;
+    input = input.replace(/\D/g, "");
+    setYear(input);
+  };
+  const handleChangeCVV = (e) => {
+    let input = e.target.value;
+    input = input.replace(/\D/g, "");
+    setCvv(input);
   };
   const totalPrice = Cart.reduce((sum, item) => {
     return sum + item.price * (1 - item.discount / 100) * item.qty;
@@ -243,7 +263,7 @@ const Payment = () => {
                 <img src={AmericanExpress} className="h-full" alt="" />
                 <img src={Paypal} className="h-full" alt="" />
               </div>
-              <div className="py-8 px-5 bg-[#f6f6f8] mt-5">
+              <div className="py-10 px-8 bg-[#f6f6f8] mt-5">
                 <div className="flex gap-5 items-center">
                   <label className="w-[100px] text-[12px]">Card Number*</label>
                   <input
@@ -260,21 +280,33 @@ const Payment = () => {
                   <input
                     type="text"
                     maxLength={2}
+                    value={month}
                     className="w-[135px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="Month"
+                    onChange={(e) => handleChangeMonth(e)}
                   />
                   <input
-                    type="number"
-                    maxLength={2}
+                    type="text"
+                    maxLength={4}
+                    value={year}
                     className="w-[135px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="Year"
+                    onChange={(e) => handleChangeYear(e)}
+                    onBlur={() => {
+                      if (parseInt(year) < 2025) {
+                        alert("Invalid year: " + year);
+                        setYear(new Date().getFullYear());
+                      }
+                    }}
                   />
                 </div>
                 <div className="flex gap-5 mt-5 items-center">
                   <label className="w-[100px] text-[12px]">Enter CVV*</label>
                   <input
-                    type="number"
+                    type="text"
                     maxLength={3}
+                    value={cvv}
+                    onChange={(e) => handleChangeCVV(e)}
                     className="w-[135px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="123"
                   />
@@ -292,6 +324,31 @@ const Payment = () => {
                   </p>
                 </div>
               </div>
+              <div className="px-8 mt-3 flex items-center gap-4">
+                <input type="checkbox" />
+                <label className="capitalize text-gray-500/80 text-[9px]">
+                  By agreeing, the emerald star general trading LLC will share
+                  your card details , billing address and email with Click to
+                  pay to allow you to securely enroll for faster Checkout.{" "}
+                  <Link className="text-[#59C491]">Learn More</Link>
+                </label>
+              </div>
+            </div>
+            <div className="w-full mt-7  flex justify-between">
+              <Link
+                to={"/Cart"}
+                className="border border-[#59C491] text-[#59C491] py-3 px-5 text-sm flex items-center justify-center cursor-pointer "
+              >
+                &lt; Back To Cart
+              </Link>
+              <Link
+                to={`/Cart/Payment/PaymentStatus`}
+                className={`${
+                  Cart.length == 0 && "hidden"
+                } bg-[#59C491] text-white py-3 px-5 text-sm flex items-center justify-center cursor-pointer`}
+              >
+                Pay & Place Order &gt;
+              </Link>
             </div>
           </aside>
         </div>

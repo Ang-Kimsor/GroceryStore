@@ -13,6 +13,7 @@ import {
   Contact,
   Cart,
   Payment,
+  PaymentStatus,
 } from "./page";
 const Router = createBrowserRouter([
   {
@@ -57,8 +58,12 @@ const Router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/Payment",
+        path: "/Cart/Payment",
         element: <Payment />,
+      },
+      {
+        path: "/Cart/Payment/PaymentStatus",
+        element: <PaymentStatus />,
       },
     ],
   },
