@@ -16,7 +16,7 @@ const Cart = () => {
         </h1>
         <div className="grid lg:grid-cols-2 lg:gap-20 gap-5">
           <aside>
-            <div className="bg-[#f8f8f8] md:p-5 p-2">
+            <div className="bg-[#f6f6f8] md:p-5 p-2">
               <div
                 className={` w-full h-[55px] border border-[#59C491] bg-white flex items-center justify-center`}
               >

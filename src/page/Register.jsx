@@ -21,9 +21,7 @@ const Register = () => {
     upper: /[A-Z]/.test(pass) && /[A-Z]/.test(passC),
     lower: /[a-z]/.test(pass) && /[a-z]/.test(passC),
     digit: /[0-9]/.test(pass) && /[0-9]/.test(passC),
-    special:
-      /[!@#$%^&*()_+-=,/?'";:]/.test(pass) &&
-      /[!@#$%^&*()_+-=,/?'";:]/.test(passC),
+    special: /[#$@&?]/.test(pass) && /[#$@&?]/.test(passC),
   };
   const condition =
     conditions.length &&

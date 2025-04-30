@@ -8,19 +8,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { country } from "../../data/Contact";
 import { useState } from "react";
+import { useCart } from "../../Context/CartContext";
 const Form = () => {
   const [pass, setPass] = useState("");
   const [passC, setPassC] = useState("");
   const [passCEye, setPassCEye] = useState(false);
   const [passEye, setPassEye] = useState(false);
+  const {Cart} = useCart();
   const conditions = {
     length: pass.length >= 8 && passC.length >= 8,
     upper: /[A-Z]/.test(pass) && /[A-Z]/.test(passC),
     lower: /[a-z]/.test(pass) && /[a-z]/.test(passC),
     digit: /[0-9]/.test(pass) && /[0-9]/.test(passC),
-    special:
-      /[!@#$%^&*()_+-=,/?'";:]/.test(pass) &&
-      /[!@#$%^&*()_+-=,/?'";:]/.test(passC),
+    special: /[#$@&?]/.test(pass) && /[#$@&?]/.test(passC),
   };
   return (
     <form className="lg:px-10 px-2">
@@ -229,7 +229,7 @@ const Form = () => {
         </Link>
         <Link
           to={"/Payment"}
-          className="bg-[#59C491] text-white py-3 px-5 text-sm flex items-center justify-center cursor-pointer "
+          className={`${Cart.length == 0 && "hidden"} bg-[#59C491] text-white py-3 px-5 text-sm flex items-center justify-center cursor-pointer`}
         >
           Proceed to Payment &gt;
         </Link>
