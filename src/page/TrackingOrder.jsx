@@ -1,6 +1,6 @@
 import React from "react";
 
-import img from "./../assets/TrackOrder.jpg";
+import img from "./../assets/trackOrder.jpg";
 import { Link } from "react-router-dom";
 const TrackingOrder = () => {
   return (
