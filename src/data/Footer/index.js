@@ -3,6 +3,7 @@ import {
   faBlog,
   faCookie,
   faEnvelope,
+  faHeart,
   faHomeUser,
   faLocationDot,
   faLock,
@@ -48,10 +49,11 @@ export const footer = [
       {
         icon: faUser,
         text: "My Account",
+        path: "/Login",
       },
       {
-        icon: faTruckDroplet,
-        text: "Order Information",
+        icon: faHeart,
+        text: "Wishlist",
       },
       {
         icon: faTrademark,

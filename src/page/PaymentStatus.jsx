@@ -10,7 +10,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PaymentStatus = () => {
-  const Condition = false;
+  const Condition = 1;
   return (
     <main className="w-full md:py-20 py-5 flex flex-col gap-20 items-center justify-center ">
       <div className="w-[90%] h-full md:py-20 py-10 bg-[#f6f6f8] flex items-center justify-center flex-col">
@@ -59,7 +59,7 @@ const PaymentStatus = () => {
             {Condition ? "Continue Shopping" : "Back to Cart"}
           </Link>
           <Link
-            to={`${Condition ? "" : ""}`}
+            to={`${Condition ? "" : "/Cart/Payment"}`}
             className={`bg-[#59C491] text-white py-3 px-5 md:text-sm text-[10px] flex items-center justify-center cursor-pointer`}
           >
             {Condition ? "View Order" : "Pay Now"}
