@@ -263,25 +263,29 @@ const Payment = () => {
                 <img src={AmericanExpress} className="h-full" alt="" />
                 <img src={Paypal} className="h-full" alt="" />
               </div>
-              <div className="py-10 px-8 bg-[#f6f6f8] mt-5">
-                <div className="flex gap-5 items-center">
-                  <label className="w-[100px] text-[12px]">Card Number*</label>
+              <div className="py-10 md:px-8 px-2 bg-[#f6f6f8] mt-5">
+                <div className="flex md:flex-row flex-col md:gap-5 gap-3 md:items-center">
+                  <label className="md:w-[100px] w-full md:text-[12px] text-sm">
+                    Card Number*
+                  </label>
                   <input
                     type="text"
                     value={cardNum}
                     maxLength={19}
-                    className="w-[300px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
+                    className="md:w-[300px] md:h-[30px] h-[40px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="1234 1234 1234 1234"
                     onChange={(e) => handleChangeCardNum(e)}
                   />
                 </div>
-                <div className="flex gap-5 mt-5 items-center">
-                  <label className="w-[100px] text-[12px]">Valid Till*</label>
+                <div className="flex md:flex-row  mt-5 flex-col md:gap-5 gap-3 md:items-center">
+                  <label className="md:w-[100px] w-full md:text-[12px] text-sm">
+                    Valid Till*
+                  </label>
                   <input
                     type="text"
                     maxLength={2}
                     value={month}
-                    className="w-[135px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
+                    className="md:w-[135px] md:h-[30px] h-[40px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="Month"
                     onChange={(e) => handleChangeMonth(e)}
                   />
@@ -289,28 +293,29 @@ const Payment = () => {
                     type="text"
                     maxLength={4}
                     value={year}
-                    className="w-[135px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
+                    className="md:w-[135px] md:h-[30px] h-[40px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="Year"
                     onChange={(e) => handleChangeYear(e)}
                     onBlur={() => {
                       if (parseInt(year) < 2025) {
-                        alert("Invalid year: " + year);
                         setYear(new Date().getFullYear());
                       }
                     }}
                   />
                 </div>
-                <div className="flex gap-5 mt-5 items-center">
-                  <label className="w-[100px] text-[12px]">Enter CVV*</label>
+                <div className="flex md:flex-row  mt-5 flex-col md:gap-5 gap-3 md:items-center">
+                  <label className="md:w-[100px] w-full md:text-[12px] text-sm">
+                    Enter CVV*
+                  </label>
                   <input
                     type="text"
                     maxLength={3}
                     value={cvv}
                     onChange={(e) => handleChangeCVV(e)}
-                    className="w-[135px] h-[30px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
+                    className="md:w-[135px] md:h-[30px] h-[40px] pl-2 placeholder:text-[12px] placeholder:tracking-wide placeholder:text-gray-500/80 text-[12px] outline-none bg-white"
                     placeholder="123"
                   />
-                  <p className="text-[10px] text-[#59C491] cursor-pointer">
+                  <p className="md:text-[10px] text-sm text-[#59C491] cursor-pointer">
                     <svg
                       className="shrink-0 inline w-3 h-3 mr-1 text-[#59C491]"
                       aria-hidden="true"
