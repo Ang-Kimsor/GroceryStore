@@ -56,6 +56,7 @@ export const footer = [
       {
         icon: faTrademark,
         text: "Track My Order",
+        path: "/TrackOrder",
       },
       {
         icon: faLocationDot,

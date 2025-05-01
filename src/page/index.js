@@ -10,3 +10,4 @@ export { default as Contact } from "./Contact";
 export { default as Cart } from "./Cart";
 export { default as Payment } from "./Payment";
 export { default as PaymentStatus } from "./PaymentStatus";
+export { default as TrackOrder } from "./TrackingOrder";
