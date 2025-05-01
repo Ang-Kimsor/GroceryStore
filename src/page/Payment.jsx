@@ -15,6 +15,7 @@ import Mastercard from "./../assets/master.jpg";
 import AmericanExpress from "./../assets/americanExpress.jpg";
 import Paypal from "./../assets/paypal.jpg";
 import { useState } from "react";
+import { List } from "../components/Cart";
 const Payment = () => {
   const { Cart } = useCart();
   const [cardNum, setCardNum] = useState("");
@@ -201,22 +202,16 @@ const Payment = () => {
                 <h1 className="text-md font-medium">Your Order</h1>
                 <div className="mt-5">
                   {Cart.map(({ name, price, discount, qty }, index) => (
-                    <div
+                    <List
+                      length={Cart.length}
                       key={index}
-                      className={`${
-                        Cart.length - 1 == index ? "border-y" : "border-t"
-                      } h-[65px] border-gray-500/40 flex items-center justify-between`}
-                    >
-                      <h1 className="self-start mt-2 text-[13px]">{name}</h1>
-                      <p className="flex flex-col items-end">
-                        <span className="text-[12px] text-gray-500/80 font-medium">
-                          {qty} x {(price * (1 - discount / 100)).toFixed(2)}
-                        </span>
-                        <span className="text-[15px] font-normal tracking-wider">
-                          ${(qty * price * (1 - discount / 100)).toFixed(2)}
-                        </span>
-                      </p>
-                    </div>
+                      index={index}
+                      name={name}
+                      price={price}
+                      discount={discount}
+                      qty={qty}
+                      isListImg={false}
+                    />
                   ))}
 
                   <div className="w-full text-md mt-5 flex justify-between text-[12px]">

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import CartCard from "../components/Cart/CartCard";
-import Form from "../components/Cart/Form";
+import { CartCard, Form } from "../components/Cart";
+
 import { useCart } from "../Context/CartContext";
 const Cart = () => {
   const { Cart } = useCart();
@@ -43,7 +43,7 @@ const Cart = () => {
               </div>
               <div className="my-10">
                 <p className="text-sm">
-                  Have a coupon?{" "}
+                  Have a coupon?
                   <span className="text-[#59C491] cursor-pointer">
                     Enter your code
                   </span>

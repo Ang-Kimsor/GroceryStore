@@ -59,7 +59,7 @@ const PaymentStatus = () => {
             {Condition ? "Continue Shopping" : "Back to Cart"}
           </Link>
           <Link
-            to={`${Condition ? "" : "/Cart/Payment"}`}
+            to={`${Condition ? "/TrackOrder/Detail" : "/Cart/Payment"}`}
             className={`bg-[#59C491] text-white py-3 px-5 md:text-sm text-[10px] flex items-center justify-center cursor-pointer`}
           >
             {Condition ? "View Order" : "Pay Now"}

@@ -9,12 +9,40 @@ import {
   faTruck,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { List } from "../components/Cart";
 
 const TrackingOrderDetail = () => {
   const { Cart } = useCart();
   const totalPrice = Cart.reduce((sum, item) => {
     return sum + item.price * (1 - item.discount / 100) * item.qty;
   }, 0);
+  const Process = [
+    {
+      title:
+        "Your Order has been delivered. Thank you for shopping at JapanSouq.",
+      time: "20 Feb, 2025 at 19:32",
+    },
+    {
+      title: "Your Order out for delivery.",
+      time: "20 Feb, 2025 at 19:32",
+    },
+    {
+      title: "Pickup scheduled with carrier.",
+      time: "19 Feb, 2025 at 3:52",
+    },
+    {
+      title: "Package ready for collection.",
+      time: "18 Feb, 2025 at 15:02",
+    },
+    {
+      title: "Your Order is successfully verified",
+      time: "18 Feb, 2025 at 9:39",
+    },
+    {
+      title: "Order placed",
+      time: "17 Feb, 2025 at 22:53",
+    },
+  ];
   return (
     <main className="w-full my-2 md:py-10 py-5 flex flex-col items-center justify-center ">
       <div className="lg:w-[95%] w-[95%] p-8 bg-[#f6f6f8]">
@@ -86,118 +114,40 @@ const TrackingOrderDetail = () => {
         </div>
         <div className="w-full mt-5 flex gap-4 flex-col">
           <h1 className="text-sm font-medium">Order Activity</h1>
-          <div className="w-full flex gap-3">
-            <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[#59C491] md:text-sm text-[12px]"
-              />
+          {Process.map(({ title, time }, index) => (
+            <div className="w-full flex gap-3">
+              <div
+                key={index}
+                className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center"
+              >
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-[#59C491] md:text-sm text-[12px]"
+                />
+              </div>
+              <h1 className="text-[10px]">
+                {title}
+                <br />
+                <p className="text-[#ADADAD]">{time}</p>
+              </h1>
             </div>
-            <h1 className="text-[10px]">
-              Your Order has been delivered. Thank you for shopping at
-              JapanSouq.
-              <br />
-              <p className="text-[#ADADAD]">20 Feb, 2025 at 19:32</p>
-            </h1>
-          </div>
-          <div className="w-full flex gap-3">
-            <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[#59C491] md:text-sm text-[12px]"
-              />
-            </div>
-            <h1 className="text-[10px]">
-              Your Order has been delivered. Thank you for shopping at
-              JapanSouq.
-              <br />
-              <p className="text-[#ADADAD]">20 Feb, 2025 at 19:32</p>
-            </h1>
-          </div>
-          <div className="w-full flex gap-3">
-            <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[#59C491] md:text-sm text-[12px]"
-              />
-            </div>
-            <h1 className="text-[10px]">
-              Your Order has been delivered. Thank you for shopping at
-              JapanSouq.
-              <br />
-              <p className="text-[#ADADAD]">20 Feb, 2025 at 19:32</p>
-            </h1>
-          </div>
-          <div className="w-full flex gap-3">
-            <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[#59C491] md:text-sm text-[12px]"
-              />
-            </div>
-            <h1 className="text-[10px]">
-              Your Order has been delivered. Thank you for shopping at
-              JapanSouq.
-              <br />
-              <p className="text-[#ADADAD]">20 Feb, 2025 at 19:32</p>
-            </h1>
-          </div>
-          <div className="w-full flex gap-3">
-            <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[#59C491] md:text-sm text-[12px]"
-              />
-            </div>
-            <h1 className="text-[10px]">
-              Your Order has been delivered. Thank you for shopping at
-              JapanSouq.
-              <br />
-              <p className="text-[#ADADAD]">20 Feb, 2025 at 19:32</p>
-            </h1>
-          </div>
-          <div className="w-full flex gap-3">
-            <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[#59C491] md:text-sm text-[12px]"
-              />
-            </div>
-            <h1 className="text-[10px]">
-              Your Order has been delivered. Thank you for shopping at
-              JapanSouq.
-              <br />
-              <p className="text-[#ADADAD]">20 Feb, 2025 at 19:32</p>
-            </h1>
-          </div>
+          ))}
         </div>
         <div className="mt-5">
           <h1 className="text-sm font-medium">Item ({Cart.length})</h1>
           <div className="mt-2">
             {Cart.map(({ img, name, price, discount, qty }, index) => (
-              <div
+              <List
+                length={Cart.length}
                 key={index}
-                className={`${
-                  Cart.length - 1 == index ? "border-y" : "border-t"
-                } h-[65px] border-gray-500/40 flex items-center justify-between`}
-              >
-                <div className="flex gap-4 items-center">
-                  <img
-                    src={img}
-                    alt=""
-                    className="size-[50px] object-cover object-center"
-                  />
-                  <h1 className="self-start mt-2 text-[13px]">{name}</h1>
-                </div>
-                <p className="flex flex-col items-end">
-                  <span className="text-[12px] text-gray-500/80 font-medium">
-                    {qty} x {(price * (1 - discount / 100)).toFixed(2)}
-                  </span>
-                  <span className="text-[15px] font-normal tracking-wider">
-                    ${(qty * price * (1 - discount / 100)).toFixed(2)}
-                  </span>
-                </p>
-              </div>
+                index={index}
+                name={name}
+                price={price}
+                discount={discount}
+                qty={qty}
+                isListImg={true}
+                img={img}
+              />
             ))}
           </div>
         </div>
