@@ -11,3 +11,4 @@ export { default as Cart } from "./Cart";
 export { default as Payment } from "./Payment";
 export { default as PaymentStatus } from "./PaymentStatus";
 export { default as TrackOrder } from "./TrackingOrder";
+export { default as TrackOrderDetail } from "./TrackingOrderDetail";

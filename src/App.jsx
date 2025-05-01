@@ -15,6 +15,7 @@ import {
   Payment,
   PaymentStatus,
   TrackOrder,
+  TrackOrderDetail,
 } from "./page";
 const Router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const Router = createBrowserRouter([
       {
         path: "/TrackOrder",
         element: <TrackOrder />,
+      },
+      {
+        path: "/TrackOrder/Detail",
+        element: <TrackOrderDetail />,
       },
     ],
   },

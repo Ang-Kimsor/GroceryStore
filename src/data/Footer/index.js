@@ -51,7 +51,7 @@ export const footer = [
       },
       {
         icon: faTruckDroplet,
-        text: "Delivery Information",
+        text: "Order Information",
       },
       {
         icon: faTrademark,

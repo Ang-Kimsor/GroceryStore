@@ -43,7 +43,10 @@ const TrackingOrder = () => {
             </div>
           </div>
           <div className="mt-8 mb-6">
-            <Link className="bg-[#59C491] px-5 py-3 text-[12px] text-white">
+            <Link
+              to={"/TrackOrder/Detail"}
+              className="bg-[#59C491] px-5 py-3 text-[12px] text-white"
+            >
               Track Order
             </Link>
           </div>
