@@ -58,16 +58,16 @@ const WishlistCard = ({
         ${(price * (1 - discount / 100)).toFixed(2)}
       </th>
       <th
-        className={`w-1/5 py-5 text-[12px] font-medium ${
+        className={`w-1/5 py-5 text-[11px] font-medium ${
           stock == 0 ? "text-[#3C4242]" : "text-[#59C491]"
         }`}
       >
         {stock == 0 ? "Out of stock" : `Available (${stock})`}
       </th>
-      <th className=" w-1/5 absolute top-1/2 -translate-y-1/2 lg:justify-evenly justify-center flex lg:flex-nowrap flex-wrap lg:gap-0 gap-1 m-0 py-5 text-[12px] font-medium text-[#3C4242]">
+      <th className=" w-1/5 absolute top-1/2 -translate-y-1/2 lg:justify-evenly justify-center flex lg:flex-nowrap flex-wrap lg:gap-0 gap-1 text-[12px] font-medium text-[#3C4242]">
         <button
           onClick={() => removefromWishlist(id)}
-          className="size-[30px] md:size-fit md:px-2 py-1 rounded text-white lg:text-[10px] text-[9px] font-medium cursor-pointer bg-red-500"
+          className="size-[25px] md:size-fit md:px-2 py-1 rounded text-white lg:text-[10px] text-[9px] font-medium cursor-pointer bg-red-500"
         >
           <p className="md:block hidden">Remove</p>
           <div className="md:hidden block">
@@ -89,7 +89,7 @@ const WishlistCard = ({
                   stock
                 );
           }}
-          className={` size-[30px] md:size-fit md:px-1 py-1 rounded text-white lg:text-[10px] text-[9px] font-medium cursor-pointer bg-[#59C491]`}
+          className={` size-[25px] md:size-fit md:px-1 py-1 rounded text-white lg:text-[10px] text-[9px] font-medium cursor-pointer bg-[#59C491]`}
         >
           <p className="md:block hidden">
             {cart ? "Already in cart" : "Add to cart"}
