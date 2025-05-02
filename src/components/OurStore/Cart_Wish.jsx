@@ -13,6 +13,7 @@ const Cart_Wish = ({
   hidewish,
   fullStock,
   alreadywish,
+  category,
 }) => {
   return (
     <>
@@ -133,11 +134,20 @@ const Cart_Wish = ({
           />
         </div>
         <div className="w-full h-[60px] grid grid-cols-2 gap-4 place-items-center px-3">
-          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] ">
+          <Link
+            to={"/Wishlist"}
+            className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-[#e8e8e8] "
+          >
             Wishlist
           </Link>
-          <Link className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white ">
-            Buy Now
+          <Link
+            to={`/OurStore/${category.replaceAll(" ", "_")}/${name.replaceAll(
+              " ",
+              "_"
+            )}`}
+            className="text-sm uppercase font-medium h-[35px] w-full flex items-center justify-center cursor-pointer bg-black text-white "
+          >
+            See more
           </Link>
         </div>
       </div>

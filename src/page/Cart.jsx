@@ -9,7 +9,7 @@ const Cart = () => {
   }, 0);
 
   return (
-    <div className="w-full flex justify-center pb-10">
+    <div className="w-full flex justify-center pb-10 px-1">
       <main className="lg:w-[95%] w-[99%] h-fit ">
         <h1 className="lg:py-12 py-5 text-[#59C491] lg:pl-0 pl-2">
           Cart & Checkout

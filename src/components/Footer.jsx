@@ -78,8 +78,9 @@ const Footer = () => {
                 Follow Us
               </h1>
               <div className="w-full h-[40px] flex gap-3">
-                {iconSocial.map((icon, index) => (
+                {iconSocial.map(({ icon, path }, index) => (
                   <Link
+                    to={path}
                     key={index}
                     className="size-[40px] bg-[#59C491] cursor-pointer flex items-center justify-center rounded-md"
                   >

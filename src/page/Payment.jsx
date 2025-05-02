@@ -49,7 +49,7 @@ const Payment = () => {
     return sum + item.price * (1 - item.discount / 100) * item.qty;
   }, 0);
   return (
-    <div className="w-full flex justify-center pb-10">
+    <div className="w-full flex justify-center pb-10 px-3">
       <main className="lg:w-[95%] w-[99%] h-fit ">
         <h1 className="lg:py-12 py-5 text-gray-500/50 lg:pl-0 pl-2 flex gap-4">
           <Link to={"/Cart"} className="text-[#59C491]">

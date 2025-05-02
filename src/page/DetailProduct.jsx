@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Products } from "../data/OurStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -91,6 +91,7 @@ const DetailProduct = () => {
         discount={Product[0]["discount"]}
         fullStock={fullStock}
         alreadywish={alreadywish}
+        category={Product[0]["category"]}
         hidecart={() => setCart(false)}
         hidewish={() => setWish(false)}
       />

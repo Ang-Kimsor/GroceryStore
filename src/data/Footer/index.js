@@ -54,6 +54,7 @@ export const footer = [
       {
         icon: faHeart,
         text: "Wishlist",
+        path: "/Wishlist",
       },
       {
         icon: faTrademark,
@@ -92,22 +93,37 @@ export const footer = [
       {
         icon: faCookie,
         text: "Cookies",
+        path: "/Error",
       },
       {
         icon: faBlog,
         text: "Blog",
+        path: "/Error",
       },
       {
         icon: faLock,
         text: "Terms & Conditions",
+        path: "/Error",
       },
     ],
   },
 ];
 export const iconPayment = [Visa, Mastercard, AmericanExpress, Paypal];
 export const iconSocial = [
-  faFacebookF,
-  faInstagram,
-  faTelegramPlane,
-  faTwitter,
+  {
+    icon: faFacebookF,
+    path: "https://facebook.com",
+  },
+  {
+    icon: faInstagram,
+    path: "https://instagram.com",
+  },
+  {
+    icon: faTelegramPlane,
+    path: "https://telegram.org/",
+  },
+  {
+    icon: faTwitter,
+    path: "https://twitter.com",
+  },
 ];

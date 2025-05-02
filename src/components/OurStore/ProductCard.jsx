@@ -97,6 +97,7 @@ const ProductCard = ({
       <Cart_Wish
         img={img}
         name={name}
+        category={category}
         qty={qty}
         cart={cart}
         wish={wish}
