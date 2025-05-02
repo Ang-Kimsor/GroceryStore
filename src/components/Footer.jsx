@@ -36,18 +36,33 @@ const Footer = () => {
                 </h1>
                 {element.map(({ icon, text, path }, i) => (
                   <li key={i} className="w-full h-[30px] cursor-pointer group">
-                    <Link
-                      to={path}
-                      className="w-fit h-[30px] flex justify-center items-center"
-                    >
-                      <FontAwesomeIcon
-                        className="w-[30px] py-1.5 text-white bg-[#59C491] rounded-sm mr-2"
-                        icon={icon}
-                      />
-                      <p className="text-gray-500/80 group-hover:underline group-hover:text-gray-800">
-                        {text}
-                      </p>
-                    </Link>
+                    {index == 0 ? (
+                      <a
+                        href={path}
+                        className="w-fit h-[30px] flex justify-center items-center"
+                      >
+                        <FontAwesomeIcon
+                          className="w-[30px] py-1.5 text-white bg-[#59C491] rounded-sm mr-2"
+                          icon={icon}
+                        />
+                        <p className="text-gray-500/80 group-hover:underline group-hover:text-gray-800">
+                          {text}
+                        </p>
+                      </a>
+                    ) : (
+                      <Link
+                        to={path}
+                        className="w-fit h-[30px] flex justify-center items-center"
+                      >
+                        <FontAwesomeIcon
+                          className="w-[30px] py-1.5 text-white bg-[#59C491] rounded-sm mr-2"
+                          icon={icon}
+                        />
+                        <p className="text-gray-500/80 group-hover:underline group-hover:text-gray-800">
+                          {text}
+                        </p>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

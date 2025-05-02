@@ -17,7 +17,9 @@ import {
   TrackOrder,
   TrackOrderDetail,
   Wishlist,
+  AccountInfomation,
 } from "./page";
+import UserLayout from "./layout/UserLayout";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -29,56 +31,82 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/OurStore",
+        path: "OurStore",
         element: <OurStore />,
       },
       {
-        path: "/OurStore/:category/:name",
+        path: "OurStore/:category/:name",
         element: <DetailProduct />,
       },
       {
-        path: "/Login",
+        path: "Login",
         element: <Login />,
       },
       {
-        path: "/Register",
+        path: "Register",
         element: <Register />,
       },
       {
-        path: "/Career",
+        path: "Career",
         element: <Career />,
       },
       {
-        path: "/AboutUs",
+        path: "AboutUs",
         element: <About />,
       },
       {
-        path: "/Contact",
+        path: "Contact",
         element: <Contact />,
       },
       {
-        path: "/Cart",
-        element: <Cart />,
+        path: "Cart",
+        element: <Cart dashboard={false} />,
       },
       {
-        path: "/Cart/Payment",
+        path: "Cart/Payment",
         element: <Payment />,
       },
       {
-        path: "/Cart/Payment/PaymentStatus",
+        path: "Cart/Payment/PaymentStatus",
         element: <PaymentStatus />,
       },
       {
-        path: "/TrackOrder",
-        element: <TrackOrder />,
+        path: "TrackOrder",
+        element: <TrackOrder dashboard={false} />,
       },
       {
-        path: "/TrackOrder/Detail",
-        element: <TrackOrderDetail />,
+        path: "TrackOrder/Detail",
+        element: <TrackOrderDetail dashboard={false} />,
       },
       {
-        path: "/Wishlist",
-        element: <Wishlist />,
+        path: "Wishlist",
+        element: <Wishlist dashboard={false} />,
+      },
+      {
+        path: "UserDashboard",
+        element: <UserLayout />,
+        children: [
+          {
+            index: true,
+            element: <AccountInfomation />,
+          },
+          {
+            path: "TrackOrder",
+            element: <TrackOrder dashboard={true} />,
+          },
+          {
+            path: "TrackOrder/Detail",
+            element: <TrackOrderDetail dashboard={true} />,
+          },
+          {
+            path: "Wishlist",
+            element: <Wishlist dashboard={true} />,
+          },
+        ],
+      },
+      {
+        path: "UserDashboard/Cart",
+        element: <Cart dashboard={true} />,
       },
     ],
   },

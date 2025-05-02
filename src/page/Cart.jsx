@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { CartCard, Form } from "../components/Cart";
 
 import { useCart } from "../Context/CartContext";
-const Cart = () => {
+const Cart = ({ dashboard }) => {
   const { Cart } = useCart();
   const totalPrice = Cart.reduce((sum, item) => {
     return sum + item.price * (1 - item.discount / 100) * item.qty;
@@ -11,7 +11,12 @@ const Cart = () => {
   return (
     <div className="w-full flex justify-center pb-10 px-1">
       <main className="lg:w-[95%] w-[99%] h-fit ">
-        <h1 className="lg:py-12 py-5 text-[#59C491] lg:pl-0 pl-2">
+        <h1 className="lg:py-12 py-5 text-[#59C491] flex flex-col lg:pl-0 pl-2">
+          {dashboard && (
+            <Link to={"/UserDashBoard"} className="mr-2 text-gray-500 mb-5">
+              &lt; Back to Dashboard
+            </Link>
+          )}
           Cart & Checkout
         </h1>
         <div className="grid lg:grid-cols-2 lg:gap-20 gap-5">

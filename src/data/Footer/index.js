@@ -9,9 +9,7 @@ import {
   faLock,
   faLuggageCart,
   faPhone,
-  faTag,
   faTrademark,
-  faTruckDroplet,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -32,14 +30,17 @@ export const footer = [
       {
         icon: faPhone,
         text: "+123 456 789 000",
+        path: "tel:+123 456 789 000",
       },
       {
         icon: faEnvelope,
         text: "sales@gmail.com",
+        path: "mailto:sales@gmail.com",
       },
       {
         icon: faEnvelope,
         text: "services@gmail.com",
+        path: "mailto:services@gmail.com",
       },
     ],
   },
@@ -49,7 +50,7 @@ export const footer = [
       {
         icon: faUser,
         text: "My Account",
-        path: "/Login",
+        path: "/UserDashboard",
       },
       {
         icon: faHeart,
@@ -64,6 +65,7 @@ export const footer = [
       {
         icon: faLocationDot,
         text: "Location",
+        path: "https://www.google.com.kh/maps/place/Phnom+Penh/@11.5793176,104.7253762,11z/data=!3m1!4b1!4m6!3m5!1s0x3109513dc76a6be3:0x9c010ee85ab525bb!8m2!3d11.5563738!4d104.9282099!16zL20vMGRsd2o?entry=ttu&g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D",
       },
     ],
   },

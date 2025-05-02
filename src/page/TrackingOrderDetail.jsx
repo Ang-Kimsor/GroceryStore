@@ -11,11 +11,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { List } from "../components/Cart";
 
-const TrackingOrderDetail = () => {
+const TrackingOrderDetail = ({ dashboard }) => {
   const { Cart } = useCart();
   const totalPrice = Cart.reduce((sum, item) => {
     return sum + item.price * (1 - item.discount / 100) * item.qty;
   }, 0);
+
   const Process = [
     {
       title:
@@ -44,10 +45,10 @@ const TrackingOrderDetail = () => {
     },
   ];
   return (
-    <main className="w-full my-2 md:py-10 py-5 flex flex-col items-center justify-center ">
+    <main className="w-full  py-5 flex flex-col items-center justify-center ">
       <div className="lg:w-[95%] w-[95%] p-8 bg-[#f6f6f8]">
         <div className="flex flex-row gap-2 text-xl font-semibold">
-          <Link to={"/TrackOrder"}>&lt;</Link>
+          {!dashboard && <Link to={"/TrackOrder"}>&lt;</Link>}
           <h1>Order Details</h1>
         </div>
         <div className="w-full p-4 bg-[#E8F4F0] border border-[#59C491] flex flex-row items-center justify-between mt-5">
@@ -115,11 +116,8 @@ const TrackingOrderDetail = () => {
         <div className="w-full mt-5 flex gap-4 flex-col">
           <h1 className="text-sm font-medium">Order Activity</h1>
           {Process.map(({ title, time }, index) => (
-            <div className="w-full flex gap-3">
-              <div
-                key={index}
-                className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center"
-              >
+            <div key={index} className="w-full flex gap-3">
+              <div className="md:size-[30px] size-[25px] bg-[#E8F4F0] rounded-[2px] flex items-center justify-center">
                 <FontAwesomeIcon
                   icon={faCheck}
                   className="text-[#59C491] md:text-sm text-[12px]"

@@ -2,10 +2,10 @@ import React from "react";
 
 import img from "./../assets/trackOrder.jpg";
 import { Link } from "react-router-dom";
-const TrackingOrder = () => {
+const TrackingOrder = ({ dashboard }) => {
   return (
-    <main className="w-full lg:h-[400px] my-10 md:py-10 py-5 flex flex-col gap-20 items-center justify-center ">
-      <div className="lg:w-[95%] w-[99%] lg:h-[400px] py-10 lg:pr-10 bg-[#f6f6f8] grid lg:grid-cols-2 grid-cols-1">
+    <main className="w-full lg:h-[400px] pt-5 mb-10 flex gap-20 items-start justify-center ">
+      <div className="w-[95%] lg:h-[400px] py-10 lg:pr-10 bg-[#f6f6f8] grid lg:grid-cols-2 grid-cols-1">
         <div className="lg:px-10 px-5 size-full">
           <img
             src={img}
@@ -44,7 +44,11 @@ const TrackingOrder = () => {
           </div>
           <div className="mt-8 mb-6">
             <Link
-              to={"/TrackOrder/Detail"}
+              to={
+                !dashboard
+                  ? "/TrackOrder/Detail"
+                  : "/UserDashboard/TrackOrder/Detail"
+              }
               className="bg-[#59C491] px-5 py-3 text-[12px] text-white"
             >
               Track Order

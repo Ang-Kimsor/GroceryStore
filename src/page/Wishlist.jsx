@@ -4,15 +4,21 @@ import { Link } from "react-router-dom";
 import WishlistCard from "../components/Wishlist/WishlistCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-const Wishlist = () => {
+const Wishlist = ({ dashboard }) => {
   const { wishlist } = useWishlist();
   return (
-    <main className="w-full h-fit flex flex-col items-center py-8">
-      <div className="lg:w-[95%] w-[99%] bg-[#f8f8f8] lg:px-10 px-3 pb-10">
+    <main className="w-full h-fit flex flex-col items-center py-5">
+      <div
+        className={`lg:w-[95%] w-[99%] bg-[#f8f8f8] ${
+          dashboard ? "lg:px-5 px-3" : "lg:px-10 px-3"
+        } pb-10`}
+      >
         <h1 className="w-full p-5 text-2xl font-semibold">
-          <Link to={"/OurStore"} className="mr-2">
-            &lt;
-          </Link>
+          {!dashboard && (
+            <Link to={"/OurStore"} className="mr-2">
+              &lt;
+            </Link>
+          )}
           My Wishlist
         </h1>
         <table className=" w-full">
@@ -70,15 +76,17 @@ const Wishlist = () => {
           </tbody>
         </table>
         <div className="w-full flex gap-5 justify-end mt-5">
+          {!dashboard && (
+            <Link
+              to={"/OurStore"}
+              className="bg-white py-3 px-5 text-sm border font-medium border-[#59C491]"
+            >
+              <FontAwesomeIcon icon={faArrowLeft} className="mr-3" />
+              Back
+            </Link>
+          )}
           <Link
-            to={"/OurStore"}
-            className="bg-white py-3 px-5 text-sm border font-medium border-[#59C491]"
-          >
-            <FontAwesomeIcon icon={faArrowLeft} className="mr-3" />
-            Back
-          </Link>
-          <Link
-            to={"/Cart"}
+            to={dashboard ? "/UserDashBoard/Cart" : "/Cart"}
             className=" py-3 px-5 text-sm text-white font-medium bg-[#59C491]"
           >
             View Cart
