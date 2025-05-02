@@ -47,7 +47,7 @@ const WishlistCard = ({
   };
   const [cart, setCart] = useState(false);
   return (
-    <tr className="border-y-1 w-full h-[40px] relative border-gray-500/30">
+    <tr className="border-y-1 w-full h-[40px] relative border-gray-500/30 ">
       <th className="w-full py-5 text-[12px] font-medium relative text-[#3C4242] justify-center flex items-center">
         <img src={img} alt="" className="size-[60px]" />
       </th>
@@ -64,10 +64,10 @@ const WishlistCard = ({
       >
         {stock == 0 ? "Out of stock" : `Available (${stock})`}
       </th>
-      <th className=" w-1/5 absolute top-1/2 -translate-y-1/2 lg:justify-evenly justify-center flex lg:flex-nowrap flex-wrap lg:gap-0 gap-1 text-[12px] font-medium text-[#3C4242]">
+      <th className=" w-1/5 text-[12px] font-medium text-[#3C4242]">
         <button
           onClick={() => removefromWishlist(id)}
-          className="size-[25px] md:size-fit md:px-2 py-1 rounded text-white lg:text-[10px] text-[9px] font-medium cursor-pointer bg-red-500"
+          className="size-[25px] md:size-fit md:px-2 py-1 mr-3 rounded text-white lg:text-[10px] text-[9px] font-medium cursor-pointer bg-red-500"
         >
           <p className="md:block hidden">Remove</p>
           <div className="md:hidden block">
