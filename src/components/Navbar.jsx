@@ -28,20 +28,11 @@ const Navbar = () => {
   const { Cart } = useCart();
   return (
     <>
-      {/* <button
-        onClick={() => {
-          localStorage.clear();
-          window.location.reload();
-        }}
-        className="bg-red-500 px-4 ml-2 py-2 top-20 z-[100] text-white rounded fixed cursor-pointer"
-      >
-        Reset
-      </button> */}
       <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
       <aside
         className={`lg:hidden 
           ${openMenu ? "translate-x-0 " : "-translate-x-full"}
-          w-full h-screen bg-white absolute transition-all duration-500 z-[100]`}
+          w-full h-screen bg-white absolute transition-all duration-500 z-[300]`}
       >
         <div className="w-full h-fit flex items-center justify-center p-5 relative">
           <div className="w-[190px] h-[30px]">
@@ -53,30 +44,31 @@ const Navbar = () => {
             className="absolute right-[20px] text-md translate-y-[-50%] top-[50%] cursor-pointer"
           />
         </div>
-        <ul className="w-full h-fit border-y-4 border-gray-500/20 flex flex-col gap-5 py-5 my-3">
-          {menu.map(({ name, path }, index) => (
+        <ul className="w-full h-fit flex flex-col gap-5 py-5 my-3">
+          {menu.map(({ name, path, icon }, index) => (
             <Link
               key={index}
               onClick={() => setOpenMenu(false)}
-              className="uppercase font-medium py-2.5 px-5 text-2xl hover:text-[#59C491]"
+              className="uppercase h-[50px] font-medium py-2.5 px-5 text-2xl flex gap-5 items-center hover:text-[#59C491]"
               to={path}
             >
+              <FontAwesomeIcon icon={icon} className="text-[#59C491]" />
               {name}
             </Link>
           ))}
         </ul>
-        <div className="w-full h-[50px] px-5 flex flex-row gap-5 items-center">
+        <div className="w-full px-5 flex flex-row flex-wrap gap-5 items-center">
           <Link
             to={"/Login"}
             onClick={() => setOpenMenu(false)}
-            className="w-fit h-[30px] bg-green-500 px-8 hover:bg-green-600 flex justify-center items-center text-white font-medium rounded-sm text-lg"
+            className="w-full h-[50px] bg-green-500 px-8 hover:bg-green-600 flex justify-center items-center text-white font-medium rounded-sm text-lg"
           >
             Login
           </Link>
           <Link
             to={"/Register"}
             onClick={() => setOpenMenu(false)}
-            className="w-fit h-[30px] bg-orange-500 px-8 hover:bg-orange-600 flex justify-center items-center text-white font-medium rounded-sm text-lg"
+            className="w-full h-[50px] bg-orange-500 px-8 hover:bg-orange-600 flex justify-center items-center text-white font-medium rounded-sm text-lg"
           >
             Register
           </Link>

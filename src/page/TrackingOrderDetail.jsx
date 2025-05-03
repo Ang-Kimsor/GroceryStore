@@ -54,7 +54,7 @@ const TrackingOrderDetail = ({ dashboard }) => {
         <div className="w-full p-4 bg-[#E8F4F0] border border-[#59C491] flex flex-row items-center justify-between mt-5">
           <div>
             <p className="text-[#3C4242] md:text-md text-[12px] font-medium">
-              #48759283
+              #123456
             </p>
             <p className="text-[#3C4242] text-[10px] mt-2">
               {Cart.length} Items • Order Placed in 17 Feb, 2025 at 17:32

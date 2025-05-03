@@ -1,4 +1,5 @@
 import {
+  faAddressBook,
   faDoorOpen,
   faHeart,
   faLock,
@@ -33,6 +34,11 @@ export const SideMenuData = [
     icon: faShoppingCart,
     name: "Your Cart",
     path: "Cart",
+  },
+  {
+    icon: faAddressBook,
+    name: "Addresses",
+    path: "/Error",
   },
   {
     icon: faLock,
