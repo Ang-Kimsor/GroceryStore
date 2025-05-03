@@ -7,12 +7,13 @@ const SideMenu = ({ isinfo, notinfo }) => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="lg:hidden ml-3">
+      <div className="lg:hidden ml-3 flex flex-row items-center gap-3">
         <FontAwesomeIcon
           icon={faBars}
           onClick={() => setOpen(true)}
           className="cursor-pointer text-2xl"
-        />
+        />{" "}
+        Dashboard Menu
       </div>
       <aside
         className={`lg:relative lg:w-[330px] lg:h-fit lg:bg-transparent lg:pb-10 lg:pt-5 lg:z-10 ${
