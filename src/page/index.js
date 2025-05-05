@@ -14,3 +14,8 @@ export { default as TrackOrder } from "./TrackingOrder";
 export { default as TrackOrderDetail } from "./TrackingOrderDetail";
 export { default as Wishlist } from "./Wishlist";
 export { default as AccountInfomation } from "./AccountInfo";
+export { default as Address } from "./Address";
+export { default as Reset } from "./ResetPw";
+export { default as Cookie } from "./Cookie";
+export { default as Term } from "./TermCondition";
+export { default as Privacy } from "./Privacy";

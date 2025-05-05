@@ -10,7 +10,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PaymentStatus = () => {
-  const Condition = 1;
+  const Condition = 0;
   return (
     <main className="w-full md:py-20 py-5 flex flex-col gap-20 items-center justify-center ">
       <div className="w-[90%] h-full md:py-20 py-10 bg-[#f6f6f8] flex items-center justify-center flex-col">

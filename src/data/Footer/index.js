@@ -1,6 +1,6 @@
 import {
   faAt,
-  faBlog,
+  faClipboard,
   faCookie,
   faEnvelope,
   faHeart,
@@ -9,6 +9,7 @@ import {
   faLock,
   faLuggageCart,
   faPhone,
+  faQuestion,
   faTrademark,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -95,17 +96,17 @@ export const footer = [
       {
         icon: faCookie,
         text: "Cookies",
-        path: "/Error",
-      },
-      {
-        icon: faBlog,
-        text: "Blog",
-        path: "/Error",
+        path: "/Cookie",
       },
       {
         icon: faLock,
         text: "Terms & Conditions",
-        path: "/Error",
+        path: "/Terms-Conditions",
+      },
+      {
+        icon: faClipboard,
+        text: "Privacy Policy",
+        path: "/Privacy-Policy",
       },
     ],
   },

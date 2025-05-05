@@ -18,6 +18,11 @@ import {
   TrackOrderDetail,
   Wishlist,
   AccountInfomation,
+  Address,
+  Reset,
+  Cookie,
+  Term,
+  Privacy,
 } from "./page";
 import UserLayout from "./layout/UserLayout";
 const Router = createBrowserRouter([
@@ -83,6 +88,22 @@ const Router = createBrowserRouter([
         element: <Wishlist dashboard={false} />,
       },
       {
+        path: "ResetPassword",
+        element: <Reset dashboard={false} />,
+      },
+      {
+        path: "Cookie",
+        element: <Cookie />,
+      },
+      {
+        path: "Terms-Conditions",
+        element: <Term />,
+      },
+      {
+        path: "Privacy-Policy",
+        element: <Privacy />,
+      },
+      {
         path: "UserDashboard",
         element: <UserLayout />,
         children: [
@@ -102,7 +123,15 @@ const Router = createBrowserRouter([
             path: "Wishlist",
             element: <Wishlist dashboard={true} />,
           },
+          {
+            path: "Address",
+            element: <Address />,
+          },
         ],
+      },
+      {
+        path: "UserDashboard/ResetPassword",
+        element: <Reset dashboard={true} />,
       },
       {
         path: "UserDashboard/Cart",

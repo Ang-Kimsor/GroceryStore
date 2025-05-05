@@ -3,7 +3,7 @@ import { SideMenuData } from "../../data/User";
 import SideMenuLi from "./SideMenuLi";
 import { faBars, faDashboard, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-const SideMenu = ({ isinfo, notinfo }) => {
+const SideMenu = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -30,20 +30,7 @@ const SideMenu = ({ isinfo, notinfo }) => {
           />
         </h1>
         {SideMenuData.map(({ icon, name, path }, index) => (
-          <SideMenuLi
-            key={index}
-            icon={icon}
-            name={name}
-            path={path}
-            onClick={() => {
-              setOpen(false);
-              if (index === 0) {
-                isinfo();
-              } else {
-                notinfo();
-              }
-            }}
-          />
+          <SideMenuLi key={index} icon={icon} name={name} path={path} />
         ))}
       </aside>
     </>

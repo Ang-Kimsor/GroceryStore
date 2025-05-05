@@ -4,8 +4,16 @@ import img from "./../assets/trackOrder.jpg";
 import { Link } from "react-router-dom";
 const TrackingOrder = ({ dashboard }) => {
   return (
-    <main className="w-full lg:h-[400px] pt-5 mb-10 flex gap-20 items-start justify-center ">
-      <div className="w-[95%] lg:h-[400px] py-10 lg:pr-10 bg-[#f6f6f8] grid lg:grid-cols-2 grid-cols-1">
+    <main
+      className={`w-full ${
+        dashboard ? "lg:h-[400px]" : "h-fit"
+      } pt-5 mb-10 flex gap-20 items-start justify-center `}
+    >
+      <div
+        className={`w-[95%] ${
+          dashboard ? "lg:h-[400px]" : "h-fit"
+        } py-10 lg:pr-10 bg-[#f6f6f8] grid lg:grid-cols-2 grid-cols-1`}
+      >
         <div className="lg:px-10 px-5 size-full">
           <img
             src={img}

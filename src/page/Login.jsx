@@ -78,7 +78,7 @@ const Login = () => {
         </div>
         <Link
           className="text-sm text-gray-800/50 hover:underline hover:text-[#59C491]"
-          onClick={(e) => e.preventDefault()}
+          to={"/ResetPassword"}
         >
           Forget Password?
         </Link>

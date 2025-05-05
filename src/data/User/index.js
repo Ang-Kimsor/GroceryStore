@@ -38,16 +38,53 @@ export const SideMenuData = [
   {
     icon: faAddressBook,
     name: "Addresses",
-    path: "/Error",
+    path: "Address",
   },
   {
     icon: faLock,
     name: "Reset Password",
-    path: "/Error",
+    path: "ResetPassword",
   },
   {
     icon: faDoorOpen,
     name: "Log Out",
-    path: "/Error",
+    path: "/Login",
+  },
+];
+export const AddressData = [
+  {
+    name: "John Doe",
+    address:
+      "32B, Building Name, Landmark, Location, StreetName, State, City and Town, Phnom Penh, Cambodia",
+    phone: "+855 123 456 789",
+    email: "example@gmail.com",
+  },
+  {
+    name: "Kimsor",
+    address:
+      "31B, Building Name, Landmark, Location, StreetName, State, City and Town, Phnom Penh, Cambodia",
+    phone: "+855 123 456 789",
+    email: "example@gmail.com",
+  },
+  {
+    name: "Taylor",
+    address:
+      "30B, Building Name, Landmark, Location, StreetName, State, City and Town, Phnom Penh, Cambodia",
+    phone: "+855 123 456 789",
+    email: "example@gmail.com",
+  },
+  {
+    name: "Misha",
+    address:
+      "29B, Building Name, Landmark, Location, StreetName, State, City and Town, Phnom Penh, Cambodia",
+    phone: "+855 123 456 789",
+    email: "example@gmail.com",
+  },
+  {
+    name: "George",
+    address:
+      "28B, Building Name, Landmark, Location, StreetName, State, City and Town, Phnom Penh, Cambodia",
+    phone: "+855 123 456 789",
+    email: "example@gmail.com",
   },
 ];
