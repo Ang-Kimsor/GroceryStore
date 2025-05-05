@@ -1,12 +1,16 @@
 import React, { useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Products } from "../data/OurStore";
+import { Products } from "../../data/OurStore/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
-import { CartWish, Copy, ProductCard } from "../components/OurStore";
-import { FeatureTitle } from "../components/Home";
-import { useWishlist } from "../Context/WishlistContext.jsx";
-import { useCart } from "../Context/CartContext.jsx";
+import {
+  CartWish,
+  Copy,
+  ProductCard,
+} from "../../components/OurStore/index.js";
+import { FeatureTitle } from "../../components/Home/index.js";
+import { useWishlist } from "../../Context/WishlistContext.jsx";
+import { useCart } from "../../Context/CartContext.jsx";
 const DetailProduct = () => {
   let Review = useRef(Math.round(Math.random(100) * 100));
   const [fullStock, setfullStock] = useState(false);

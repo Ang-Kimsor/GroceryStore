@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Bg from "./../assets/bg-login.jpg";
+import Bg from "./../../assets/bg-login.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useUser } from "../Context/UserContext";
+import { useUser } from "./../../Context/UserContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Login = () => {
       });
       setError("");
       alert("Login successful!");
-      navigate("/");
+      navigate("/UserDashBoard");
     } else {
       setError("Invalid email or password");
     }

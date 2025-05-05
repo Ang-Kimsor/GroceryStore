@@ -1,6 +1,6 @@
 import React from "react";
-import { Data } from "../data/Term-Condition";
-import List from "../components/Term-Condition-Policy/List";
+import { Data } from "../../data/Term-Condition";
+import List from "../../components/Term-Condition-Policy/List";
 const TermCondition = () => {
   return (
     <main className="w-full h-fit  flex justify-center mt-5 mb-20">

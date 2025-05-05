@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
-import { ProductCard } from "../components/OurStore";
-import { category, Products } from "../data/OurStore";
+import { ProductCard } from "../../components/OurStore";
+import { category, Products } from "../../data/OurStore";
 
 const OurStore = () => {
   const [indexCate, setIndexCate] = useState(0);

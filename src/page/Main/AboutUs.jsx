@@ -7,7 +7,7 @@ import {
   FeatureSubscribe,
   FeatureVision,
   FeaturePay,
-} from "./../components/About";
+} from "../../components/About";
 import {
   FeatureBigData,
   FeatureStoryData,
@@ -15,7 +15,7 @@ import {
   FeatureVisionData,
   FeaturePayData,
   FeatureSubData,
-} from "./../data/About";
+} from "../../data/About";
 const AboutUs = () => {
   return (
     <main className="bg-white w-full h-fit">

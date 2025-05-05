@@ -3,9 +3,9 @@ import {
   FeatureBig,
   FeatureSearch,
   FeatureJobCard,
-} from "../components/Career";
+} from "../../components/Career";
 import { Link } from "react-router-dom";
-import { FeatureBigData, FeatureJobCardData } from "../data/Career";
+import { FeatureBigData, FeatureJobCardData } from "../../data/Career";
 const Career = () => {
   return (
     <main className="bg-white w-full h-fit">

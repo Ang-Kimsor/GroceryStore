@@ -1,5 +1,5 @@
 import React from "react";
-import { Address, Form } from "./../components/Contact";
+import { Address, Form } from "../../components/Contact";
 const Contact = () => {
   return (
     <main className="flex justify-center mt-10 mb-20">

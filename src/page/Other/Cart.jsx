@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { CartCard, Form } from "../components/Cart";
+import { CartCard, Form } from "./../../components/Cart";
 
-import { useCart } from "../Context/CartContext";
+import { useCart } from "./../../Context/CartContext";
 const Cart = ({ dashboard }) => {
   const { Cart } = useCart();
   const totalPrice = Cart.reduce((sum, item) => {

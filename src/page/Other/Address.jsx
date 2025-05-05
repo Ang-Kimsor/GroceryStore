@@ -1,6 +1,11 @@
-import React from "react";
-import { AddressData } from "../data/User";
+import { useState } from "react";
+import { AddressData } from "./../../data/User";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 const Address = () => {
+  const [Default, setDefault] = useState(0);
+  let temp = AddressData;
+  temp.filter;
   return (
     <main className="w-full my-5 bg-[#F6F6F8] p-5">
       <div className="w-full flex justify-between items-center">
@@ -12,13 +17,13 @@ const Address = () => {
         </button>
       </div>
       <div className="grid 2xl:grid-cols-3 md:grid-cols-2 gap-5 mt-5">
-        {AddressData.map(({ name, address, phone, email }, index) => (
+        {temp.map(({ name, address, phone, email }, index) => (
           <div
             key={index}
-            className={` p-5 border   ${
-              index == 0
+            className={` p-5 border-2 ${
+              Default == index
                 ? " bg-[#E8F4F0] border-[#59C491]"
-                : "bg-grey-500/50 border-gray-800/80"
+                : "bg-grey-500/50 border-gray-800/20"
             } rounded`}
           >
             <p className="text-[#3C4242] text-md font-medium">{name}</p>
@@ -29,20 +34,23 @@ const Address = () => {
             <p className="mt-1 text-sm text-[#3C4242]">{email}</p>
             <div className="mt-5 flex w-full items-center justify-between">
               <div className="flex gap-3">
-                <button className="px-3 cursor-pointer bg-[#59C491] text-sm text-white py-1">
-                  Edit
+                <button className="size-[35px] rounded flex items-center justify-center cursor-pointer bg-[#59C491] text-[12px] text-white py-1">
+                  <FontAwesomeIcon icon={faPen} className="text-lg" />
                 </button>
-                <button className="px-3 cursor-pointer bg-[#FF6150] text-sm text-white py-1">
-                  Remove
+                <button className="size-[35px] rounded flex items-center justify-center cursor-pointer bg-[#FF6150] text-[12px] text-white py-1">
+                  <FontAwesomeIcon icon={faTrash} className="text-lg" />
                 </button>
               </div>
-              <div className="flex gap-1">
+              <div className="flex gap-1" onClick={() => setDefault(index)}>
                 <input
                   type="checkbox"
-                  className="accent-[#59C491]"
+                  className="accent-[#59C491] cursor-pointer"
                   defaultChecked={index == 0}
+                  checked={index == Default}
                 />
-                <label className="text-sm">Default</label>
+                <label className="text-[12px] text-[#3C4242] cursor-pointer">
+                  Default
+                </label>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import Bg from "./../assets/bg-login.jpg";
+import Bg from "./../../assets/bg-login.jpg";
 import { Link } from "react-router-dom";
 const ResetPw = ({ dashboard }) => {
   return (

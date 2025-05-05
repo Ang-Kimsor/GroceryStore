@@ -9,13 +9,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { useCart } from "../Context/CartContext";
-import Visa from "./../assets/visa.jpg";
-import Mastercard from "./../assets/master.jpg";
-import AmericanExpress from "./../assets/americanExpress.jpg";
-import Paypal from "./../assets/paypal.jpg";
+import { useCart } from "./../../Context/CartContext";
+import Visa from "./../../assets/visa.jpg";
+import Mastercard from "./../../assets/master.jpg";
+import AmericanExpress from "./../../assets/americanExpress.jpg";
+import Paypal from "./../../assets/paypal.jpg";
 import { useState } from "react";
-import { List } from "../components/Cart";
+import { List } from "./../../components/Cart";
 const Payment = () => {
   const { Cart } = useCart();
   const [cardNum, setCardNum] = useState("");

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "./../Context/CartContext";
+import { useCart } from "./../../Context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBook,
@@ -9,7 +9,7 @@ import {
   faTruck,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { List } from "../components/Cart";
+import { List } from "./../../components/Cart";
 
 const TrackingOrderDetail = ({ dashboard }) => {
   const { Cart } = useCart();

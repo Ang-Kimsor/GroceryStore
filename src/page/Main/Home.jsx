@@ -8,7 +8,7 @@ import {
   FeatureStory,
   FeatureCustomer,
   FeatureBrand,
-} from "../components/Home";
+} from "../../components/Home";
 import {
   FeatureBigData,
   FeatureSmallData,
@@ -19,8 +19,8 @@ import {
   FeatureStoryData,
   FeatureCustomerData,
   FeatureBrandData,
-} from "./../data/Home";
-import { ProductCard } from "./../components/OurStore";
+} from "../../data/Home";
+import { ProductCard } from "../../components/OurStore";
 const Home = () => {
   const StockSort1 = FeatureSellerData.sort((a, b) => b.stock - a.stock);
   const StockSort2 = FeatureDiscoverData.sort((a, b) => b.stock - a.stock);

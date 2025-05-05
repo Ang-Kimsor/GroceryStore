@@ -1,7 +1,7 @@
 import React from "react";
-import { useWishlist } from "./../Context/WishlistContext";
+import { useWishlist } from "./../../Context/WishlistContext";
 import { Link } from "react-router-dom";
-import WishlistCard from "../components/Wishlist/WishlistCard";
+import WishlistCard from "./../../components/Wishlist/WishlistCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const Wishlist = ({ dashboard }) => {
