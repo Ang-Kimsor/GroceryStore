@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 const Address = () => {
   const [Default, setDefault] = useState(0);
-  let temp = AddressData;
-  temp.filter;
   return (
     <main className="w-full my-5 bg-[#F6F6F8] p-5">
       <div className="w-full flex justify-between items-center">
@@ -17,7 +15,7 @@ const Address = () => {
         </button>
       </div>
       <div className="grid 2xl:grid-cols-3 md:grid-cols-2 gap-5 mt-5">
-        {temp.map(({ name, address, phone, email }, index) => (
+        {AddressData.map(({ name, address, phone, email }, index) => (
           <div
             key={index}
             className={` p-5 border-2 ${
