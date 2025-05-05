@@ -39,7 +39,10 @@ const Address = () => {
                   <FontAwesomeIcon icon={faTrash} className="text-lg" />
                 </button>
               </div>
-              <div className="flex gap-1" onClick={() => setDefault(index)}>
+              <div
+                className="h-[35px] flex items-center gap-1"
+                onClick={() => setDefault(index)}
+              >
                 <input
                   type="checkbox"
                   className="accent-[#59C491] cursor-pointer"
