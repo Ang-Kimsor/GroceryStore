@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import { ProductCard } from "../../components/OurStore";
 import { category, Products } from "../../data/OurStore";
 
@@ -8,12 +8,39 @@ const OurStore = () => {
   const [sort, setSort] = useState("id");
   const Stock = ["Both", "In Stock", "Out of Stock"];
 
+  const [minVal, setMinVal] = useState(0);
+  const [maxVal, setMaxVal] = useState(100);
+  const [filterPrice, setFilterPrice] = useState({ min: 0, max: 100 });
+
+  const trackRef = useRef(null);
+  const [dragging, setDragging] = useState(null);
+
+  const minLimit = 0;
+  const maxLimit = 100;
+  const Gap = 10;
+  const maxInitialPrice = Math.max(
+    ...Products.map(({ price, discount }) => price * (1 - discount / 100))
+  );
+  const handleMouseDown = (type) => setDragging(type);
+  const handleMouseUp = () => setDragging(null);
+  const handleMouseMove = (e) => {
+    if (!dragging) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const percent = ((e.clientX - rect.left) / rect.width) * 100;
+    const value = Math.min(Math.max(percent, minLimit), maxLimit);
+    if (dragging === "min") {
+      setMinVal(Math.min(value, maxVal - Gap));
+    } else if (dragging === "max") {
+      setMaxVal(Math.max(value, minVal + Gap));
+    }
+  };
+
   const Filter = useMemo(() => {
     let filtered = [...Products];
 
     if (indexCate !== 0) {
       filtered = filtered.filter(
-        (product) => product.category === category[indexCate]["name"]
+        (product) => product.category === category[indexCate].name
       );
     }
 
@@ -22,6 +49,14 @@ const OurStore = () => {
     } else if (indexStock === 2) {
       filtered = filtered.filter((product) => product.stock === 0);
     }
+
+    const lower = (filterPrice.min / 100) * maxInitialPrice;
+    const upper = (filterPrice.max / 100) * maxInitialPrice;
+
+    filtered = filtered.filter((product) => {
+      const finalPrice = product.price * (1 - product.discount / 100);
+      return finalPrice >= lower && finalPrice <= upper;
+    });
 
     switch (sort) {
       case "low":
@@ -47,14 +82,65 @@ const OurStore = () => {
     }
 
     return filtered;
-  }, [indexCate, indexStock, sort]);
+  }, [indexCate, indexStock, sort, filterPrice, maxInitialPrice]);
 
   return (
     <main className="w-full h-fit flex md:flex-row flex-col px-3 justify-center md:mt-20 mt-10 relative">
-      <aside className="md:w-[300px] w-full pb-10 pt-2 md:pl-3 h-fit md:sticky md:top-0">
+      <aside className="md:w-[300px] w-full pb-10 px-2 pt-2 md:pl-3 h-fit md:sticky md:top-0">
         <div className="w-full h-fit p-2">
+          <h1 className="text-xl font-medium mb-3">Widget Price Filter</h1>
+          <div
+            className="w-full mb-5"
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
+            <div className="w-full mt-5 pl-2 border-b pb-8 border-[#E5E7EB]">
+              <div
+                ref={trackRef}
+                className="relative h-1.5 mt-5 bg-gray-300 rounded"
+              >
+                <div
+                  className="absolute h-1.5 bg-black rounded"
+                  style={{
+                    left: `${minVal}%`,
+                    width: `${maxVal - minVal}%`,
+                  }}
+                ></div>
+                <span
+                  onMouseDown={() => handleMouseDown("min")}
+                  className="absolute top-1/2 size-4 bg-black rounded-full cursor-pointer"
+                  style={{
+                    left: `${minVal}%`,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                ></span>
+                <span
+                  onMouseDown={() => handleMouseDown("max")}
+                  className="absolute top-1/2 size-4 bg-black rounded-full cursor-pointer"
+                  style={{
+                    left: `${maxVal}%`,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                ></span>
+              </div>
+              <div className="mt-8 text-sm flex justify-between items-center w-full">
+                <p>
+                  Price: ${Math.round((minVal / 100) * maxInitialPrice)} - $
+                  {Math.round((maxVal / 100) * maxInitialPrice)}
+                </p>
+                <button
+                  className="px-4 py-2 bg-black text-white text-sm rounded hover:bg-gray-800 transition"
+                  onClick={() => setFilterPrice({ min: minVal, max: maxVal })}
+                >
+                  Filter Price
+                </button>
+              </div>
+            </div>
+          </div>
+
           <h1 className="text-xl font-medium mb-3">Product Category</h1>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 mb-5 border-b pb-5 border-[#E5E7EB]">
             {category.map(({ name }, i) => (
               <li key={i} className="cursor-pointer flex gap-2">
                 <input
@@ -75,7 +161,7 @@ const OurStore = () => {
             ))}
           </ul>
 
-          <h1 className="text-xl font-medium mt-5 mb-3">Product Status</h1>
+          <h1 className="text-xl font-medium mb-3">Product Status</h1>
           <ul className="flex flex-col gap-3">
             {Stock.map((s, j) => (
               <li key={j} className="cursor-pointer flex gap-2">
@@ -101,7 +187,7 @@ const OurStore = () => {
 
       <aside className="h-fit p-2 md:w-[75%] w-full">
         <h1 className="lg:text-3xl text-2xl font-medium">
-          {category[indexCate]["name"]}
+          {category[indexCate].name}
         </h1>
         <div className="w-full bg-[#e8e8e8] flex md:flex-row gap-5 flex-col md:items-center mt-5 py-2 px-2">
           <div className="flex flex-row md:justify-center items-center gap-2">
@@ -141,24 +227,9 @@ const OurStore = () => {
         )}
 
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-5 gap-x-3 py-5">
-          {Filter.map(
-            (
-              { id, name, price, rate, discount, img, category, stock },
-              index
-            ) => (
-              <ProductCard
-                key={index}
-                id={id}
-                name={name}
-                price={price}
-                discount={discount}
-                rate={rate}
-                img={img}
-                category={category}
-                stock={stock}
-              />
-            )
-          )}
+          {Filter.map((product, index) => (
+            <ProductCard key={index} {...product} />
+          ))}
         </div>
       </aside>
     </main>
