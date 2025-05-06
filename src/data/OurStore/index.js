@@ -196,8 +196,8 @@ export const Products = [
   {
     id: 15,
     name: "GENKI DIAPER PANTS - 36 Pcs",
-    price: 94.45,
-    discount: 76,
+    price: 100,
+    discount: 0,
     rate: 4.2,
     img: p15,
     category: "Baby Collection",
