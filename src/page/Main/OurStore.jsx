@@ -18,15 +18,31 @@ const OurStore = () => {
   const minLimit = 0;
   const maxLimit = 100;
   const Gap = 10;
+
   const maxInitialPrice = Math.max(
     ...Products.map(({ price, discount }) => price * (1 - discount / 100))
   );
+
   const handleMouseDown = (type) => setDragging(type);
   const handleMouseUp = () => setDragging(null);
+
   const handleMouseMove = (e) => {
     if (!dragging) return;
     const rect = trackRef.current.getBoundingClientRect();
     const percent = ((e.clientX - rect.left) / rect.width) * 100;
+    const value = Math.min(Math.max(percent, minLimit), maxLimit);
+    if (dragging === "min") {
+      setMinVal(Math.min(value, maxVal - Gap));
+    } else if (dragging === "max") {
+      setMaxVal(Math.max(value, minVal + Gap));
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!dragging) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const touch = e.touches[0];
+    const percent = ((touch.clientX - rect.left) / rect.width) * 100;
     const value = Math.min(Math.max(percent, minLimit), maxLimit);
     if (dragging === "min") {
       setMinVal(Math.min(value, maxVal - Gap));
@@ -94,6 +110,8 @@ const OurStore = () => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleMouseUp}
           >
             <div className="w-full mt-5 pl-2 border-b pb-8 border-[#E5E7EB]">
               <div
@@ -109,6 +127,7 @@ const OurStore = () => {
                 ></div>
                 <span
                   onMouseDown={() => handleMouseDown("min")}
+                  onTouchStart={() => handleMouseDown("min")}
                   className="absolute top-1/2 size-4 bg-black rounded-full cursor-pointer"
                   style={{
                     left: `${minVal}%`,
@@ -117,6 +136,7 @@ const OurStore = () => {
                 ></span>
                 <span
                   onMouseDown={() => handleMouseDown("max")}
+                  onTouchStart={() => handleMouseDown("max")}
                   className="absolute top-1/2 size-4 bg-black rounded-full cursor-pointer"
                   style={{
                     left: `${maxVal}%`,
