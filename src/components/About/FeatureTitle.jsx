@@ -6,9 +6,7 @@ const FeatureTitle = ({ title1, title2 }) => {
       <p className="uppercase text-[#59C491] text-[13px] tracking-widest">
         {title1}
       </p>
-      <p className="mt-2 md:text-4xl text-xl font-[550] text-center capitalize">
-        {title2}
-      </p>
+      <p className="mt-2 md:text-4xl text-xl font-[550] capitalize">{title2}</p>
     </>
   );
 };
