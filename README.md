@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/Kimsor1111/GroceryStore">
-    <img src="src/assets/logo.jpg" alt="Grocery Store Logo" width="150" height="150" />
+    <img src="src/assets/logo.jpg" alt="Grocery Store Logo" width="450" height="450" />
   </a>
 
   <h1 align="center">🛒 Grocery Store E-Commerce Clone 🛒</h1>
@@ -105,7 +105,7 @@ Follow these steps to run the GroceryStore locally for development or testing.
 2. Open GroceryStore Project
    
     ```sh
-     cd Armaf
+     cd GroceryStore
     ```
 
 3. Install dependencies
@@ -240,5 +240,6 @@ Project Link: [https://github.com/Kimsor1111/PteasDecor](https://github.com/Kims
 [ReactRouter-url]: https://reactrouter.com/
 [ReactRedux.js]: https://img.shields.io/badge/ReactRedux-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRedux-url]: https://react-redux.js.org/
+
 
 
