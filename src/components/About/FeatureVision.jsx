@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-
 const FeatureVision = ({ icon, title, des }) => {
+  // Feature Vision
   return (
     <div className="bg-[#E8F4F0] rounded lg:w-11/12 md:w-9/12 py-16 xl:pb-32 flex gap-7 flex-col items-center relative top-0 transition-all duration-300 cursor-pointer lg:hover:top-10">
       <div className="size-[90px] bg-[#59C491] flex items-center justify-center rounded-full absolute top-[-45px]">

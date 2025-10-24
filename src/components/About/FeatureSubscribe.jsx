@@ -1,13 +1,13 @@
-import React from "react";
 import { Link } from "react-router-dom";
 const FeatureSubscribe = ({ title, des, link, path, img }) => {
+  // Featuer Subscribe
   return (
     <div className="bg-white rounded w-[95%] lg:h-[450px] h-fit grid lg:grid-cols-2 lg:gap-5 pt-10">
-      <div className=" lg:px-10 px-5 flex flex-col gap-7 justify-center">
-        <h1 className="lg:text-4xl pl-2 text-2xl pr-5 font-medium capitalize">
+      <div className="flex flex-col justify-center px-5 lg:px-10 gap-7">
+        <h1 className="pl-2 pr-5 text-2xl font-medium capitalize lg:text-4xl">
           {title}
         </h1>
-        <p className="text-sm pl-2 text-gray-500/50 pr-5 capitalize">
+        <p className="pl-2 pr-5 text-sm capitalize text-gray-500/50">
           {des + " "}
           <Link to={path} className="uppercase text-[#59C491]">
             {link}
@@ -24,7 +24,7 @@ const FeatureSubscribe = ({ title, des, link, path, img }) => {
           </button>
         </div>
       </div>
-      <div className=" px-5 flex items-end">
+      <div className="flex items-end px-5 ">
         <img src={img} alt={title} />
       </div>
     </div>

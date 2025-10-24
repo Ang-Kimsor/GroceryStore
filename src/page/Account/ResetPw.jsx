@@ -1,12 +1,27 @@
 import Bg from "./../../assets/bg-login.jpg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 const ResetPw = ({ dashboard }) => {
   return (
     <main className="w-full md:h-[700px] h-[550px] relative">
-      <div className="size-full">
-        <img src={Bg} className="size-full object-cover" alt="" />
-      </div>
-      <form className="md:w-[600px] h-fit flex flex-col md:gap-3 gap-2 w-[90%] bg-white absolute inset-1/2 -translate-1/2 p-5 md:px-10 md:py-16">
+      <motion.div
+        className="size-full"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
+        <img
+          src={Bg}
+          className="size-full object-cover"
+          alt="bg-reset-password"
+        />
+      </motion.div>
+      <motion.form
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="md:w-[600px] h-fit flex flex-col md:gap-3 gap-2 w-[90%] bg-white absolute inset-1/2 -translate-1/2 p-5 md:px-10 md:py-16"
+      >
         <p className="uppercase text-[#59C491] flex items-center text-[13px] tracking-widest">
           {dashboard && (
             <Link to={"/UserDashboard"} className="text-xl">
@@ -38,7 +53,7 @@ const ResetPw = ({ dashboard }) => {
             Register
           </Link>
         </p>
-      </form>
+      </motion.form>
     </main>
   );
 };

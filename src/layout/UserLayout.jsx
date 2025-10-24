@@ -1,6 +1,5 @@
-import React from "react";
-import Scroll from "../components/Scroll";
 import { Outlet } from "react-router-dom";
+import Scroll from "../components/Scroll";
 import SideMenu from "../components/User/SideMenu";
 const UserLayout = () => {
   return (

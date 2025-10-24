@@ -1,14 +1,14 @@
-import React from "react";
 import FeatureTitle from "./FeatureTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const FeatureStory = ({ img, title1, title2, des }) => {
+  // Feature Story Card
   return (
     <>
       <div className="lg:w-[80%] w-[95%] h-fit grid lg:grid-cols-2 grid-cols-1">
         <div className=" flex relative">
-          <img src={img} alt="" className="rounded-xl" />
+          <img src={img} alt={`Story - ${title1}`} className="rounded-xl" />
         </div>
         <div className="bg-[#e8f4f0] lg:rounded-r-xl lg:rounded-bl-none rounded-b-xl flex flex-col justify-center px-5 py-5">
           <FeatureTitle title1={title1} title2={title2} />

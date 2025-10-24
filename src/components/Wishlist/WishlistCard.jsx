@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCart } from "../../Context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,7 @@ import {
   faShoppingCart,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 const WishlistCard = ({
   id,
   img,
@@ -47,7 +48,17 @@ const WishlistCard = ({
   };
   const [cart, setCart] = useState(false);
   return (
-    <tr className="border-y-1 w-full h-[40px] relative border-gray-500/30 ">
+    <motion.tr
+      className="border-y-1 w-full h-[40px] relative border-gray-500/30 "
+      variants={{
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6 },
+        },
+        hidden: { opacity: 0, y: -20 },
+      }}
+    >
       <th className="w-full py-5 text-[12px] font-medium relative text-[#3C4242] justify-center flex items-center">
         <img src={img} alt="" className="size-[60px]" />
       </th>
@@ -102,7 +113,7 @@ const WishlistCard = ({
           </div>
         </button>
       </th>
-    </tr>
+    </motion.tr>
   );
 };
 

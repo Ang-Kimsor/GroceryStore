@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "./../../Context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +8,11 @@ import {
   faTruck,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { List } from "./../../components/Cart";
+import { motion } from "framer-motion";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Suspense, lazy } from "react";
+const List = lazy(() => import("./../../components/Cart/List"));
 
 const TrackingOrderDetail = ({ dashboard }) => {
   const { Cart } = useCart();
@@ -46,7 +49,12 @@ const TrackingOrderDetail = ({ dashboard }) => {
   ];
   return (
     <main className="w-full  py-5 flex flex-col items-center justify-center ">
-      <div className="lg:w-[95%] w-[95%] p-8 bg-[#f6f6f8]">
+      <motion.section
+        className="lg:w-[95%] w-[95%] p-8 bg-[#f6f6f8]"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
         <div className="flex flex-row gap-2 text-xl font-semibold">
           {!dashboard && <Link to={"/TrackOrder"}>&lt;</Link>}
           <h1>Order Details</h1>
@@ -71,7 +79,7 @@ const TrackingOrderDetail = ({ dashboard }) => {
         </h1>
         <div className="w-full h-[70px] relative mt-8 flex">
           <div className="w-full absolute  h-[15px] bg-[#E8F4F0] z-0"></div>
-          <div className="w-[26%] absolute h-[15px]  bg-[#59C491] z-0"></div>
+          <div className="w-[76%] absolute h-[15px]  bg-[#59C491] z-0"></div>
           <div className="size-[22px] top-[-3px] left-[-3px] flex justify-center items-center bg-[#59C491] rounded-full z-10 absolute">
             <FontAwesomeIcon
               icon={faCheck}
@@ -131,24 +139,115 @@ const TrackingOrderDetail = ({ dashboard }) => {
             </div>
           ))}
         </div>
-        <div className="mt-5">
-          <h1 className="text-sm font-medium">Item ({Cart.length})</h1>
-          <div className="mt-2">
-            {Cart.map(({ img, name, price, discount, qty }, index) => (
-              <List
-                length={Cart.length}
-                key={index}
-                index={index}
-                name={name}
-                price={price}
-                discount={discount}
-                qty={qty}
-                isListImg={true}
-                img={img}
+
+        <Suspense
+          fallback={
+            <>
+              <Skeleton
+                className="mt-5"
+                baseColor="rgba(229, 231, 235)"
+                height="20px"
+                width="100px"
               />
-            ))}
-          </div>
-        </div>
+              {Cart.map((_, index) => (
+                <Skeleton
+                  key={index}
+                  className="mt-5"
+                  baseColor="rgba(229, 231, 235)"
+                  height="50px"
+                />
+              ))}
+            </>
+          }
+        >
+          <motion.div
+            className="mt-5"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.2,
+                },
+              },
+              hidden: {},
+            }}
+          >
+            <motion.h1
+              className="text-sm font-medium"
+              variants={{
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6 },
+                },
+                hidden: { opacity: 0, y: -20 },
+              }}
+            >
+              Item ({Cart.length})
+            </motion.h1>
+            <motion.div
+              className="mt-2"
+              variants={{
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6 },
+                },
+                hidden: { opacity: 0, y: -20 },
+              }}
+            >
+              <motion.div
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.6 },
+                  },
+                  hidden: { opacity: 0, y: -20 },
+                }}
+              >
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.2,
+                      },
+                    },
+                    hidden: {},
+                  }}
+                >
+                  {Cart.map(({ img, name, price, discount, qty }, index) => (
+                    <motion.div
+                      key={index}
+                      variants={{
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.6 },
+                        },
+                        hidden: { opacity: 0, y: -20 },
+                      }}
+                    >
+                      <List
+                        length={Cart.length}
+                        index={index}
+                        name={name}
+                        price={price}
+                        discount={discount}
+                        qty={qty}
+                        isListImg={true}
+                        img={img}
+                      />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </Suspense>
         <div className="w-full mt-5">
           <ul className="grid lg:grid-cols-4 grid-cols-1 lg:gap-10 gap-5">
             <li>
@@ -188,7 +287,7 @@ const TrackingOrderDetail = ({ dashboard }) => {
             </li>
           </ul>
         </div>
-      </div>
+      </motion.section>
     </main>
   );
 };

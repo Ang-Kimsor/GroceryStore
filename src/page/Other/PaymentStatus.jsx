@@ -6,14 +6,18 @@ import {
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const PaymentStatus = () => {
   const Condition = 0;
   return (
     <main className="w-full md:py-20 py-5 flex flex-col gap-20 items-center justify-center ">
-      <div className="w-[90%] h-full md:py-20 py-10 bg-[#f6f6f8] flex items-center justify-center flex-col">
+      <motion.section
+        className="w-[90%] h-full md:py-20 py-10 bg-[#f6f6f8] flex items-center justify-center flex-col"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
         <div
           className={`md:size-[60px] size-[50px] rounded-full flex items-center justify-center border-2 ${
             Condition
@@ -66,7 +70,7 @@ const PaymentStatus = () => {
             <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
           </Link>
         </div>
-      </div>
+      </motion.section>
     </main>
   );
 };

@@ -14,8 +14,11 @@ import Visa from "./../../assets/visa.jpg";
 import Mastercard from "./../../assets/master.jpg";
 import AmericanExpress from "./../../assets/americanExpress.jpg";
 import Paypal from "./../../assets/paypal.jpg";
-import { useState } from "react";
-import { List } from "./../../components/Cart";
+import { motion } from "framer-motion";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Suspense, lazy, useState } from "react";
+const List = lazy(() => import("./../../components/Cart/List"));
 const Payment = () => {
   const { Cart } = useCart();
   const [cardNum, setCardNum] = useState("");
@@ -49,17 +52,60 @@ const Payment = () => {
     return sum + item.price * (1 - item.discount / 100) * item.qty;
   }, 0);
   return (
-    <div className="w-full flex justify-center pb-10 px-3">
-      <main className="lg:w-[95%] w-[99%] h-fit ">
-        <h1 className="lg:py-12 py-5 text-gray-500/50 lg:pl-0 pl-2 flex gap-4">
+    <main className="w-full flex justify-center pb-10 px-3">
+      <motion.section
+        className="lg:w-[95%] w-[99%] h-fit "
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.2,
+            },
+          },
+          hidden: {},
+        }}
+      >
+        <motion.h1
+          className="lg:py-12 py-5 text-gray-500/50 lg:pl-0 pl-2 flex gap-4"
+          variants={{
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6 },
+            },
+            hidden: { opacity: 0, y: -20 },
+          }}
+        >
           <Link to={"/Cart"} className="text-[#59C491]">
             Cart & Checkout
           </Link>
           <span>/</span>
           <p>Payment</p>
-        </h1>
-        <div className="grid lg:grid-cols-2 lg:gap-10 gap-5">
-          <aside className="bg-red-500">
+        </motion.h1>
+        <motion.div
+          className="grid lg:grid-cols-2 lg:gap-10 gap-5"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+            hidden: {},
+          }}
+        >
+          <motion.aside
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6 },
+              },
+              hidden: { opacity: 0, y: -20 },
+            }}
+          >
             <div className="bg-[#f6f6f8] md:p-5 p-2">
               <h1 className="text-lg font-semibold">Order Summary</h1>
               <h1 className="text-md font-medium mt-5">Account</h1>
@@ -200,51 +246,99 @@ const Payment = () => {
               </div>
               <div className="w-full py-3 bg-white mt-5 px-5">
                 <h1 className="text-md font-medium">Your Order</h1>
-                <div className="mt-5">
-                  {Cart.map(({ name, price, discount, qty }, index) => (
-                    <List
-                      length={Cart.length}
-                      key={index}
-                      index={index}
-                      name={name}
-                      price={price}
-                      discount={discount}
-                      qty={qty}
-                      isListImg={false}
-                    />
-                  ))}
+                <Suspense
+                  fallback={
+                    <>
+                      {Cart.map((_, index) => (
+                        <Skeleton
+                          key={index}
+                          height="70px"
+                          baseColor="rgba(229, 231, 235)"
+                        />
+                      ))}
+                    </>
+                  }
+                >
+                  <motion.div
+                    className="mt-5"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.2,
+                        },
+                      },
+                      hidden: {},
+                    }}
+                  >
+                    {Cart.map(({ name, price, discount, qty }, index) => (
+                      <motion.div
+                        key={index}
+                        variants={{
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.6 },
+                          },
+                          hidden: { opacity: 0, y: -20 },
+                        }}
+                      >
+                        <List
+                          length={Cart.length}
+                          key={index}
+                          index={index}
+                          name={name}
+                          price={price}
+                          discount={discount}
+                          qty={qty}
+                          isListImg={false}
+                        />
+                      </motion.div>
+                    ))}
 
-                  <div className="w-full text-md mt-5 flex justify-between text-[12px]">
-                    <p>Subtotal ({Cart.length})</p>
-                    <p>${totalPrice.toFixed(2)}</p>
-                  </div>
-                  <div className="w-full text-md mt-5 flex justify-between text-[12px]">
-                    <p>Tax (5% VAT)</p>
-                    <p>${(0.05 * totalPrice).toFixed(2)}</p>
-                  </div>
-                  <div className="w-full text-md mt-5 flex justify-between text-[12px]">
-                    <p>Shipping (Flexible Shipping)</p>
-                    <p>
-                      $
-                      {totalPrice >= 50
-                        ? "0.00"
-                        : (0.01 * totalPrice).toFixed(2)}
-                    </p>
-                  </div>
-                  <div className="w-full font-medium mt-5 flex justify-between text-xl">
-                    <p>Total Amount: </p>
-                    <p>
-                      $
-                      {totalPrice >= 50
-                        ? (totalPrice * 1.05).toFixed(2)
-                        : (totalPrice * 1.06).toFixed(2)}
-                    </p>
-                  </div>
-                </div>
+                    <div className="w-full text-md mt-5 flex justify-between text-[12px]">
+                      <p>Subtotal ({Cart.length})</p>
+                      <p>${totalPrice.toFixed(2)}</p>
+                    </div>
+                    <div className="w-full text-md mt-5 flex justify-between text-[12px]">
+                      <p>Tax (5% VAT)</p>
+                      <p>${(0.05 * totalPrice).toFixed(2)}</p>
+                    </div>
+                    <div className="w-full text-md mt-5 flex justify-between text-[12px]">
+                      <p>Shipping (Flexible Shipping)</p>
+                      <p>
+                        $
+                        {totalPrice >= 50
+                          ? "0.00"
+                          : (0.01 * totalPrice).toFixed(2)}
+                      </p>
+                    </div>
+                    <div className="w-full font-medium mt-5 flex justify-between text-xl">
+                      <p>Total Amount: </p>
+                      <p>
+                        $
+                        {totalPrice >= 50
+                          ? (totalPrice * 1.05).toFixed(2)
+                          : (totalPrice * 1.06).toFixed(2)}
+                      </p>
+                    </div>
+                  </motion.div>
+                </Suspense>
               </div>
             </div>
-          </aside>
-          <aside className="bg-white md:p-5 p-2">
+          </motion.aside>
+          <motion.aside
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6 },
+              },
+              hidden: { opacity: 0, y: -20 },
+            }}
+            className="bg-white md:p-5 p-2"
+          >
             <h1 className="text-lg font-semibold border-b border-gray-500/50 pb-3">
               Payment
             </h1>
@@ -350,10 +444,10 @@ const Payment = () => {
                 Pay & Place Order &gt;
               </Link>
             </div>
-          </aside>
-        </div>
-      </main>
-    </div>
+          </motion.aside>
+        </motion.div>
+      </motion.section>
+    </main>
   );
 };
 

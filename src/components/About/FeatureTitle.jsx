@@ -1,6 +1,5 @@
-import React from "react";
-
 const FeatureTitle = ({ title1, title2 }) => {
+  // Feature Title
   return (
     <>
       <p className="uppercase text-[#59C491] text-[13px] tracking-widest">

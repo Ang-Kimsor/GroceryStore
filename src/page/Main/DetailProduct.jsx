@@ -1,17 +1,24 @@
-import React, { useState, useRef } from "react";
+// Built in
+import { useState, useRef, lazy, Suspense } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Products } from "../../data/OurStore/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
-import {
-  CartWish,
-  Copy,
-  ProductCard,
-} from "../../components/OurStore/index.js";
-import { FeatureTitle } from "../../components/Home/index.js";
+import { motion } from "framer-motion";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+// Data
+import { Products } from "../../data/OurStore";
+// Lazy
+const CartWish = lazy(() => import("../../components/OurStore/Cart_Wish"));
+const Copy = lazy(() => import("../../components/OurStore/CopyLink"));
+const ProductCard = lazy(() => import("../../components/OurStore/ProductCard"));
+const FeatureTitle = lazy(() => import("../../components/Home/FeatureTitle"));
+// Global Context
 import { useWishlist } from "../../Context/WishlistContext.jsx";
 import { useCart } from "../../Context/CartContext.jsx";
+// Detail Component Page
 const DetailProduct = () => {
+  // state and ref
   let Review = useRef(Math.round(Math.random(100) * 100));
   const [fullStock, setfullStock] = useState(false);
   const [alreadywish, setalreadywish] = useState(false);
@@ -103,19 +110,58 @@ const DetailProduct = () => {
       <Copy copy={copy} />
       {/* main component */}
       <main className="w-full h-fit  flex items-center flex-col pt-10">
-        <h1 className="w-[95%] flex gap-3 text-gray-800/50 md:text-lg text-[13px]">
+        {/* title */}
+        <motion.h1
+          className="w-[95%] flex gap-3 text-gray-800/50 md:text-lg text-[13px]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
           <Link to={"/OurStore"} className="text-[#59C491] text-center">
             {category}
           </Link>
           /<span className="text-center">{Product[0]["name"]}</span>
-        </h1>
-        <article className="lg:w-[95%] w-full h-fit grid lg:grid-cols-2 grid-cols-1 gap-10 py-5">
+        </motion.h1>
+        {/* Main product */}
+        <motion.article
+          className="lg:w-[95%] w-full h-fit grid lg:grid-cols-2 grid-cols-1 gap-10 py-5"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+            hidden: {},
+          }}
+        >
           {/* img */}
-          <div className="bg-white flex justify-center ">
+          <motion.div
+            className="bg-white flex justify-center "
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6 },
+              },
+              hidden: { opacity: 0, y: -20 },
+            }}
+          >
             <img src={Product[0]["img"]} alt="" />
-          </div>
+          </motion.div>
           {/* des */}
-          <div className="lg:p-0 p-5 cursor-default flex flex-col justify-center">
+          <motion.div
+            className="lg:p-0 p-5 cursor-default flex flex-col justify-center"
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6 },
+              },
+              hidden: { opacity: 0, y: -20 },
+            }}
+          >
             <p className="text-gray-800/50 mb-4">{category}</p>
             {Product[0]["discount"] > 0 ? (
               <span className="size-fit rounded bg-[#FF6150] px-2.5 py-1 text-white tracking-wider lg:text-md text-sm">
@@ -260,38 +306,95 @@ const DetailProduct = () => {
                 Share
               </button>
             </div>
-          </div>
-        </article>
-        <section className="w-full h-fit flex flex-col mt-5 items-center mb-16">
-          <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-16">
-            <FeatureTitle
-              title1={"Related Products"}
-              title2={"You maty also like"}
-            />
-          </div>
-          <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
-            <div className=" lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10">
-              {ProductRelated.map(
-                (
-                  { id, name, price, rate, discount, img, category, stock },
-                  index
-                ) => (
-                  <ProductCard
-                    key={index}
-                    id={id}
-                    name={name}
-                    price={price}
-                    discount={discount}
-                    rate={rate}
-                    img={img}
-                    category={category}
-                    stock={stock}
-                  />
-                )
-              )}
+          </motion.div>
+        </motion.article>
+        {/* Related Product */}
+        <Suspense
+          fallback={
+            <section className="w-full h-fit flex flex-col mt-16 items-center mb-16">
+              <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-5">
+                <Skeleton
+                  baseColor="rgba(229, 231, 235)"
+                  width="320px"
+                  height="15px"
+                />
+                <Skeleton
+                  baseColor="rgba(229, 231, 235)"
+                  width="320px"
+                  height="35px"
+                />
+              </div>
+              <div className="w-[95%] h-fit  flex flex-wrap justify-between gap-y-5">
+                <div className="lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-5">
+                  {ProductRelated.map((_, index) => (
+                    <Skeleton key={index} height="320px" />
+                  ))}
+                </div>
+              </div>
+            </section>
+          }
+        >
+          <section className="w-full h-fit flex flex-col mt-5 items-center mb-16">
+            <div className="w-[95%] h-fit flex flex-col items-center text-sm pb-16">
+              <motion.div
+                className="w-[95%] h-fit flex flex-col items-center  text-sm pb-5"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                <FeatureTitle
+                  title1={"Uncover Fresh Arrivals and Exciting Finds"}
+                  title2={"Discover What's New"}
+                />
+              </motion.div>
             </div>
-          </div>
-        </section>
+            <div className="w-[95%] h-fit flex flex-wrap justify-between gap-y-5">
+              <motion.div
+                className="lg:grid-cols-5 md:grid-cols-3 grid grid-cols-2 w-full h-fit gap-10"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={{
+                  visible: {
+                    transition: { staggerChildren: 0.2 },
+                  },
+                  hidden: {},
+                }}
+              >
+                {ProductRelated.map(
+                  (
+                    { id, name, price, rate, discount, img, category, stock },
+                    index
+                  ) => (
+                    <motion.div
+                      key={index}
+                      variants={{
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.6 },
+                        },
+                        hidden: { opacity: 0, y: -20 },
+                      }}
+                    >
+                      <ProductCard
+                        id={id}
+                        name={name}
+                        price={price}
+                        discount={discount}
+                        rate={rate}
+                        img={img}
+                        category={category}
+                        stock={stock}
+                      />
+                    </motion.div>
+                  )
+                )}
+              </motion.div>
+            </div>
+          </section>
+        </Suspense>
       </main>
     </>
   );

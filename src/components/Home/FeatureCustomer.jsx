@@ -1,16 +1,33 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FeatureTitle from "./FeatureTitle";
-import React from "react";
 import FeatureCustomerCard from "./FeatureCustomerCard";
-
+import { motion } from "framer-motion";
 const featureCustomer = ({ title1, title2, des, rate, customer }) => {
   rate = Math.round(rate);
+  // Feature Customer Section
   return (
     <>
       <div className="w-[95%] h-fit flex flex-wrap items-center ">
-        <div className="xl:w-[30%] w-full h-fit flex flex-col items-center  py-10 pr-5">
-          <div className="w-fit h-fit flex gap-1 mb-2">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.2 },
+            },
+            hidden: {},
+          }}
+          className="xl:w-[30%] w-full h-fit flex flex-col items-center  py-10 pr-5"
+        >
+          <motion.div
+            variants={{
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              hidden: { opacity: 0, y: -10 },
+            }}
+            className="flex gap-1 mb-2 w-fit h-fit"
+          >
             {Array.from({ length: 5 }).map((_, index) => (
               <FontAwesomeIcon
                 key={index}
@@ -20,23 +37,47 @@ const featureCustomer = ({ title1, title2, des, rate, customer }) => {
                 }`}
               />
             ))}
-          </div>
+          </motion.div>
           <FeatureTitle title1={title1} title2={title2} />
-          <p className="md:text-sm text-[12px]  text-gray-800/50 mt-5 px-3 text-center">
+          <motion.p
+            variants={{
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              hidden: { opacity: 0, y: -10 },
+            }}
+            className="md:text-sm text-[12px]  text-gray-800/50 mt-5 px-3 text-center"
+          >
             {des}
-          </p>
-        </div>
-        <div className="xl:w-[70%] w-full h-fit place-items-center  grid md:grid-cols-3 grid-col-1 gap-3">
+          </motion.p>
+        </motion.div>
+        <motion.div
+          className="xl:w-[70%] w-full h-fit place-items-center  grid md:grid-cols-3 grid-col-1 gap-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.2 },
+            },
+            hidden: {},
+          }}
+        >
           {customer.map(({ img, des, name, type }, index) => (
-            <FeatureCustomerCard
+            <motion.div
               key={index}
-              img={img}
-              des={des}
-              name={name}
-              type={type}
-            />
+              variants={{
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                hidden: { opacity: 0, y: -10 },
+              }}
+            >
+              <FeatureCustomerCard
+                img={img}
+                des={des}
+                name={name}
+                type={type}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </>
   );

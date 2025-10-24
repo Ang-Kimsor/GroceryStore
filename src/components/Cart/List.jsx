@@ -1,5 +1,3 @@
-import React from "react";
-
 const List = ({
   length,
   index,
@@ -20,7 +18,7 @@ const List = ({
         <div className="flex gap-4 items-center">
           <img
             src={img}
-            alt=""
+            alt={name}
             className="size-[50px] object-cover object-center"
           />
           <h1 className="self-start mt-2 text-[13px]">{name}</h1>

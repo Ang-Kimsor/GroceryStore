@@ -1,4 +1,4 @@
-import { FeatureTitle } from "./../../components/Home";
+import FeatureTitle from "./../../components/Home/FeatureTitle";
 import { country } from "./../../data/Contact";
 import { Link } from "react-router-dom";
 const Form = () => {
@@ -32,11 +32,7 @@ const Form = () => {
             className="outline-none h-[45px] pl-1 bg-[#e8e8e8] w-[99%]"
           />
         </div>
-        <div
-          className="flex flex-col w-full items-center"
-          justify-center
-          items-center
-        >
+        <div className="flex flex-col w-full items-center">
           <label className="mb-2 font-medium self-start ">
             Email <span className="text-red-500">*</span>
           </label>
@@ -46,11 +42,7 @@ const Form = () => {
             className="outline-none h-[45px] pl-1 bg-[#e8e8e8] w-[99%]"
           />
         </div>
-        <div
-          className="flex flex-col w-full items-center"
-          justify-center
-          items-center
-        >
+        <div className="flex flex-col w-full items-center">
           <label className="mb-2 font-medium self-start ">
             Phone Number <span className="text-gray-500/50">(Optional)</span>
           </label>
@@ -59,11 +51,7 @@ const Form = () => {
             className="outline-none h-[45px] pl-1 bg-[#e8e8e8] w-[99%]"
           />
         </div>
-        <div
-          className="flex flex-col w-full items-center"
-          justify-center
-          items-center
-        >
+        <div className="flex flex-col w-full items-center">
           <label className="mb-2 font-medium self-start ">
             Country / Region <span className="text-red-500">*</span>
           </label>
@@ -79,11 +67,7 @@ const Form = () => {
             ))}
           </select>
         </div>
-        <div
-          className="flex flex-col w-full items-center"
-          justify-center
-          items-center
-        >
+        <div className="flex flex-col w-full items-center">
           <label className="mb-2 font-medium self-start ">
             Subject <span className="text-gray-500/50">(Optional)</span>
           </label>
@@ -92,11 +76,7 @@ const Form = () => {
             className="outline-none h-[45px] pl-1 bg-[#e8e8e8] w-[99%]"
           />
         </div>
-        <div
-          className="flex flex-col w-full items-center"
-          justify-center
-          items-center
-        >
+        <div className="flex flex-col w-full items-center">
           <label className="mb-2 font-medium self-start ">Message</label>
           <textarea
             className="outline-none h-[100px] p-1 bg-[#e8e8e8] resize-none  pl-1 w-[99%]"

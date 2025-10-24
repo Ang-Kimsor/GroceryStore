@@ -1,17 +1,25 @@
-import React from "react";
 import { useWishlist } from "./../../Context/WishlistContext";
 import { Link } from "react-router-dom";
-import WishlistCard from "./../../components/Wishlist/WishlistCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Suspense, lazy } from "react";
+const WishlistCard = lazy(() =>
+  import("./../../components/Wishlist/WishlistCard")
+);
 const Wishlist = ({ dashboard }) => {
   const { wishlist } = useWishlist();
   return (
     <main className="w-full h-fit flex flex-col items-center py-5">
-      <div
+      <motion.div
         className={`lg:w-[95%] w-[99%] bg-[#f8f8f8] ${
           dashboard ? "lg:px-5 px-3" : "lg:px-10 px-3"
         } pb-10`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         <h1 className="w-full p-5 text-2xl font-semibold">
           {!dashboard && (
@@ -39,41 +47,80 @@ const Wishlist = ({ dashboard }) => {
               </th>
             </tr>
           </thead>
-          <tbody
+          <motion.tbody
             className={`w-full relative ${
               wishlist.length == 0 ? "h-[300px]" : "h-fit"
             }`}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.2,
+                },
+              },
+              hidden: {},
+            }}
           >
-            {wishlist.length == 0 ? (
-              <tr className="w-full h-[300px]">
-                <td
-                  colSpan="5"
-                  className="text-center text-gray-500 font-semibold text-lg"
+            <Suspense
+              fallback={
+                <>
+                  {wishlist.map((_, index) => (
+                    <tr key={index}>
+                      <td colSpan={5}>
+                        <Skeleton
+                          className="mt-5"
+                          baseColor="rgba(229, 231, 235)"
+                          width="100%"
+                          height="50px"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              }
+            >
+              {wishlist.length == 0 ? (
+                <motion.tr
+                  className="w-full h-[300px]"
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6 },
+                    },
+                    hidden: { opacity: 0, y: -20 },
+                  }}
                 >
-                  No items in wishlist
-                </td>
-              </tr>
-            ) : (
-              wishlist.map(
-                (
-                  { id, img, name, price, discount, stock, rate, category },
-                  index
-                ) => (
-                  <WishlistCard
-                    key={index}
-                    id={id}
-                    img={img}
-                    name={name}
-                    price={price}
-                    discount={discount}
-                    stock={stock}
-                    rate={rate}
-                    category={category}
-                  />
+                  <td
+                    colSpan="5"
+                    className="text-center text-gray-500 font-semibold text-lg"
+                  >
+                    No items in wishlist
+                  </td>
+                </motion.tr>
+              ) : (
+                wishlist.map(
+                  (
+                    { id, img, name, price, discount, stock, rate, category },
+                    index
+                  ) => (
+                    <WishlistCard
+                      key={index}
+                      id={id}
+                      img={img}
+                      name={name}
+                      price={price}
+                      discount={discount}
+                      stock={stock}
+                      rate={rate}
+                      category={category}
+                    />
+                  )
                 )
-              )
-            )}
-          </tbody>
+              )}
+            </Suspense>
+          </motion.tbody>
         </table>
         <div className="w-full flex gap-5 justify-end mt-5">
           {!dashboard && (
@@ -93,7 +140,7 @@ const Wishlist = ({ dashboard }) => {
             <FontAwesomeIcon icon={faShoppingCart} className="ml-3" />
           </Link>
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 };

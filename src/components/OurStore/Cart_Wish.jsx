@@ -17,6 +17,7 @@ const Cart_Wish = ({
 }) => {
   return (
     <>
+      {/* Overstock in cart */}
       <div
         className={`${
           fullStock ? "visible opacity-100" : "invisible opacity-0"
@@ -38,6 +39,7 @@ const Cart_Wish = ({
           </span>
         </div>
       </div>
+      {/* Cart Widget */}
       <div
         className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
           cart ? "opacity-100 visible " : "opacity-0 invisible "
@@ -47,7 +49,7 @@ const Cart_Wish = ({
           <div className="w-[90px] h-[90px] flex justify-center items-center ">
             <img
               src={img}
-              alt=""
+              alt={`Cart - Widget - ${name}`}
               className="size-full object-contain object-center"
             />
           </div>
@@ -89,6 +91,8 @@ const Cart_Wish = ({
           </Link>
         </div>
       </div>
+
+      {/* Already wishlist */}
       <div
         className={`${
           alreadywish ? "visible opacity-100" : "invisible opacity-0"
@@ -108,6 +112,7 @@ const Cart_Wish = ({
           <span className="font-medium">Product already in wishlist</span>
         </div>
       </div>
+      {/* Wishlist Widget */}
       <div
         className={`md:w-[320px] h-fit w-[280px] bg-white shadow-xs shadow-gray-500 rounded fixed bottom-5 right-5 flex flex-wrap transition-all duration-300 z-[199] ${
           wish ? "opacity-100 visible " : "opacity-0 invisible "
@@ -117,7 +122,7 @@ const Cart_Wish = ({
           <div className="w-[90px] h-[90px] flex justify-center items-center ">
             <img
               src={img}
-              alt=""
+              alt={`Wishlist - Widget - ${name}`}
               className="size-full object-contain object-center"
             />
           </div>

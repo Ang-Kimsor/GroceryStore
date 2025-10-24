@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-regular-svg-icons";
 import {
   faCartShopping,
   faHeart,
   faStar,
+  faImage,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import ImagePreview from "./ImagePreview.jsx";
-import Cart_Wish from "./Cart_Wish.jsx";
 import { useWishlist } from "../../Context/WishlistContext.jsx";
 import { useCart } from "../../Context/CartContext.jsx";
+import ImagePreview from "./ImagePreview.jsx";
+import Cart_Wish from "./Cart_Wish.jsx";
 const ProductCard = ({
   id,
   name,
@@ -21,8 +21,9 @@ const ProductCard = ({
   category,
   stock,
 }) => {
+  // State and Status
   const [fullStock, setfullStock] = useState(false);
-  const [alreadywish, setalreadywish] = useState(false);
+  const [alreadywish, setAlreadywish] = useState(false);
   const [hover, setHover] = useState(false);
   const [cart, setCart] = useState(false);
   const [wish, setWish] = useState(false);
@@ -31,15 +32,17 @@ const ProductCard = ({
   const { wishlist, dispatchWishlist } = useWishlist();
   const { Cart, dispatchCart } = useCart();
   const isAlreadyInWishlist = wishlist.some((item) => item.id === id);
+  // Rate
   useEffect(() => {
     rate = Math.round(rate);
   }, []);
+  // Add to wishlist
   const handleWishlist = (e) => {
     e.preventDefault();
     if (isAlreadyInWishlist) {
-      setalreadywish(true);
+      setAlreadywish(true);
       setWish(false);
-      setTimeout(() => setalreadywish(false), 2500);
+      setTimeout(() => setAlreadywish(false), 2500);
     } else {
       dispatchWishlist({
         type: "ADD",
@@ -55,10 +58,11 @@ const ProductCard = ({
         },
       });
       setWish(true);
-      setalreadywish(false);
+      setAlreadywish(false);
       setTimeout(() => setWish(false), 2500);
     }
   };
+  // Add to cart
   const handleAddToCart = (e) => {
     e.preventDefault();
     const inCart = Cart.find((item) => item.id === id);
@@ -108,7 +112,7 @@ const ProductCard = ({
         hidecart={() => setCart(false)}
         hidewish={() => setWish(false)}
       />
-      {/* Main */}
+      {/* Product Card Main Section */}
       <Link
         key={id}
         to={

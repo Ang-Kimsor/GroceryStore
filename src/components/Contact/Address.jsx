@@ -1,24 +1,23 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Address = () => {
   return (
     <div className="bg-[#f8f8f8] p-5">
-      <div className="w-full h-fit  grid md:grid-cols-2 md:gap-y-16 gap-y-5">
+      <div className="grid w-full h-fit md:grid-cols-2 md:gap-y-16 gap-y-5">
         <div>
-          <h1 className="uppercase font-medium text-lg pb-3">Company Name</h1>
+          <h1 className="pb-3 text-lg font-medium uppercase">Company Name</h1>
           <address className="pt-1">Street, City, Country</address>
           <p className="pb-1">+855 123 456 789</p>
           <Link className="text-[#59C491] text-sm">companyname@gmail.com</Link>
         </div>
         <div>
-          <h1 className="uppercase font-medium text-lg pb-3">Company Name</h1>
+          <h1 className="pb-3 text-lg font-medium uppercase">Company Name</h1>
           <address className="pt-1">Street, City, Country</address>
           <p className="pb-1">+855 123 456 789</p>
           <Link className="text-[#59C491] text-sm">companyname@gmail.com</Link>
         </div>
         <div>
-          <h1 className="uppercase font-medium text-lg pb-3">Company Name</h1>
+          <h1 className="pb-3 text-lg font-medium uppercase">Company Name</h1>
           <address className="pt-1">Street, City, Country</address>
           <p className="pb-1">+855 123 456 789</p>
           <Link className="text-[#59C491] text-sm">companyname@gmail.com</Link>

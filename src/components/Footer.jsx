@@ -1,18 +1,42 @@
-import React from "react";
 import Logo from "./../assets/logo.jpg";
 import ISO from "./../assets/iso.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { footer, iconPayment, iconSocial } from "../data/Footer";
+import { motion } from "framer-motion";
 const Footer = () => {
   return (
     <>
       <footer className="w-full h-fit bg-[#f3f3f3] flex flex-col items-center justify-center pt-10">
-        <div className="2xl:grid-cols-6 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-[95%] h-fit grid gap-5">
-          <div className="2xl:h-[310px]">
+        {/* Container */}
+        <motion.div
+          className="2xl:grid-cols-6 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-[95%] h-fit grid gap-5"
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+            hidden: {},
+          }}
+        >
+          {/* Footer logo and iso */}
+          <motion.div
+            className="2xl:h-[310px]"
+            variants={{
+              visible: {
+                opacity: 1,
+                transition: { duration: 0.3 },
+              },
+              hidden: { opacity: 0 },
+            }}
+          >
             <div className="w-[100%] pt-5 h-fit flex pl-5 flex-col">
               <div className="w-[80%]">
-                <img className="w-full" src={Logo} alt="" />
+                <img className="w-full" src={Logo} alt="Logo" />
                 <p className="mt-5 text-sm font-medium text-gray-600/80">
                   The Group Focuses Exclusively On Quality And Service With A
                   Well Dedicated Team Ensuring Timely Deliveries All Across The
@@ -23,13 +47,24 @@ const Footer = () => {
                 <img
                   className="2xl:w-[60%] xl:w-[45%] lg:w-[35%] w-[30%] h-auto object-contain mt-5"
                   src={ISO}
-                  alt=""
+                  alt="ISO"
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
+          {/* Footer list */}
           {footer.map(({ title, element }, index) => (
-            <div key={index} className="2xl:h-[310px] pt-5 px-3">
+            <motion.div
+              key={index}
+              className="2xl:h-[310px] pt-5 px-3"
+              variants={{
+                visible: {
+                  opacity: 1,
+                  transition: { duration: 0.3 },
+                },
+                hidden: { opacity: 0 },
+              }}
+            >
               <ul className="w-full h-fit flex flex-col gap-3">
                 <h1 className="tracking-widest font-medium uppercase mb-5">
                   {title}
@@ -66,9 +101,20 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-          <div className="2xl:h-[310px]  pt-5 px-3">
+          {/* Footer payment and social */}
+          <motion.div
+            className="2xl:h-[310px] pt-5 px-3"
+            variants={{
+              visible: {
+                opacity: 1,
+                transition: { duration: 0.3 },
+              },
+              hidden: { opacity: 0 },
+            }}
+          >
+            {/* Payment */}
             <div>
               <h1 className="tracking-widest font-medium uppercase mb-5">
                 Payment Methods
@@ -88,6 +134,7 @@ const Footer = () => {
                 ))}
               </div>
             </div>
+            {/* Social */}
             <div>
               <h1 className="tracking-widest font-medium uppercase my-5">
                 Follow Us
@@ -107,14 +154,21 @@ const Footer = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="w-full flex items-center justify-center  h-[60px] border-t border-gray-500/30 mt-5">
+          </motion.div>
+        </motion.div>
+        {/* Copyright */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="w-full flex items-center justify-center  h-[60px] border-t border-gray-500/30 mt-5"
+        >
           <p className="text-sm  text-gray-500/80">
             Copyright ©{new Date().getFullYear()} Company Name. All Rights
             Reserved .
           </p>
-        </div>
+        </motion.div>
       </footer>
     </>
   );

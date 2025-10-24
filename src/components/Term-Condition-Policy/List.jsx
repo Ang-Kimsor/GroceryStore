@@ -1,5 +1,3 @@
-import React from "react";
-
 const List = ({ title, list }) => {
   return (
     <>

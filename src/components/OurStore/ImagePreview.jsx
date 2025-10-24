@@ -12,24 +12,25 @@ const ImagePreview = ({ hide, img, OpenImg }) => {
       document.body.style.overflow = "auto";
     };
   }, [OpenImg]);
+  // Image Preview
   return (
     <div
-      className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[200] ${
+      className={`w-full h-screen bg-black/90 fixed top-0 left-0 z-[101] ${
         OpenImg ? "visible" : "invisible"
       }`}
     >
       <FontAwesomeIcon
         icon={faX}
-        className="absolute md:right-10 right-8 top-8 md:top-10 text-lg text-white cursor-pointer"
+        className="absolute text-lg text-white cursor-pointer md:right-10 right-8 top-8 md:top-10"
         onClick={hide}
       />
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="flex items-center justify-center w-full h-full">
         <img
           src={img}
           className={`md:w-fit md:h-fit h-auto w-[80%] rounded-lg  ${
             OpenImg ? "scale-100 transition-all duration-500" : "scale-0 "
           }`}
-          alt=""
+          alt="Image Preview"
         />
       </div>
     </div>

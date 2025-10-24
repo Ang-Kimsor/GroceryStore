@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Bg from "./../../assets/bg-login.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "./../../Context/UserContext";
+import { motion } from "framer-motion";
 const Register = () => {
   const navigate = useNavigate();
   const { dispatchUser } = useUser();
@@ -75,13 +76,21 @@ const Register = () => {
         </div>
       </div>
       <main className="w-full md:h-[1100px] h-[950px] relative">
-        <div className="size-full">
-          <img src={Bg} className="size-full object-cover" alt="" />
-        </div>
-        <form
+        <motion.div
+          className="size-full"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <img src={Bg} className="size-full object-cover" alt="bg-register" />
+        </motion.div>
+        <motion.form
           action={"/Login"}
           onSubmit={(e) => handleRegister(e)}
           className="md:w-[600px] flex flex-col md:gap-3 gap-2 w-[90%] h-fit bg-white absolute inset-1/2 -translate-1/2 p-5 md:px-10 md:py-16"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <p className="uppercase text-[#59C491] text-[13px] tracking-widest">
             Join us
@@ -200,7 +209,7 @@ const Register = () => {
               Login
             </Link>
           </p>
-        </form>
+        </motion.form>
       </main>
     </>
   );

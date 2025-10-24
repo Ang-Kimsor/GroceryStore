@@ -1,8 +1,6 @@
 import { faFaceDizzy } from "@fortawesome/free-regular-svg-icons";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Error = () => {
@@ -12,7 +10,7 @@ const Error = () => {
         icon={faFaceDizzy}
         className="md:text-9xl text-7xl text-gray-500/80"
       />
-      <p className="mt-3 text-xl font-medium text-gray-500/50 text-center">
+      <p className="mt-3 text-xl font-medium text-center text-gray-500/50">
         Page not found
       </p>
       <p className="text-[12px] font-medium text-gray-500/50 text-center">
@@ -21,7 +19,7 @@ const Error = () => {
       <p className="text-[12px] font-medium text-gray-500/50 text-center">
         Go back, or head over to www.JapanSouq.com to choose a new direction.
       </p>
-      <div className="size-fit flex gap-5 mt-4">
+      <div className="flex gap-5 mt-4 size-fit">
         <Link to={"/"} className="px-5 bg-[#FF6150] py-2 text-white">
           <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
           Back

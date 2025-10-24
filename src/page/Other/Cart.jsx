@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
-import { CartCard, Form } from "./../../components/Cart";
-
+import { motion } from "framer-motion";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Suspense, lazy } from "react";
 import { useCart } from "./../../Context/CartContext";
+const CartCard = lazy(() => import("./../../components/Cart/CartCard"));
+const Form = lazy(() => import("./../../components/Cart/Form"));
 const Cart = ({ dashboard }) => {
   const { Cart } = useCart();
   const totalPrice = Cart.reduce((sum, item) => {
@@ -9,17 +13,49 @@ const Cart = ({ dashboard }) => {
   }, 0);
 
   return (
-    <div className="w-full flex justify-center pb-10 px-1">
-      <main className="lg:w-[95%] w-[99%] h-fit ">
-        <h1 className="lg:py-12 py-5 text-[#59C491] flex flex-col lg:pl-0 pl-2">
+    <main className="w-full flex justify-center pb-10 px-1">
+      <motion.section
+        className="lg:w-[95%] w-[99%] h-fit "
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.2,
+            },
+          },
+          hidden: {},
+        }}
+      >
+        <motion.h1
+          className="lg:py-12 py-5 text-[#59C491] flex flex-col lg:pl-0 pl-2"
+          variants={{
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6 },
+            },
+            hidden: { opacity: 0, y: -20 },
+          }}
+        >
           {dashboard && (
             <Link to={"/UserDashBoard"} className="mr-2 text-gray-500 mb-5">
               &lt; Back to Dashboard
             </Link>
           )}
           Cart & Checkout
-        </h1>
-        <div className="grid lg:grid-cols-2 lg:gap-20 gap-5">
+        </motion.h1>
+        <motion.div
+          className="grid lg:grid-cols-2 lg:gap-20 gap-5"
+          variants={{
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6 },
+            },
+            hidden: { opacity: 0, y: -20 },
+          }}
+        >
           <aside>
             <div className="bg-[#f6f6f8] md:p-5 p-2">
               <div
@@ -66,32 +102,69 @@ const Cart = ({ dashboard }) => {
               </div>
               <div className="w-full">
                 <h1 className="text-xl font-medium mb-5">Your Cart</h1>
-                <div className="bg-white w-full p-5 flex flex-col gap-5">
-                  {Cart.length === 0 ? (
-                    <p className="text-center text-gray-500/80 py-10 flex items-center justify-center">
-                      Cart is empty
-                    </p>
-                  ) : (
-                    Cart.map(
-                      (
-                        { id, name, img, price, qty, discount, stock },
-                        index
-                      ) => (
-                        <CartCard
+                <Suspense
+                  fallback={
+                    <div className="bg-white w-full p-5 flex flex-col gap-5">
+                      {Cart.map((_, index) => (
+                        <Skeleton
                           key={index}
-                          id={id}
-                          name={name}
-                          img={img}
-                          price={price}
-                          qty={qty}
-                          discount={discount}
-                          stock={stock}
-                          lastitem={index == Cart.length - 1}
+                          height="120px"
+                          baseColor="rgba(229, 231, 235)"
                         />
+                      ))}
+                    </div>
+                  }
+                >
+                  <motion.div
+                    className="bg-white w-full p-5 flex flex-col gap-5"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.2,
+                        },
+                      },
+                      hidden: {},
+                    }}
+                  >
+                    {Cart.length === 0 ? (
+                      <p className="text-center text-gray-500/80 py-10 flex items-center justify-center">
+                        Cart is empty
+                      </p>
+                    ) : (
+                      Cart.map(
+                        (
+                          { id, name, img, price, qty, discount, stock },
+                          index
+                        ) => (
+                          <motion.div
+                            key={index}
+                            variants={{
+                              visible: {
+                                opacity: 1,
+                                y: 0,
+                                transition: { duration: 0.6 },
+                              },
+                              hidden: { opacity: 0, y: -20 },
+                            }}
+                          >
+                            <CartCard
+                              id={id}
+                              name={name}
+                              img={img}
+                              price={price}
+                              qty={qty}
+                              discount={discount}
+                              stock={stock}
+                              lastitem={index == Cart.length - 1}
+                            />
+                          </motion.div>
+                        )
                       )
-                    )
-                  )}
-                </div>
+                    )}
+                  </motion.div>
+                </Suspense>
                 <div className="w-full text-md mt-7 flex justify-between text-[12px]">
                   <p>Subtotal ({Cart.length})</p>
                   <p>${totalPrice.toFixed(2)}</p>
@@ -125,10 +198,27 @@ const Cart = ({ dashboard }) => {
               </div>
             </div>
           </aside>
-          <Form />
-        </div>
-      </main>
-    </div>
+          <motion.div
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6 },
+              },
+              hidden: { opacity: 0, y: -20 },
+            }}
+          >
+            <Suspense
+              fallback={
+                <Skeleton height="600px" baseColor="rgba(229, 231, 235)" />
+              }
+            >
+              <Form />
+            </Suspense>
+          </motion.div>
+        </motion.div>
+      </motion.section>
+    </main>
   );
 };
 

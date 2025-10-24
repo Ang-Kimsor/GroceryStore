@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
-
 const FeatureBig = ({ name, brands, img }) => {
+  // Feature Big Hero
   return (
     <Link to={"/OurStore"} className="w-full h-fit flex justify-center mb-12">
       <img

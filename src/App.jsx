@@ -1,8 +1,5 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Rootlayout from "./layout/Rootlayout";
 import {
-  ErrorPage,
   Home,
   OurStore,
   DetailProduct,
@@ -24,12 +21,14 @@ import {
   Term,
   Privacy,
 } from "./page";
+import Rootlayout from "./layout/Rootlayout";
+import ErrorLayout from "./layout/ErrorLayout";
 import UserLayout from "./layout/UserLayout";
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Rootlayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorLayout />,
     children: [
       {
         index: true,

@@ -1,7 +1,6 @@
-import React from "react";
-
 import img from "./../../assets/trackOrder.jpg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 const TrackingOrder = ({ dashboard }) => {
   return (
     <main
@@ -9,15 +8,18 @@ const TrackingOrder = ({ dashboard }) => {
         dashboard ? "lg:h-[400px]" : "h-fit"
       } pt-5 mb-10 flex gap-20 items-start justify-center `}
     >
-      <div
+      <motion.div
         className={`w-[95%] ${
           dashboard ? "lg:h-[400px]" : "h-fit"
         } py-10 lg:pr-10 bg-[#f6f6f8] grid lg:grid-cols-2 grid-cols-1`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         <div className="lg:px-10 px-5 size-full">
           <img
             src={img}
-            alt=""
+            alt="Tracking Image"
             className="size-full object-cover object-center"
           />
         </div>
@@ -63,7 +65,7 @@ const TrackingOrder = ({ dashboard }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 };
