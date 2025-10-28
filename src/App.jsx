@@ -1,26 +1,33 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  Home,
-  OurStore,
-  DetailProduct,
-  Login,
-  Register,
-  Career,
-  About,
-  Contact,
-  Cart,
-  Payment,
-  PaymentStatus,
-  TrackOrder,
-  TrackOrderDetail,
-  Wishlist,
-  AccountInfomation,
-  Address,
-  Reset,
-  Cookie,
-  Term,
-  Privacy,
-} from "./page";
+import { lazy } from "react";
+// Account Page
+const Login = lazy(() => import("./page/Account/Login"));
+const Register = lazy(() => import("./page/Account/Register"));
+const Reset = lazy(() => import("./page/Account/ResetPw"));
+// Main page
+const About = lazy(() => import("./page/Main/AboutUs"));
+const Career = lazy(() => import("./page/Main/Career"));
+const Contact = lazy(() => import("./page/Main/Contact"));
+const DetailProduct = lazy(() => import("./page/Main/DetailProduct"));
+const Home = lazy(() => import("./page/Main/Home"));
+const OurStore = lazy(() => import("./page/Main/OurStore"));
+// Other
+const AccountInfomation = lazy(() => import("./page/Other/AccountInfo"));
+const Address = lazy(() => import("./page/Other/Address"));
+const Cart = lazy(() => import("./page/Other/Cart"));
+const Payment = lazy(() => import("./page/Other/Payment"));
+const PaymentStatus = lazy(() => import("./page/Other/PaymentStatus"));
+// Policy
+const Cookie = lazy(() => import("./page/Policy/Cookie"));
+const Privacy = lazy(() => import("./page/Policy/Privacy"));
+const Term = lazy(() => import("./page/Policy/TermCondition"));
+// Quick link
+const TrackOrder = lazy(() => import("./page/QuickLink/TrackingOrder"));
+const TrackOrderDetail = lazy(() =>
+  import("./page/QuickLink/TrackingOrderDetail")
+);
+const Wishlist = lazy(() => import("./page/QuickLink/Wishlist"));
+// Layout
 import Rootlayout from "./layout/Rootlayout";
 import ErrorLayout from "./layout/ErrorLayout";
 import UserLayout from "./layout/UserLayout";
