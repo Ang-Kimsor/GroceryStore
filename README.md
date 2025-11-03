@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://github.com/Kimsor1111/GroceryStore">
+  <a href="https://github.com/Ang-Kimsor/GroceryStore">
     <img src="src/assets/logo.jpg" alt="Grocery Store Logo" width="450" height="450" />
   </a>
 
@@ -99,7 +99,7 @@ Follow these steps to run the GroceryStore locally for development or testing.
 1. Clone the repository
 
     ```sh
-     git clone https://github.com/Kimsor1111/GroceryStore.git
+     git clone https://github.com/Ang-Kimsor/GroceryStore.git
     ```
 
 2. Open GroceryStore Project
@@ -194,7 +194,7 @@ This project is ideal for testing e-commerce features or customizing your own on
 Contributions are welcome! Whether it’s fixing bugs, adding new features, or improving documentation, feel free to fork the repository and submit a pull request. Please open an issue first for major changes to discuss what you would like to contribute.
 
 <a href="https://github.com/Kimsor1111/GroceryStore/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Kimsor1111/GroceryStore" alt="contrib.rocks image" />
+  <img src="https://contrib.rocks/image?repo=Ang-Kimsor/GroceryStore" alt="contrib.rocks image" />
 </a>
 
 <p id="contact">
@@ -206,7 +206,7 @@ Contributions are welcome! Whether it’s fixing bugs, adding new features, or i
 
 **Ang Kimsor** - [Telegram](https://t.me/Thirtieth_October) - [angkimsor@gmail.com](mailto:angkimsor@gmail.com) - **Call Me ☎️ +85587932289**
 
-Project Link: [https://github.com/Kimsor1111/PteasDecor](https://github.com/Kimsor1111/GroceryStore)
+Project Link: [https://github.com/Ang-Kimsor/PteasDecor](https://github.com/Ang-Kimsor/GroceryStore)
 
 <p id="acknowledgments">
 </p>
@@ -240,6 +240,7 @@ Project Link: [https://github.com/Kimsor1111/PteasDecor](https://github.com/Kims
 [ReactRouter-url]: https://reactrouter.com/
 [ReactRedux.js]: https://img.shields.io/badge/ReactRedux-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRedux-url]: https://react-redux.js.org/
+
 
 
 
