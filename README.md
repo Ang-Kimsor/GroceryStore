@@ -72,6 +72,7 @@ This project is perfect for learning e-commerce UI/UX design, practicing React d
 [![React][React.js]][React-url]
 [![ReactRouter][ReactRouter.js]][ReactRouter-url]
 [![ReactLoadingSkeleton][ReactLoadingSkeleton.js]][ReactLoadingSkeleton-url]
+[![FramerMotion][FramerMotion.js]][FramerMotion-url]
 
 <!-- GETTING STARTED -->
 <p id="getting-started">
@@ -236,7 +237,7 @@ Project Link: [https://github.com/Kimsor1111/GroceryStore](https://github.com/Ki
 [React-url]: https://reactjs.org/
 [ReactRouter.js]: https://img.shields.io/badge/ReactRouter-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRouter-url]: https://reactrouter.com/
-[ReactRedux.js]: https://img.shields.io/badge/ReactRedux-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[ReactRedux-url]: https://react-redux.js.org/
 [ReactLoadingSkeleton.js]: https://img.shields.io/badge/React%20Loading%20Skeleton-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactLoadingSkeleton-url]: https://www.npmjs.com/package/react-loading-skeleton
+[FramerMotion.js]: https://img.shields.io/badge/Framer%20Motion-20232A?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[FramerMotion-url]: https://motion.dev/
