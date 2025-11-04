@@ -14,7 +14,6 @@
   </p>
 </div>
 
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents 📑</summary> 
@@ -46,7 +45,7 @@
 
 ## About The Project 📖
 
-[![Project Screenshot][project-screenshot]](https://grocery-store-ochre-psi.vercel.app/)
+[![Project Screenshot][project-screenshot]]()
 
 This project is a ReactJS-based **online grocery store**, designed to provide a clean, user-friendly shopping experience for fresh produce, pantry essentials, and household items.  
 It’s built with scalability and customization in mind, making it easy for developers to adapt for their own e-commerce needs.
@@ -60,7 +59,6 @@ Key features of this grocery store:
 
 This project is perfect for learning e-commerce UI/UX design, practicing React development, or launching your own online grocery shop.
 
-
 <p id="built-with">
 </p>
 
@@ -73,6 +71,7 @@ This project is perfect for learning e-commerce UI/UX design, practicing React d
 [![JS][JS]][JS-url]
 [![React][React.js]][React-url]
 [![ReactRouter][ReactRouter.js]][ReactRouter-url]
+[![ReactLoadingSkeleton][ReactLoadingSkeleton.js]][ReactLoadingSkeleton-url]
 
 <!-- GETTING STARTED -->
 <p id="getting-started">
@@ -98,15 +97,15 @@ Follow these steps to run the GroceryStore locally for development or testing.
 
 1. Clone the repository
 
-    ```sh
-     git clone https://github.com/Kimsor1111/GroceryStore.git
-    ```
+   ```sh
+    git clone https://github.com/Kimsor1111/GroceryStore.git
+   ```
 
 2. Open GroceryStore Project
-   
-    ```sh
-     cd GroceryStore
-    ```
+
+   ```sh
+    cd GroceryStore
+   ```
 
 3. Install dependencies
 
@@ -126,9 +125,9 @@ Follow these steps to run the GroceryStore locally for development or testing.
 
    - Using npm:
 
-      ```sh
-        npm run dev
-      ```
+     ```sh
+       npm run dev
+     ```
 
    - or using yarn:
 
@@ -153,7 +152,7 @@ Follow these steps to run the GroceryStore locally for development or testing.
 
 │   ├── /components             # Reusable React components or UI elements
 
-│   ├── /context                # Set up for reducer, action and globe context  
+│   ├── /context                # Set up for reducer, action and globe context
 
 │   ├── /data                   # Static data for whole website (Product, Footer, Navbar, ...)
 
@@ -185,7 +184,6 @@ Use the app to browse fresh grocery items, view detailed product information, ad
 You can also filter products by category, search for specific items, and explore seasonal or promotional deals.  
 This project is ideal for testing e-commerce features or customizing your own online grocery store.
 
-
 <p id="contributors">
 </p>
 
@@ -206,7 +204,7 @@ Contributions are welcome! Whether it’s fixing bugs, adding new features, or i
 
 **Ang Kimsor** - [Telegram](https://t.me/Thirtieth_October) - [angkimsor@gmail.com](mailto:angkimsor@gmail.com) - **Call Me ☎️ +85587932289**
 
-Project Link: [https://github.com/Kimsor1111/PteasDecor](https://github.com/Kimsor1111/GroceryStore)
+Project Link: [https://github.com/Kimsor1111/GroceryStore](https://github.com/Kimsor1111/GroceryStore)
 
 <p id="acknowledgments">
 </p>
@@ -240,6 +238,5 @@ Project Link: [https://github.com/Kimsor1111/PteasDecor](https://github.com/Kims
 [ReactRouter-url]: https://reactrouter.com/
 [ReactRedux.js]: https://img.shields.io/badge/ReactRedux-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRedux-url]: https://react-redux.js.org/
-
-
-
+[ReactLoadingSkeleton.js]: https://img.shields.io/badge/React%20Loading%20Skeleton-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[ReactLoadingSkeleton-url]: https://www.npmjs.com/package/react-loading-skeleton
