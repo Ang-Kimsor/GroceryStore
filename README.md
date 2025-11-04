@@ -70,6 +70,7 @@ This project is perfect for learning e-commerce UI/UX design, practicing React d
 [![FontAwesome][FontAwesome]][FontAwesome-url]
 [![JS][JS]][JS-url]
 [![React][React.js]][React-url]
+[![ReactLazy][ReactLazy.js]][React-url]
 [![ReactRouter][ReactRouter.js]][ReactRouter-url]
 [![ReactLoadingSkeleton][ReactLoadingSkeleton.js]][ReactLoadingSkeleton-url]
 [![FramerMotion][FramerMotion.js]][FramerMotion-url]
@@ -235,6 +236,7 @@ Project Link: [https://github.com/Kimsor1111/GroceryStore](https://github.com/Ki
 [TailwindCSS-url]: https://tailwindcss.com/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[ReactLazy.js]: https://img.shields.io/badge/ReactLazy-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRouter.js]: https://img.shields.io/badge/ReactRouter-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactRouter-url]: https://reactrouter.com/
 [ReactLoadingSkeleton.js]: https://img.shields.io/badge/React%20Loading%20Skeleton-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
