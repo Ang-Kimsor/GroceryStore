@@ -88,7 +88,7 @@ const Home = () => {
               variants={{
                 visible: {
                   transition: {
-                    staggerChildren: 0.2,
+                    staggerChildren: 0.1,
                   },
                 },
                 hidden: {},
@@ -105,6 +105,7 @@ const Home = () => {
                     },
                     hidden: { opacity: 0, y: -20 },
                   }}
+                  className="w-full md:h-[230px] flex"
                 >
                   <FeatureSmall
                     key={index}
