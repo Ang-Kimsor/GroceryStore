@@ -336,7 +336,13 @@ const OurStore = () => {
             >
               {/* Search */}
               <div className="w-full flex justify-between gap-3">
-                <div className="flex items-center w-[70%] bg-white border border-gray-300 rounded-xl px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-[#59C491]/40 focus-within:border-[#59C491] transition-all">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSubmitSearch(search);
+                  }}
+                  className="flex items-center w-[70%] bg-white border border-gray-300 rounded-xl px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-[#59C491]/40 focus-within:border-[#59C491] transition-all"
+                >
                   <FontAwesomeIcon
                     icon={faMagnifyingGlass}
                     className="text-gray-500 text-sm"
@@ -350,10 +356,11 @@ const OurStore = () => {
                       setSearch(e.target.value);
                     }}
                   />
-                </div>
+                </form>
                 <button
-                  className="w-auto bg-[#59C491] hover:bg-[#4CB985] text-white px-6 py-2 rounded-xl font-medium transition shadow-sm"
+                  type="submit"
                   onClick={() => setSubmitSearch(search)}
+                  className="w-auto bg-[#59C491] hover:bg-[#4CB985] text-white px-6 py-2 rounded-xl font-medium transition shadow-sm"
                 >
                   Search
                 </button>
@@ -422,7 +429,7 @@ const OurStore = () => {
 
             {/* Product Grid */}
             {loading && Filter.length != 0 ? (
-              <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6">
+              <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-6 gap-x-4 py-6">
                 {Filter.map((_, index) => (
                   <Skeleton
                     key={index}
@@ -432,7 +439,7 @@ const OurStore = () => {
               </div>
             ) : (
               <motion.div
-                className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6"
+                className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-6 gap-x-4 py-6"
                 initial="hidden"
                 animate="visible"
                 variants={parentVariants}
