@@ -351,6 +351,7 @@ const OurStore = () => {
                     type="text"
                     placeholder="Search products..."
                     className="bg-transparent w-full px-3 py-1 outline-none text-gray-700"
+                    value={search}
                     onChange={(e) => {
                       e.target.value === "" && setSubmitSearch("");
                       setSearch(e.target.value);
@@ -423,7 +424,26 @@ const OurStore = () => {
                 >
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                 </svg>
-                <p>No products were found matching your selection.</p>
+                <p>
+                  No products were found matching your selection.{" "}
+                  <span
+                    className="hover:text-black hover:underline cursor-pointer"
+                    onClick={() => {
+                      setLoading(true);
+                      setTimeout(() => setLoading(false), 2000);
+                      setIndexCate(0);
+                      setIndexStock(0);
+                      setSort("id");
+                      setMinVal(0);
+                      setMaxVal(100);
+                      setSearch("");
+                      setSubmitSearch("");
+                      setFilterPrice({ min: 0, max: 100 });
+                    }}
+                  >
+                    Reset
+                  </span>
+                </p>
               </motion.div>
             )}
 
