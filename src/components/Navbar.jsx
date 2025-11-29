@@ -1,5 +1,4 @@
 import { menu } from "../data/Navbar";
-import Search from "./Search";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -8,14 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCart } from "../Context/CartContext";
 import {
   faBars,
-  faMagnifyingGlass,
+  faHeart,
   faShoppingCart,
   faUser,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const [openSearch, setOpenSearch] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
@@ -28,8 +26,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Search */}
-      <Search openSearch={openSearch} hide={() => setOpenSearch(false)} />
       {/* Sidebar */}
       <aside
         className={`lg:hidden 
@@ -159,23 +155,6 @@ const Navbar = () => {
                   hidden: {},
                 }}
               >
-                {/* search */}
-                <motion.span
-                  className="w-[30px] h-[30px] flex justify-center items-center cursor-pointer"
-                  variants={{
-                    visible: {
-                      opacity: 1,
-                      transition: { duration: 0.3 },
-                    },
-                    hidden: { opacity: 0 },
-                  }}
-                >
-                  <FontAwesomeIcon
-                    className="cursor-pointer"
-                    icon={faMagnifyingGlass}
-                    onClick={() => setOpenSearch(true)}
-                  />
-                </motion.span>
                 {/* user */}
                 <motion.span
                   variants={{
@@ -192,6 +171,19 @@ const Navbar = () => {
                   >
                     <FontAwesomeIcon className="cursor-pointer" icon={faUser} />
                   </Link>
+                </motion.span>
+                {/* wishlist */}
+                <motion.span
+                  className="w-[30px] h-[30px] flex justify-center items-center cursor-pointer"
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      transition: { duration: 0.3 },
+                    },
+                    hidden: { opacity: 0 },
+                  }}
+                >
+                  <FontAwesomeIcon className="cursor-pointer" icon={faHeart} />
                 </motion.span>
                 {/* cart */}
                 <motion.span

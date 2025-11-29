@@ -5,6 +5,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 // Data
 import { category, Products } from "../../data/OurStore";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Component Lazy
 const ProductCard = lazy(() => import("../../components/OurStore/ProductCard"));
 // Ourstore Component Page
@@ -15,6 +17,8 @@ const OurStore = () => {
   const [sort, setSort] = useState("id");
   const [minVal, setMinVal] = useState(0);
   const [maxVal, setMaxVal] = useState(100);
+  const [search, setSearch] = useState("");
+  const [submitSearch, setSubmitSearch] = useState("");
   const [filterPrice, setFilterPrice] = useState({ min: 0, max: 100 });
   const [dragging, setDragging] = useState(null);
   const trackRef = useRef(null);
@@ -75,7 +79,6 @@ const OurStore = () => {
 
   // Complex state memo
   const Filter = useMemo(() => {
-    setLoading(true);
     let filtered = [...Products];
 
     if (indexCate !== 0) {
@@ -119,11 +122,16 @@ const OurStore = () => {
         filtered.sort((a, b) => a.id - b.id);
     }
 
+    if (submitSearch.trim() !== "")
+      filtered = filtered.filter((item) =>
+        item.name.toLowerCase().startsWith(submitSearch.toLowerCase())
+      );
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
     return filtered;
-  }, [indexCate, indexStock, sort, filterPrice, maxInitialPrice]);
+  }, [indexCate, indexStock, sort, filterPrice, maxInitialPrice, submitSearch]);
 
   return (
     // Main Container
@@ -288,7 +296,7 @@ const OurStore = () => {
                 baseColor="rgba(229, 231, 235)"
               />
               {/* Product Grid */}
-              <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6">
+              <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5 py-6">
                 {Filter.map((_, index) => (
                   <Skeleton
                     key={index}
@@ -300,7 +308,7 @@ const OurStore = () => {
           }
         >
           <motion.section
-            className="h-fit p-4 md:w-[75%] w-full"
+            className="h-fit md:w-[75%] px-3 w-full"
             initial="hidden"
             animate="visible"
             variants={parentVariants}
@@ -321,50 +329,77 @@ const OurStore = () => {
               </motion.h1>
             )}
 
-            {/* Sort & Info Bar */}
+            {/* Sort & Info Bar  Search */}
             <motion.div
-              className="w-full bg-gray-50 border border-gray-200 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 px-5 py-4 mt-6"
+              className="w-full bg-gray-50 border border-gray-200 rounded-2xl shadow-sm flex flex-col gap-4 px-5 py-4 mt-6"
               variants={itemVariants}
             >
-              <div className="flex items-center gap-3">
-                <p className="text-gray-700 font-medium text-sm">Sort by:</p>
-                <select
-                  onChange={(e) => setSort(e.target.value)}
-                  className="text-sm text-gray-800 bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-[#59C491] focus:border-[#59C491] transition-all duration-200 hover:border-[#59C491]"
+              {/* Search */}
+              <div className="w-full flex justify-between gap-3">
+                <div className="flex items-center w-[70%] bg-white border border-gray-300 rounded-xl px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-[#59C491]/40 focus-within:border-[#59C491] transition-all">
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlass}
+                    className="text-gray-500 text-sm"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Search products..."
+                    className="bg-transparent w-full px-3 py-1 outline-none text-gray-700"
+                    onChange={(e) => {
+                      e.target.value === "" && setSubmitSearch("");
+                      setSearch(e.target.value);
+                    }}
+                  />
+                </div>
+                <button
+                  className="w-auto bg-[#59C491] hover:bg-[#4CB985] text-white px-6 py-2 rounded-xl font-medium transition shadow-sm"
+                  onClick={() => setSubmitSearch(search)}
                 >
-                  <option value="id">Default (By ID)</option>
-                  <option value="low">Price: Low → High</option>
-                  <option value="high">Price: High → Low</option>
-                  <option value="nameA">Name: A → Z</option>
-                  <option value="nameZ">Name: Z → A</option>
-                </select>
+                  Search
+                </button>
               </div>
+              <div className="w-full flex md:justify-between md:flex-row flex-col gap-2 md:items-center justify-center">
+                {/* Sort */}
+                <div className="flex items-center gap-3">
+                  <p className="text-gray-700 font-medium text-sm">Sort by:</p>
+                  <select
+                    onChange={(e) => setSort(e.target.value)}
+                    className="text-sm text-gray-800 bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-[#59C491] focus:border-[#59C491] transition-all duration-200 hover:border-[#59C491]"
+                  >
+                    <option value="id">Default (By ID)</option>
+                    <option value="low">Price: Low → High</option>
+                    <option value="high">Price: High → Low</option>
+                    <option value="nameA">Name: A → Z</option>
+                    <option value="nameZ">Name: Z → A</option>
+                  </select>
+                </div>
 
-              {/* Showing Count Products */}
-              {loading && Filter.length != 0 ? (
-                <Skeleton
-                  width={"150px"}
-                  height={"30px"}
-                  baseColor="rgba(229, 231, 235)"
-                />
-              ) : (
-                <motion.p
-                  className="text-sm text-gray-700 font-medium"
-                  initial={{ opacity: 0, x: 0 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                >
-                  Showing{" "}
-                  <span className="font-semibold text-[#59C491]">
-                    {Filter.length}
-                  </span>{" "}
-                  of{" "}
-                  <span className="font-semibold text-gray-800">
-                    {Products.length}
-                  </span>{" "}
-                  product{Filter.length !== 1 ? "s" : ""}
-                </motion.p>
-              )}
+                {/* Showing Count Products */}
+                {loading && Filter.length != 0 ? (
+                  <Skeleton
+                    width={"150px"}
+                    height={"30px"}
+                    baseColor="rgba(229, 231, 235)"
+                  />
+                ) : (
+                  <motion.p
+                    className="text-sm text-gray-700 font-medium"
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  >
+                    Showing{" "}
+                    <span className="font-semibold text-[#59C491]">
+                      {Filter.length}
+                    </span>{" "}
+                    of{" "}
+                    <span className="font-semibold text-gray-800">
+                      {Products.length}
+                    </span>{" "}
+                    product{Filter.length !== 1 ? "s" : ""}
+                  </motion.p>
+                )}
+              </div>
             </motion.div>
 
             {/* Empty State */}
@@ -387,7 +422,7 @@ const OurStore = () => {
 
             {/* Product Grid */}
             {loading && Filter.length != 0 ? (
-              <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6">
+              <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6">
                 {Filter.map((_, index) => (
                   <Skeleton
                     key={index}
@@ -397,7 +432,7 @@ const OurStore = () => {
               </div>
             ) : (
               <motion.div
-                className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6"
+                className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4 py-6"
                 initial="hidden"
                 animate="visible"
                 variants={parentVariants}
