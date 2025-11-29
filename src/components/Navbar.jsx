@@ -183,7 +183,15 @@ const Navbar = () => {
                     hidden: { opacity: 0 },
                   }}
                 >
-                  <FontAwesomeIcon className="cursor-pointer" icon={faHeart} />
+                  <Link
+                    to={"/Wishlist"}
+                    className="w-[30px] h-[30px] flex justify-center items-center"
+                  >
+                    <FontAwesomeIcon
+                      className="cursor-pointer"
+                      icon={faHeart}
+                    />
+                  </Link>
                 </motion.span>
                 {/* cart */}
                 <motion.span
